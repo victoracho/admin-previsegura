@@ -4,18 +4,18 @@
         <AppLayout title="Dashboard">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-									<EasyDataTable
-										:headers="columns"
-										:items="rows"
-									>
-										<template #item-assistances="{ assistances, id }">
-											<div class="player-wrapper">
-												<button @click="openModal(id)">
-													<i class="pi pi-pencil" style="font-size: 1rem"></i>
-												</button>
-											</div>
-										</template>
-									</EasyDataTable>
+					<EasyDataTable
+						:headers="columns"
+						:items="rows"
+					>
+						<template #item-assistances="{ assistances, id }">
+							<div class="player-wrapper">
+								<button @click="openModal(id)">
+									<i class="pi pi-pencil" style="font-size: 1rem"></i>
+								</button>
+							</div>
+						</template>
+					</EasyDataTable>
                 </div>
             </div>
         </AppLayout>
@@ -23,7 +23,7 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout.vue';
-		import 'primeicons/primeicons.css';
+	// import 'primeicons/primeicons.css';
     export default {
       components: {
         AppLayout
