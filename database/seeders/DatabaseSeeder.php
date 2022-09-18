@@ -18,19 +18,19 @@ class DatabaseSeeder extends Seeder
     {
         $plan = new Plan;
         $plan->name = 'Individual';
-        $plan->save;
+        $plan->save();
 
         $plan = new Plan;
         $plan->name = 'Corporativo';
-        $plan->save;
+        $plan->save();
 
         $plan = new Plan;
         $plan->name = 'Grupal';
-        $plan->save;
+        $plan->save();
 
         $plan = new Plan;
         $plan->name = 'Banca Asistencia';
-        $plan->save;
+        $plan->save();
 
         $assistance = new Assistance;
         $assistance->name = 'Asistencia funeraria nacional e internacional';
