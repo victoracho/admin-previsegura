@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Plan;
+use App\Models\Assistance;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +16,53 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $plan = new Plan;
+        $plan->name = 'Individual';
+        $plan->save;
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $plan = new Plan;
+        $plan->name = 'Corporativo';
+        $plan->save;
+
+        $plan = new Plan;
+        $plan->name = 'Grupal';
+        $plan->save;
+        
+        $plan = new Plan;
+        $plan->name = 'Banca Asistencia';
+        $plan->save;
+
+        $assistance = new Assistance;
+        $assistance->name = 'Asistencia funeraria nacional e internacional';
+        $assistance->save();
+
+        $assistance = new Assistance;
+        $assistance->name = 'Asistencia financiera en duelo';
+        $assistance->save();
+
+        $assistance = new Assistance;
+        $assistance->name = 'Asistencia médica telefónica y domiciliaria';
+        $assistance->save();
+
+
+        $assistance = new Assistance;
+        $assistance->name = 'Combo citas médicas';
+        $assistance->save();
+
+
+        $assistance = new Assistance;
+        $assistance->name = 'Asistencia odontológica';
+        $assistance->save();
+
+
+        $assistance = new Assistance;
+        $assistance->name = 'Asistencia financiera en hospitalización';
+        $assistance->save();
+
+
+        $assistance = new Assistance;
+        $assistance->name = 'Asistencia financiera en enfermedad grave';
+        $assistance->save();
+
     }
 }
