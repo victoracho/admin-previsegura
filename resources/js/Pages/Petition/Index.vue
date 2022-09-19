@@ -3,20 +3,30 @@
     <template>
         <AppLayout title="Dashboard">
             <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-					<EasyDataTable
-						:headers="columns"
-						:items="rows"
+				<div class="q-pa-md">
+					<q-table
+					:rows="rows"
+					:columns="columns"
+					row-key="name"
 					>
-						<template #item-assistances="{ assistances, id }">
-							<div class="player-wrapper">
-								<button @click="openModal(id)">
-									<i class="pi pi-pencil" style="font-size: 1rem"></i>
-								</button>
-							</div>
-						</template>
-					</EasyDataTable>
-                </div>
+					<template v-slot:body="props">
+						<q-tr :props="props">
+							<q-td key="user" :props="props">
+								{{ props.row.user }}
+							</q-td>
+							<q-td key="date" :props="props">
+								{{ props.row.date }}
+							</q-td>
+							<q-td key="plan" :props="props">
+								{{ props.row.plan }}
+							</q-td>
+							<q-td key="assistances" :props="props">
+								<q-btn round color="primary" icon="edit" />
+							</q-td>
+						</q-tr>
+					</template>
+					</q-table>
+				</div>
             </div>
         </AppLayout>
     </template>
@@ -30,14 +40,13 @@
       },
 			props: ['petitions'],
 			created() {
-				this.columns = [
-					{ text: "Usuario", value: "user", sortable: true },
-					{ text: "Plan", value: "plan", sortable: true },
-					{ text: "Fecha", value: "date", sortable: true },
-					{ text: "Asistencias", value: "assistances", sortable: true }
-				];
-
 				this.rows = this.petitions;
+				this.columns = [
+					{ name: 'user', label: 'Usuario', field: 'user', align: "left", sortable: true },
+					{ name: "date", label: "Fecha", field: "date", sortable: true },
+					{ name: "plan", label: "Plan", field: 'plan', sortable: true },
+					{ name: "assistances", label: "Asistencias", field: "assistances", sortable: true }
+				];
 			},
       data() {
 				return {
@@ -45,12 +54,12 @@
 					columns: null
 				}
       },
-      computed: {
+		computed: {
 
-      },
+		},
 			methods: {
 				openModal(id){
-      		window.location.pathname = "/assistance/"+id
+			window.location.pathname = "/assistance/"+id
 				}
 			}
 		}

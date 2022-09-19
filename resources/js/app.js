@@ -7,7 +7,15 @@ import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import Vue3EasyDataTable from 'vue3-easy-data-table';
+import { Quasar } from 'quasar';
+import '@quasar/extras/material-icons/material-icons.css'
 import 'vue3-easy-data-table/dist/style.css';
+// Import icon libraries
+import '@quasar/extras/material-icons/material-icons.css'
+
+// Import Quasar css
+import 'quasar/src/css/index.sass'
+
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -19,6 +27,7 @@ createInertiaApp({
             .use(plugin)
             .component('EasyDataTable', Vue3EasyDataTable)
             .use(ZiggyVue, Ziggy)
+            .use(Quasar)
             .mount(el);
     },
     
