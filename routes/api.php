@@ -18,6 +18,7 @@ Route::prefix('petition')->group(function() {
     Route::post('/save', [PetitionController::class, 'savePetition'])->name('petition.save');
     Route::get('/get-data', [PetitionController::class, 'getLandingPageData'])->name('petition.getData');
     Route::get('/get-assistances', [PetitionController::class, 'index'])->name('petition.index');
+    
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

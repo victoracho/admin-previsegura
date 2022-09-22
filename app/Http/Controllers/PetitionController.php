@@ -17,7 +17,7 @@ class PetitionController extends Controller
 {
     public function index (){
         try {
-            $petitions = Petition::with(['user','plan'])->orderBy('created_at', 'DESC')->get();
+            $petitions = Petition::with(['user','plan', 'assistancePetitions'])->orderBy('created_at', 'DESC')->get();
             $petitions = $petitions->map(function($petition){
                 $obj = (object)[];
                 $obj->id = $petition->id;
@@ -40,6 +40,100 @@ class PetitionController extends Controller
             throw $th;
         }  
     }
+
+    public function getAssistances(Request $request){
+        try {
+            $petition = Petition::find($request->id);
+            $assistances = $petition->assistancePetitions;
+            $arr = [];
+            foreach($assistances as $assistance){
+                $arr [] = $assistance->assistance;
+            }
+
+            return response()->json([
+                'success' => 'true',
+                'error' => 'null',
+                'data' => $arr
+            ], 200);
+
+        } catch (\Throwable $th) {
+            DB::rollback();
+            throw $th;
+        }  
+    }
+
+    public function sendAssistances(Request $request){
+        try {
+            $petition = Petition::find($request->id);
+            $assistances = $petition->assistancePetitions;
+            $arr = [];
+            foreach($assistances as $assistance){
+                $assistance->delete();
+            }
+            if($request->assisFuneraria){
+                $assis = new AssistancePetition;
+                $assis->petition_id = $request->id;
+                $assis->assistance_id = 1;
+                $assis->save();
+            }
+
+            if($request->assisFinanciera){
+                $assis = new AssistancePetition;
+                $assis->petition_id = $request->id;
+                $assis->assistance_id = 2;
+                $assis->save();
+            }
+
+            if($request->assisMedica){
+                $assis = new AssistancePetition;
+                $assis->petition_id = $request->id;
+                $assis->assistance_id = 3;
+                $assis->save();
+            }
+
+            if($request->assisCitas){
+                $assis = new AssistancePetition;
+                $assis->petition_id = $request->id;
+                $assis->assistance_id = 4;
+                $assis->save();
+            }
+
+
+            if($request->assisOdontologica){
+                $assis = new AssistancePetition;
+                $assis->petition_id = $request->id;
+                $assis->assistance_id = 5;
+                $assis->save();
+            }
+
+
+            if($request->assisHospitalizacion){
+                $assis = new AssistancePetition;
+                $assis->petition_id = $request->id;
+                $assis->assistance_id = 6;
+                $assis->save();
+            }
+
+
+            if($request->assisEnfermedad){
+                $assis = new AssistancePetition;
+                $assis->petition_id = $request->id;
+                $assis->assistance_id = 7;
+                $assis->save();
+            }
+
+
+            return response()->json([
+                'success' => 'true',
+                'error' => 'null'
+            ], 200);
+
+        } catch (\Throwable $th) {
+            DB::rollback();
+            throw $th;
+        }  
+    }
+
     public function savePetition(Request $request)
     {
         try {

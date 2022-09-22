@@ -19,6 +19,9 @@ Route::get('/', function () {
     return to_route('login');
 });
 
+Route::post('/getAssistances', [PetitionController::class, 'getAssistances'])->name('petition.getAssistances');
+Route::post('/sendAssistances', [PetitionController::class, 'sendAssistances'])->name('petition.sendAssistances');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -20,6 +20,10 @@ class Petition extends Model
     public function assistancePetitions() {
         return $this->hasMany(AssistancePetition::class, 'petition_id');
     }
+
+    public function assistances() {
+        return $this->hasManyThrough(AssistancePetition::class, Assistance::class);
+    }
     
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
