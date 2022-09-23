@@ -23,6 +23,13 @@ class PetitionController extends Controller
                 $obj->id = $petition->id;
                 $user = clone $petition->user;
                 $obj->user = $user->email;
+                $names = $user->firstnames .' '.$user->lastnames;
+                $obj->doc = $user->doc;
+                $obj->phone_number = $user->phone_number;
+                $obj->doc_type_id = $user->doc_type_id;
+                $obj->names = $names;
+                $obj->doc_type_id = $obj->doc_type_id == 1 ? 'Si' : 'No'; 
+
                 $obj->date = Carbon::parse($petition->created_at); 
                 $obj->date = $obj->date->format('d m Y');
                 $obj->assistances = 'Ver';
@@ -153,6 +160,8 @@ class PetitionController extends Controller
                 $user = new User;
                 $user->firstnames = $request->firstnames;
                 $user->lastnames = $request->lastnames;
+                $user->doc = $request->identification;
+                $user->doc_type_id = $request->client;
                 $user->phone_number = $request->phone_number;
                 $user->email = $request->email;
                 $user->save();

@@ -32,6 +32,18 @@
 							<q-td key="user" :props="props">
 								{{ props.row.user }}
 							</q-td>
+							<q-td key="names" :props="props">
+								{{ props.row.names }}
+							</q-td>
+							<q-td key="doc" :props="props">
+								{{ props.row.doc }}
+							</q-td>
+							<q-td key="phone_number" :props="props">
+								{{ props.row.phone_number }}
+							</q-td>
+							<q-td key="doc_type_id" :props="props">
+								{{ props.row.doc_type_id }}
+							</q-td>
 							<q-td key="date" :props="props">
 								{{ props.row.date }}
 							</q-td>
@@ -61,7 +73,11 @@
 		created() {
 			this.rows = this.petitions;
 			this.columns = [
-				{ name: 'user', label: 'Usuario', field: 'user', align: "left", sortable: true },
+				{ name: 'user', label: 'Usuario', field: 'user',  sortable: true },
+				{ name: 'names', label: 'Nombres y apellidos', field: 'names' },
+				{ name: 'doc', label: 'Cédula', field: 'doc' },
+				{ name: 'phone_number', label: 'Contacto', field: 'phone_number' },
+				{ name: 'doc_type_id', label: 'Tipo de cliente', field: 'doc_type_id' },
 				{ name: "date", label: "Fecha", field: "date", sortable: true },
 				{ name: "plan", label: "Plan", field: 'plan', sortable: true },
 				{ name: "assistances", label: "Asistencias", field: "assistances", sortable: true }
