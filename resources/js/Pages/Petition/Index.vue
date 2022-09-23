@@ -73,10 +73,10 @@
 		created() {
 			this.rows = this.petitions;
 			this.columns = [
-				{ name: 'user', label: 'Usuario', field: 'user',  sortable: true },
+				{ name: 'user', label: 'Correo', field: 'user',  sortable: true },
 				{ name: 'names', label: 'Nombres y apellidos', field: 'names' },
 				{ name: 'doc', label: 'Cédula', field: 'doc' },
-				{ name: 'phone_number', label: 'Contacto', field: 'phone_number' },
+				{ name: 'phone_number', label: 'Teléfono', field: 'phone_number' },
 				{ name: 'doc_type_id', label: 'Tipo de cliente', field: 'doc_type_id' },
 				{ name: "date", label: "Fecha", field: "date", sortable: true },
 				{ name: "plan", label: "Plan", field: 'plan', sortable: true },

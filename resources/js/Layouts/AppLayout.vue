@@ -39,10 +39,7 @@ const profileLink = () => {
         <Banner />
         <div class="q-pa-md">
             <q-toolbar class="bg-primary glossy text-white">
-                <q-avatar>
-                    <img src="img/previsegura.jpg">
-                </q-avatar>
-
+                <img src="img/previsegura.jpg" style='width:10%;' alt="">  
                 <q-toolbar-title>Previsegura panel administrativo</q-toolbar-title>
                 <q-space/>
                 <q-tabs v-model="tab" shrink>

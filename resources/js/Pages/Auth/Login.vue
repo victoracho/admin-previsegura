@@ -34,7 +34,7 @@ const submit = () => {
 
     <AuthenticationCard>
         <template #logo>
-            <img src="img/previsegura.jpg" alt="">  
+     
 
         </template>
 
@@ -44,6 +44,8 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
+                <img src="img/previsegura.jpg" style='width:50%;' alt=""> 
+                <br>
                 <InputLabel for="email" value="Correo" />
                 <TextInput
                     id="email"
