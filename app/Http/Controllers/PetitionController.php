@@ -28,7 +28,7 @@ class PetitionController extends Controller
                 $obj->phone_number = $user->phone_number;
                 $obj->doc_type_id = $user->doc_type_id;
                 $obj->names = $names;
-                $obj->doc_type_id = $obj->doc_type_id == 1 ? 'Si' : 'No'; 
+                $obj->doc_type_id = $obj->doc_type_id == 1 ? 'Nuevo' : 'Registrado'; 
 
                 $obj->date = Carbon::parse($petition->created_at); 
                 $obj->date = $obj->date->format('d m Y');
