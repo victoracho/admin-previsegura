@@ -44,7 +44,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <img src="img/previsegura.jpg" style='width:50%;' alt=""> 
+                <img src="img/previsegura-logo.jpg" style='width:50%;' alt=""> 
                 <br>
                 <InputLabel for="email" value="Correo" />
                 <TextInput
