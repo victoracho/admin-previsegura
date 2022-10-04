@@ -26,9 +26,9 @@ class PetitionController extends Controller
                 $names = $user->firstnames .' '.$user->lastnames;
                 $obj->doc = $user->doc;
                 $obj->phone_number = $user->phone_number;
-                $obj->doc_type_id = $user->doc_type_id;
+                $obj->user_type = $user->user_type;
                 $obj->names = $names;
-                $obj->doc_type_id = $obj->doc_type_id == 1 ? 'Nuevo' : 'Registrado'; 
+                $obj->user_type = $obj->user_type == '1' ? 'Nuevo' : 'Registrado'; 
 
                 $obj->date = Carbon::parse($petition->created_at); 
                 $obj->date = $obj->date->format('d m Y');
@@ -161,7 +161,7 @@ class PetitionController extends Controller
                 $user->firstnames = $request->firstnames;
                 $user->lastnames = $request->lastnames;
                 $user->doc = $request->identification;
-                $user->doc_type_id = $request->client;
+                $user->user_type = $request->client;
                 $user->phone_number = $request->phone_number;
                 $user->email = $request->email;
                 $user->save();
@@ -182,6 +182,7 @@ class PetitionController extends Controller
                 $assistancePetition->save();
             }
             DB::commit();
+            $petition->sendCreatedMail();
             return response()->json([
                 'success' => 'true',
                 'error' => 'null'

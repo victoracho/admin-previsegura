@@ -29,7 +29,7 @@ return new class extends Migration
             
             $table->string('password')->nullable();
             $table->rememberToken();
-            $table->foreign('doc_type_id')->references('id')->on('countries')->onDelete('set null');
+            $table->foreign('doc_type_id')->references('id')->on('doc_type')->onDelete('set null');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
             $table->foreign('state_id')->references('id')->on('country_states')->onDelete('set null');
             $table->unique(['doc', 'phone_number']);

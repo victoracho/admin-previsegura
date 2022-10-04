@@ -41,8 +41,8 @@
 							<q-td key="phone_number" :props="props">
 								{{ props.row.phone_number }}
 							</q-td>
-							<q-td key="doc_type_id" :props="props">
-								{{ props.row.doc_type_id }}
+							<q-td key="user_type" :props="props">
+								{{ props.row.user_type }}
 							</q-td>
 							<q-td key="date" :props="props">
 								{{ props.row.date }}
@@ -77,7 +77,7 @@
 				{ name: 'names', label: 'Nombres y apellidos', field: 'names' },
 				{ name: 'doc', label: 'Cédula', field: 'doc' },
 				{ name: 'phone_number', label: 'Teléfono', field: 'phone_number' },
-				{ name: 'doc_type_id', label: 'Tipo de cliente', field: 'doc_type_id' },
+				{ name: 'user_type', label: 'Tipo de cliente', field: 'user_type' },
 				{ name: "date", label: "Fecha", field: "date", sortable: true },
 				{ name: "plan", label: "Plan", field: 'plan', sortable: true },
 				{ name: "assistances", label: "Asistencias", field: "assistances", sortable: true }

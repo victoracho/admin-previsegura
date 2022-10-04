@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Models;
+
+use App\Mail\createdPetition;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class Petition extends Model
 {
@@ -32,5 +35,31 @@ class Petition extends Model
     public function plan() {
         return $this->belongsTo(Plan::class, 'plan_id');
     }
+
+        // mail created petition
+    public function sendCreatedMail() {
+        try {
+                $admin = getenv('APP_ADMIN');
+                $adminMessage = [
+                    'subject' => '¡Un usuario ha creado una solicitud!',
+                    'title' => '¡Bienvenido a Previsegura!',
+                    'petition' => $this,
+                    'admin' => $admin
+                ];
+            
+                // Send email to admin.
+                Mail::to(env('MAIL_ADDRESS'))->send(new createdPetition($adminMessage));
+                
+            return response()->json([
+                'success' => true
+            ], 200);
+        } catch (Exception $th) {
+            return response()->json([
+                'success' => false,
+                'error' => $th->getMessage()
+            ], 200);
+        }
+    } 
+    
 
 }
