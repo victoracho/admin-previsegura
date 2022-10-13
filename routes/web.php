@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::post('/getAssistances', [PetitionController::class, 'getAssistances'])->name('petition.getAssistances');
 Route::post('/sendAssistances', [PetitionController::class, 'sendAssistances'])->name('petition.sendAssistances');
+Route::post('/getInfo', [PetitionController::class, 'getInfo'])->name('petition.getInfo');
 
 Route::middleware([
     'auth:sanctum',

@@ -37,9 +37,14 @@ class PetitionController extends Controller
                 $obj->plan = $plan->name;
                 return $obj;
             });
+            $plans = Plan::all();
+            $plans = $plans->map(function($plan){
+                return $plan->name;
+            });
 
             return Inertia::render('Petition/Index', [
-                'petitions' => $petitions
+                'petitions' => $petitions,
+                'plans' => $plans
             ]);
 
         } catch (\Throwable $th) {
@@ -68,6 +73,31 @@ class PetitionController extends Controller
             throw $th;
         }  
     }
+
+    public function getInfo(Request $request){
+        try {
+            $petition = Petition::find($request->id);
+            $assistances = $petition->assistancePetitions;
+            $arr = [];
+            foreach($assistances as $assistance){
+                $arr [] = $assistance->assistance;
+            }
+            $data = [];
+            $data['assistances'] = $arr;
+            $data['user'] = $petition->user;
+            $data['plan'] = $petition->plan;
+            return response()->json([
+                'success' => 'true',
+                'error' => 'null',
+                'data' => $data
+            ], 200);
+
+        } catch (\Throwable $th) {
+            DB::rollback();
+            throw $th;
+        }  
+    }
+
 
     public function sendAssistances(Request $request){
         try {
@@ -127,6 +157,44 @@ class PetitionController extends Controller
                 $assis->petition_id = $request->id;
                 $assis->assistance_id = 7;
                 $assis->save();
+            }
+
+            if($request->assisMascotas){
+                $assis = new AssistancePetition;
+                $assis->petition_id = $request->id;
+                $assis->assistance_id = 8;
+                $assis->save();
+            }
+
+            if($request->user){
+                $user = $petition->user;
+                $user->firstnames = $request->user['firstnames'];
+                $user->lastnames = $request->user['lastnames'];
+                $user->email = $request->user['email'];
+                $user->phone_number = $request->user['phone_number'];
+                $user->user_type = $request->user['type'] == 'Nuevo' ? 1 : 2;
+                $user->save();
+            }
+
+            if($request->plan){
+                $plan = $request->plan;
+                if($plan == 'Individual'){
+                    $plan = 1;
+                }
+
+                if($plan == 'Corporativo'){
+                    $plan = 2;
+                }
+
+                if($plan == 'Grupal'){
+                    $plan = 3;
+                }
+
+                if($plan == 'Banca Asistencia'){
+                    $plan = 4;
+                }
+                $petition->plan_id = $plan;
+                $petition->save();
             }
 
 

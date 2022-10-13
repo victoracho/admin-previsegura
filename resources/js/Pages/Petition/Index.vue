@@ -2,26 +2,69 @@
 
     <template>
         <AppLayout title="Dashboard">
-            <div class="py-12">
-				<div class="q-pa-md">
-					<q-dialog ref="dialog" @hide="onDialogHide">
-						<q-card class="q-dialog-plugin">
-							<div class="q-gutter-sm">
+			<div class="py-12">
+				<q-dialog ref="dialog" @hide="onDialogHide">
+					<q-carousel
+						transition-prev="slide-right"
+						transition-next="slide-left"
+						swipeable
+						animated
+						v-model="slide"
+						control-color="primary"
+						navigation-icon="radio_button_unchecked"
+						navigation
+						padding
+						
+						class="bg-white shadow-1 rounded-borders"
+					>
+						<q-carousel-slide :name="1" class="column no-wrap flex-center" >
+							<q-card-section >
+								<div class="text-h6">Asistencias</div>
 								<q-checkbox v-model="assisFuneraria" label="Asistencia funeraria nacional e internacional"></q-checkbox>
 								<q-checkbox v-model="assisFinanciera" label="Asistencia financiera en duelo"></q-checkbox>
 								<q-checkbox v-model="assisMedica" label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
+									<br>
 								<q-checkbox v-model="assisCitas" label="Combo citas médicas"></q-checkbox>
-								<br>
+									<br>
 								<q-checkbox v-model="assisOndotologica" label="Asistencia odontológica"></q-checkbox>
-								<q-checkbox v-model="assisHospitalizacion" label="Asistencia financiera en hospitalización"></q-checkbox>
-								<q-checkbox v-model="assisEnfermedad" label="Asistencia financiera en enfermedad grave"></q-checkbox>
-							</div>
-						<q-card-actions align="right">
-							<q-btn color="primary" label="Editar" @click="onOKClick" />
-							<q-btn color="primary" label="Cancelar" @click="onCancelClick" />
-						</q-card-actions>
-						</q-card>
-					</q-dialog>
+									<br>
+								<q-checkbox v-model="assisMascotas" label="Mascotas de cielo"></q-checkbox>
+							</q-card-section>
+							<q-card-actions align="right">
+								<q-btn flat label="Cerrar" color="primary" v-close-popup />
+								<q-btn flat label="Editar" color="primary" @click="onOKClick()"  v-close-popup />
+							</q-card-actions>
+						</q-carousel-slide>
+						<q-carousel-slide :name="2" class="column no-wrap flex-center">
+							<q-card-section >
+								<div class="text-h6">Usuario</div>
+								<q-input v-model="firstnames" label="Nombres" />
+								<q-input v-model="lastnames" label="Apellidos" />
+								<q-input v-model="email" label="Correo Electronico" />
+								<q-input v-model="phone_number" label="Numero Telefonico" />
+							</q-card-section>
+							<q-card-actions align="right">
+								<q-btn flat label="Cerrar" color="primary" v-close-popup />
+								<q-btn flat label="Editar" color="primary" @click="onOKClick()" v-close-popup />
+							</q-card-actions>
+						</q-carousel-slide>
+						<q-carousel-slide :name="3" class="column no-wrap flex-center">
+							<q-card-section >
+								<div class="text-h6">Planes</div>
+								<div class="q-pa-md" style="max-width: 800px">
+									<q-select v-model="plan" :options="plans" label="Escoge una opcion"></q-select>
+									<q-select v-model="type" :options="types" label="Escoge una opcion"></q-select>
+								</div>
+							</q-card-section>
+							<q-card-actions align="right">
+								<q-btn flat label="Cerrar" color="primary" v-close-popup />
+								<q-btn flat label="Editar" color="primary" @click="onOKClick()"   v-close-popup/>
+							</q-card-actions>
+						</q-carousel-slide>
+					</q-carousel>
+				</q-dialog>
+
+				<div class="q-pa-md">
 					<q-table
 					:rows="rows"
 					:columns="columns"
@@ -30,7 +73,7 @@
 					<template v-slot:body="props">
 						<q-tr :props="props">
 							<q-td key="user" :props="props">
-								{{ props.row.user }}
+								<u><a title="Escribir al correo" href=" mailto:${props.row.user}"> {{props.row.user}}</a> </u>
 							</q-td>
 							<q-td key="names" :props="props">
 								{{ props.row.names }}
@@ -39,7 +82,7 @@
 								{{ props.row.doc }}
 							</q-td>
 							<q-td key="phone_number" :props="props">
-								{{ props.row.phone_number }}
+								<u><a title="Escribir por telefono" href="https://wa.me/{props.row.phone_number}"> {{props.row.phone_number}}</a> </u>
 							</q-td>
 							<q-td key="user_type" :props="props">
 								{{ props.row.user_type }}
@@ -50,7 +93,7 @@
 							<q-td key="plan" :props="props">
 								{{ props.row.plan }}
 							</q-td>
-							<q-td key="assistances" :props="props">
+							<q-td key="actions" :props="props">
 								<q-btn round color="primary" icon="edit" @click="show(props.row.id)" />
 							</q-td>
 						</q-tr>
@@ -69,7 +112,7 @@
       components: {
         AppLayout
       },
-		props: ['petitions'],
+		props: ['petitions', 'plans'],
 		created() {
 			this.rows = this.petitions;
 			this.columns = [
@@ -80,7 +123,7 @@
 				{ name: 'user_type', label: 'Tipo de cliente', field: 'user_type' },
 				{ name: "date", label: "Fecha", field: "date", sortable: true },
 				{ name: "plan", label: "Plan", field: 'plan', sortable: true },
-				{ name: "assistances", label: "Asistencias", field: "assistances", sortable: true }
+				{ name: "actions", label: "Acciones", field: "assistances", sortable: true }
 			];
 
 		},
@@ -96,6 +139,15 @@
 				assisHospitalizacion: false,
 				assisMedica: false,
 				assisOndotologica: false,
+				assisMascotas: false,
+				firstnames: null,
+				lastnames: null,
+				plan: null,
+				phone_number: null,
+				email: null,
+				slide: 1,
+				types: ['Nuevo', 'Registrado'],
+				type: null
 			}
 		},
 	  	emits: [
@@ -114,9 +166,17 @@
 			},
 			async show (id) {
 				this.currentPetition = id
-				await axios.post(route('petition.getAssistances'), {id: id})
+				await axios.post(route('petition.getInfo'), {id: id})
 				.then((res) => {
-					const assistances = res.data.data
+					console.log(res.data.data.assistances);
+					const assistances = res.data.data.assistances
+					this.firstnames = res.data.data.user.firstnames
+					this.lastnames = res.data.data.user.lastnames
+					this.email = res.data.data.user.email
+					this.phone_number = res.data.data.user.phone_number
+					this.plan = res.data.data.plan.name
+					this.type = res.data.data.user.user_type== 1 ? 'Nuevo' : 'Registrado'
+
 					this.checkAssistances(assistances)
 				})
 				this.$refs.dialog.show()
@@ -133,6 +193,8 @@
 				this.assisFinanciera = false
 				this.assisHospitalizacion = false
 				this.assisMedica = false
+				this.assisMascotas = false
+
 				assistances.forEach(element => {
 					switch (element.name) {
 					case "Asistencia funeraria nacional e internacional":
@@ -153,6 +215,9 @@
 					case "Asistencia financiera en hospitalización":
 						this.assisHospitalizacion = true;
 						break;
+					case "Mascotas de cielo":
+						this.assisMascotas = true;
+						break;
 					case "Asistencia financiera en enfermedad grave":
 						this.assisEnfermedad = true;
 					}
@@ -168,7 +233,15 @@
 			this.$emit('hide')
 			},
 
-			async onOKClick (id) {
+			async onOKClick () {
+				const user = {
+					firstnames: this.firstnames,
+					lastnames: this.lastnames,
+					email: this.email,
+					phone_number: this.phone_number,
+					type: this.type
+				}
+
 				await axios.post(route('petition.sendAssistances'), {id: this.currentPetition,
 					assisCitas: this.assisCitas,
 					assisOdontologica: this.assisOndotologica, 
@@ -176,10 +249,15 @@
 					assisFuneraria: this.assisFuneraria,
 					assisFinanciera: this.assisFinanciera,
 					assisHospitalizacion: this.assisHospitalizacion,
-					assisMedica: this.assisMedica
+					assisMedica: this.assisMedica,
+					assisMascotas: this.assisMascotas,
+					user: user,
+					plan: this.plan,
+
+
 				})
 				.then((res) => {
-
+					window.location.pathname = '/dashboard'
 				})
 
 				this.$emit('ok')
