@@ -171,6 +171,7 @@ class PetitionController extends Controller
                 $user->firstnames = $request->user['firstnames'];
                 $user->lastnames = $request->user['lastnames'];
                 $user->email = $request->user['email'];
+                $user->doc = $request->user['doc'];
                 $user->phone_number = $request->user['phone_number'];
                 $user->user_type = $request->user['type'] == 'Nuevo' ? 1 : 2;
                 $user->save();

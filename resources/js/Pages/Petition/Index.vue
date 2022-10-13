@@ -42,6 +42,7 @@
 								<q-input v-model="lastnames" label="Apellidos" />
 								<q-input v-model="email" label="Correo Electronico" />
 								<q-input v-model="phone_number" label="Numero Telefonico" />
+								<q-input v-model="doc" label="Documento de Identidad" />
 							</q-card-section>
 							<q-card-actions align="right">
 								<q-btn flat label="Cerrar" color="primary" v-close-popup />
@@ -143,6 +144,7 @@
 				firstnames: null,
 				lastnames: null,
 				plan: null,
+				doc: null,
 				phone_number: null,
 				email: null,
 				slide: 1,
@@ -175,6 +177,7 @@
 					this.email = res.data.data.user.email
 					this.phone_number = res.data.data.user.phone_number
 					this.plan = res.data.data.plan.name
+					this.doc = res.data.data.user.doc
 					this.type = res.data.data.user.user_type== 1 ? 'Nuevo' : 'Registrado'
 
 					this.checkAssistances(assistances)
@@ -239,7 +242,8 @@
 					lastnames: this.lastnames,
 					email: this.email,
 					phone_number: this.phone_number,
-					type: this.type
+					type: this.type,
+					doc: this.doc
 				}
 
 				await axios.post(route('petition.sendAssistances'), {id: this.currentPetition,

@@ -29,6 +29,7 @@ class User extends Authenticatable
         'email',
         'phone_number',
         'password',
+        'doc'
     ];
 
     /**
@@ -43,7 +44,7 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
-    /**
+/**
      * The attributes that should be cast.
      *
      * @var array
