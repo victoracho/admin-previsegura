@@ -3,66 +3,60 @@
     <template>
         <AppLayout title="Dashboard">
 			<div class="py-12">
-				<q-dialog ref="dialog" @hide="onDialogHide">
-					<q-carousel
-						transition-prev="slide-right"
-						transition-next="slide-left"
-						swipeable
-						animated
-						v-model="slide"
-						control-color="primary"
-						navigation-icon="radio_button_unchecked"
-						navigation
-						padding
-						
-						class="bg-white shadow-1 rounded-borders"
-					>
-						<q-carousel-slide :name="1" class="column no-wrap flex-center" >
-							<q-card-section >
-								<div class="text-h6">Asistencias</div>
-								<q-checkbox v-model="assisFuneraria" label="Asistencia funeraria nacional e internacional"></q-checkbox>
-								<q-checkbox v-model="assisFinanciera" label="Asistencia financiera en duelo"></q-checkbox>
-								<q-checkbox v-model="assisMedica" label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
-									<br>
-								<q-checkbox v-model="assisCitas" label="Combo citas médicas"></q-checkbox>
-									<br>
-								<q-checkbox v-model="assisOndotologica" label="Asistencia odontológica"></q-checkbox>
-									<br>
-								<q-checkbox v-model="assisMascotas" label="Mascotas de cielo"></q-checkbox>
-							</q-card-section>
-							<q-card-actions align="right">
-								<q-btn flat label="Cerrar" color="primary" v-close-popup />
-								<q-btn flat label="Editar" color="primary" @click="onOKClick()"  v-close-popup />
-							</q-card-actions>
-						</q-carousel-slide>
-						<q-carousel-slide :name="2" class="column no-wrap flex-center">
-							<q-card-section >
-								<div class="text-h6">Usuario</div>
-								<q-input v-model="firstnames" label="Nombres" />
-								<q-input v-model="lastnames" label="Apellidos" />
-								<q-input v-model="email" label="Correo Electronico" />
-								<q-input v-model="phone_number" label="Numero Telefonico" />
-								<q-input v-model="doc" label="Documento de Identidad" />
-							</q-card-section>
-							<q-card-actions align="right">
-								<q-btn flat label="Cerrar" color="primary" v-close-popup />
-								<q-btn flat label="Editar" color="primary" @click="onOKClick()" v-close-popup />
-							</q-card-actions>
-						</q-carousel-slide>
-						<q-carousel-slide :name="3" class="column no-wrap flex-center">
-							<q-card-section >
-								<div class="text-h6">Planes</div>
-								<div class="q-pa-md" style="max-width: 800px">
-									<q-select v-model="plan" :options="plans" label="Escoge una opcion"></q-select>
-									<q-select v-model="type" :options="types" label="Escoge una opcion"></q-select>
-								</div>
-							</q-card-section>
-							<q-card-actions align="right">
-								<q-btn flat label="Cerrar" color="primary" v-close-popup />
-								<q-btn flat label="Editar" color="primary" @click="onOKClick()"   v-close-popup/>
-							</q-card-actions>
-						</q-carousel-slide>
-					</q-carousel>
+				<q-dialog ref="dialog">
+         <q-card style="width: 800px">
+          <q-card-section >
+            <div class="text-h6">Usuario</div>
+            <q-input v-model="firstnames" label="Nombres" />
+            <q-input v-model="lastnames" label="Apellidos" />
+            <q-input v-model="email" label="Correo Ele1ctronico" />
+            <q-input v-model="phone_number" label="Numero Telefonico" />
+            <q-input v-model="doc" label="Documento de Identidad" />
+          </q-card-section>
+          <q-card-section >
+            <div class="text-h6">Planes</div>
+            <div class="q-pa-md" style="max-width: 800px">
+              <q-select v-model="plan" :options="plans" label="Escoge una opcion"></q-select>
+              <q-select v-model="type" :options="types" label="Escoge una opcion"></q-select>
+            </div>
+          </q-card-section>
+          <q-card-section >
+            <div class="text-h6">Asistencias</div>
+            <q-checkbox v-model="assisFuneraria" label="Asistencia funeraria nacional e internacional"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisFinanciera" label="Asistencia financiera en duelo"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisMedica" label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisCitas" label="Combo citas médicas"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisOndotologica" label="Asistencia odontológica"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisMascotas" label="Mascotas de cielo"></q-checkbox>
+            <q-card-actions align="right">
+              <q-btn flat label="Cerrar" color="primary" v-close-popup />
+              <q-btn flat label="Editar" color="primary" @click="onOKClick()"   v-close-popup/>
+            </q-card-actions>
+          </q-card-section>
+          </q-card>
+				</q-dialog>
+				<q-dialog ref="assistancesDialog">
+         <q-card style="width: 800px">
+          <q-card-section >
+            <div class="text-h6">Asistencias</div>
+            <q-checkbox v-model="assisFuneraria" disable label="Asistencia funeraria nacional e internacional"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisFinanciera" disable label="Asistencia financiera en duelo"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisMedica" disable label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisCitas" disable label="Combo citas médicas"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisOndotologica" disable label="Asistencia odontológica"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisMascotas" disable label="Mascotas de cielo"></q-checkbox>
+          </q-card-section>
+          </q-card>
 				</q-dialog>
 
 				<div class="q-pa-md">
@@ -74,7 +68,7 @@
 					<template v-slot:body="props">
 						<q-tr :props="props">
 							<q-td key="user" :props="props">
-								<u><a title="Escribir al correo" href=" mailto:${props.row.user}"> {{props.row.user}}</a> </u>
+								<u><a title="Escribir al correo" href="mailto:${props.row.user}"> {{props.row.user}}</a> </u>
 							</q-td>
 							<q-td key="names" :props="props">
 								{{ props.row.names }}
@@ -83,11 +77,15 @@
 								{{ props.row.doc }}
 							</q-td>
 							<q-td key="phone_number" :props="props">
-								<u><a title="Escribir por telefono" href="https://wa.me/{props.row.phone_number}"> {{props.row.phone_number}}</a> </u>
+               <u><a title="Escribir por telefono" href="tel:${props.row.phone_number}"> {{props.row.phone_number}}</a> </u>
 							</q-td>
 							<q-td key="user_type" :props="props">
 								{{ props.row.user_type }}
 							</q-td>
+							<q-td key="assistances" :props="props">
+                <q-btn round color="primary" icon="visibility" size="sm" @click="assistances(props.row.id)"/>
+							</q-td>
+              
 							<q-td key="date" :props="props">
 								{{ props.row.date }}
 							</q-td>
@@ -95,7 +93,8 @@
 								{{ props.row.plan }}
 							</q-td>
 							<q-td key="actions" :props="props">
-								<q-btn round color="primary" icon="edit" @click="show(props.row.id)" />
+                <q-btn round color="negative" icon="delete" size="sm" @click="remove(props.row.id)"/>
+								<q-btn round color="primary" icon="edit" size="sm" @click="show(props.row.id)" />
 							</q-td>
 						</q-tr>
 					</template>
@@ -122,6 +121,7 @@
 				{ name: 'doc', label: 'Cédula', field: 'doc' },
 				{ name: 'phone_number', label: 'Teléfono', field: 'phone_number' },
 				{ name: 'user_type', label: 'Tipo de cliente', field: 'user_type' },
+				{ name: 'assistances', label: 'Asistencias', field: 'assistances' },
 				{ name: "date", label: "Fecha", field: "date", sortable: true },
 				{ name: "plan", label: "Plan", field: 'plan', sortable: true },
 				{ name: "actions", label: "Acciones", field: "assistances", sortable: true }
@@ -145,9 +145,9 @@
 				lastnames: null,
 				plan: null,
 				doc: null,
+        maximizedToggle: true,
 				phone_number: null,
 				email: null,
-				slide: 1,
 				types: ['Nuevo', 'Registrado'],
 				type: null
 			}
@@ -163,9 +163,12 @@
 			openModal(id){
 				window.location.pathname = "/assistance/"+id
 			},
-			radio () {
-
-			},
+		  async remove (id){
+        await axios.post(route('petition.delete'), {id: id})
+        .then((res)=>{
+					window.location.pathname = '/dashboard'
+        })
+      },
 			async show (id) {
 				this.currentPetition = id
 				await axios.post(route('petition.getInfo'), {id: id})
@@ -178,16 +181,29 @@
 					this.phone_number = res.data.data.user.phone_number
 					this.plan = res.data.data.plan.name
 					this.doc = res.data.data.user.doc
-					this.type = res.data.data.user.user_type== 1 ? 'Nuevo' : 'Registrado'
+					this.type = res.data.data.user.user_type== 1 ? 'nuevo' : 'registrado'
 
 					this.checkAssistances(assistances)
 				})
 				this.$refs.dialog.show()
 			},
-			
+			async assistances (id) {
+				this.currentpetition = id
+				await axios.post(route('petition.getAssistances'), {id: id})
+				.then((res) => {
+					const assistances = res.data.data
+					this.firstnames = null
+					this.lastnames = null
+					this.email = null
+					this.phone_number = null
+					this.plan = null  
+					this.doc = null
+					this.type = null
 
-			// following method is REQUIRED
-			// (don't change its name --> "hide")
+					this.checkAssistances(assistances)
+				})
+				this.$refs.assistancesDialog.show()
+			},
 			checkAssistances(assistances){
 				this.assisCitas = false
 				this.assisOndotologica = false
@@ -245,7 +261,6 @@
 					type: this.type,
 					doc: this.doc
 				}
-
 				await axios.post(route('petition.sendAssistances'), {id: this.currentPetition,
 					assisCitas: this.assisCitas,
 					assisOdontologica: this.assisOndotologica, 

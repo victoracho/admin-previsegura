@@ -29,7 +29,6 @@ class PetitionController extends Controller
                 $obj->user_type = $user->user_type;
                 $obj->names = $names;
                 $obj->user_type = $obj->user_type == '1' ? 'Nuevo' : 'Registrado'; 
-
                 $obj->date = Carbon::parse($petition->created_at); 
                 $obj->date = $obj->date->format('d m Y');
                 $obj->assistances = 'Ver';
@@ -73,6 +72,23 @@ class PetitionController extends Controller
             throw $th;
         }  
     }
+    public function deletePetition(Request $request){
+      try{
+        $id = $request->id;
+        $petition = Petition::find($id);
+        if($petition){
+          $petition->delete();
+        }
+        return response()->json([
+          'success' => 'true',
+          'error' => 'null',
+        ], 200);
+      } catch(\Throwable $th){
+        DB::rollback();
+        throw $th;
+      }
+    }
+
 
     public function getInfo(Request $request){
         try {

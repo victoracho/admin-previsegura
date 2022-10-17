@@ -17,7 +17,8 @@ use App\Http\Controllers\PetitionController;
 Route::prefix('petition')->group(function() {
     Route::post('/save', [PetitionController::class, 'savePetition'])->name('petition.save');
     Route::get('/get-data', [PetitionController::class, 'getLandingPageData'])->name('petition.getData');
-    Route::get('/get-assistances', [PetitionController::class, 'index'])->name('petition.index');
+    Route::get('/get-assistances', [PetitionController::class, 'getAssistances'])->name('petition.index');
+    Route::post('/getInfo', [PetitionController::class, 'getInfo'])->name('petition.getInfo');
     
 });
 
