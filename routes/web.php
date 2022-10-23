@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PetitionController;
+use App\Http\Controllers\VocemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,7 @@ Route::get('/', function () {
 Route::prefix('vocem')->group(function () {
     Route::get('/upload/', [VocemController::class, 'uploadView'])->name('vocem.uploadCsv');
     Route::get('/upload/csv', [VocemController::class, 'uploadCsv'])->name('vocem.uploadCsv');
-    Route::get('/upload/progress', [VocemController::class, 'uploadProgress'])->name('vocem.uploadProgress');
+    Route::get('/upload/progress/{id}', [VocemController::class, 'uploadProgress'])->name('vocem.uploadProgress');
 
 });
 

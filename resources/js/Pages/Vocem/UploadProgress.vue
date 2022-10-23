@@ -26,11 +26,7 @@
 
 		},
 		methods: { 	
-            async upload (){
-                await axios.get(route('vocem.uploadCsv'))
-                .then((res)=>{
-                })
-            },
+
 	    }
     }
     </script>

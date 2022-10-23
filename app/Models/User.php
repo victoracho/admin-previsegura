@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Mail\CreatedUser;
 
 class User extends Authenticatable
 {
@@ -29,7 +30,9 @@ class User extends Authenticatable
         'email',
         'phone_number',
         'password',
-        'doc'
+        'doc',
+        'address',
+        'doc_type'
     ];
 
     /**
@@ -61,4 +64,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function sendCreatedUser() {
+
+        $userMessage = [
+            'subject' => '¡Tu usuario ha sido creado!',
+            'title' => '¡Bienvenido a Previsegura!',
+            'userData' => $this,
+            'url' => $resetUrl,
+            'resetUrl' => $forgotUrl
+        ];
+
+        // Send email to user.
+        Mail::to($this->email)->send(new CreatedUser($userMessage));
+
+    } 
 }
