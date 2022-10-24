@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;   
 use Illuminate\Http\Request;
 use App\Jobs\ProcessCsv;
+use App\Models\JobBatch;
 use Inertia\Inertia;
 use Exception;
 use Log;
@@ -52,26 +53,47 @@ class VocemController extends Controller
             }
             //every time we process a batch
             session()->put('lastBatchId', $batch->id);
-            return redirect('/vocem/upload/progress?='.$batch->id);
-            // dump($clientData);
-            echo('done');
-         //    return response()->json([
-         //       'success' => 'false',
-         //       'error' => 'true',
-         //       'data' => $data
-         //   ], 401);      
-         // }
-
-         $csv = $request->csv;
+            return response()->json($batch->id);
+         //}
       } catch(Exception $e){
          Log::error($e);
       }
    }
 
    public function uploadProgress(Request $request){
-      return Inertia::render('Vocem/Upload', [
-         'error' => 'false',
-         'success'=> 'true'
-     ]);   
+      try{
+         $id = $request->id ? $request->id : session('lastBatchId');
+         
+         $percentage = 0;
+         $batch = JobBatch::where('id', $id)->get();
+         if($batch->count()){
+            $percentage = $batch;
+         }
+
+         if($request->progress){
+            return response()->json($percentage);
+         }
+
+         return Inertia::render('Vocem/UploadProgress', [
+            'percentage' => $percentage,
+            'id' => $id
+         ]);   
+
+      } catch(Exception $e){
+         Log::error($e);
+      }
+   }
+
+
+   public function batchProgress(Request $request){
+      try{
+         $id = $request->id ? $request->id : session('lastBatchId');
+         $percentage = 0;
+         $batch = JobBatch::where('id', $id)->first();
+         return response()->json($batch);
+
+      } catch(Exception $e){
+         Log::error($e);
+      }
    }
  }

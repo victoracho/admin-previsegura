@@ -14,9 +14,8 @@ use App\Models\User;
 use App\Models\ContractAssistance;
 use Hashids\Hashids;
 use Illuminate\Bus\Batchable;
+use Illuminate\Support\Str;
 
-
-use Exception;
 
 class ProcessCsv implements ShouldQueue
 {
@@ -43,37 +42,35 @@ class ProcessCsv implements ShouldQueue
     public function handle()
     {   
         foreach ($this->clientData as $client) {
-            $contract = Contract::where('number_account', $client['numero_cuenta'])->first();
-            if(!$contract){
-                $user = User::where('email', $client['email'])->first();
-                if(!$user){
+            // $contract = Contract::where('number_account', $client['numero_cuenta'])->get();
+            // if($contract->count()){
+                // $user = User::where('email', $client['email'])->get();
+                // if(!$user->count()){
+                    // }
                     $user = new User;
                     $user->firstnames = $client['nombres'];
                     $user->lastnames = $client['apellidos'];
                     $user->doc = $client['documento'];
-                    // $user->address = $client['direccion'];
-                    $user->email = $client['email'];
-                    // $user->phone_number = $client['telefono'];
+                    $user->address = $client['direccion'];
+                    $user->email = Str::random(10);
+                    $user->phone_number = Str::random(10);
                     $user->save();
                     $user->refresh();
-                }
 
-                $account = Account::where('number_account', $client['numero_cuenta'])->first();
-                if(!$account){
+                // $account = Account::where('number_account', $client['numero_cuenta'])->get();
+                // if(!$account->count()){
                     $account = new Account;
                     $account->user_id = $user->id;
                     // $numberAccount = new Hashids('assistant-account', 20);
                     $account->number_account = '123456';
                     
                     $account->save();
-                    $account->refresh();
     
                     $contract = new Contract;
                     $contract->user_id = $user->id;
                     $contract->account_id = $account->id;
                     $contract->save();
-                    $contract->refresh();
-                }
+                // }
 
                 $assistances = explode(",", $client['asistencias']);
                 
@@ -82,11 +79,9 @@ class ProcessCsv implements ShouldQueue
                     $contractAssistance->contract_id = $contract->id;
                     $contractAssistance->assistance_id = $assistance;
                     $contractAssistance->save(); 
-                }
-            
-                
+                } 
 
-            }
+            // }
 
         }
     }

@@ -14,7 +14,7 @@
       },
 	
 		created() {
-            this.upload()
+      this.upload()
 		},
 		data() {
 			return {
@@ -26,11 +26,12 @@
 
 		},
 		methods: { 	
-            async upload (){
-                await axios.get(route('vocem.uploadCsv'))
-                .then((res)=>{
-                })
-            },
+        async upload (){
+            await axios.get(route('vocem.uploadCsv'))
+            .then((res)=>{
+              window.location.pathname ='/vocem/upload/progress/'+res.data
+            })
+        },
 	    }
     }
     </script>
