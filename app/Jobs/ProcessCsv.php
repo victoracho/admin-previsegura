@@ -10,6 +10,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Account;
 use App\Models\Contract;
+use App\Models\ContractLink;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\ContractAssistance;
 use Hashids\Hashids;
@@ -41,6 +43,8 @@ class ProcessCsv implements ShouldQueue
      */
     public function handle()
     {   
+        $user = null;
+        $contractLink = null;
         foreach ($this->clientData as $client) {
             // $contract = Contract::where('number_account', $client['numero_cuenta'])->get();
             // if($contract->count()){
@@ -79,10 +83,28 @@ class ProcessCsv implements ShouldQueue
                     $contractAssistance->contract_id = $contract->id;
                     $contractAssistance->assistance_id = $assistance;
                     $contractAssistance->save(); 
-                } 
+                }
 
-            // }
-
+                $token = new Hashids('assistant-contract', 20);
+                $token = $token->encode($contract->id);
+                $contractLink = new ContractLink;
+                $newDateTime = Carbon::now()->addDays(5);
+                $contractLink->expires_at = $newDateTime;
+                $contractLink->contract = $contract->id;
+                $contractLink->token = $token;
+                $contractLink->save();
+                $contractLink->refresh();
+                $link = 'previsegura.com/directDebit?contractLink='.$contractLink;
+            // }    
         }
+        $token = new Hashids('assistant-contract', 20);
+        $part = $token->decode($contractLink->token);
+        $part = $part[0];
+        $link = 'previsegura.com/directDebit?='.$part;
+
+        $user->sendCreatedUser($link);
     }
+
+
+
 }

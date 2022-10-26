@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Mail\CreatedUser;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -65,18 +66,18 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function sendCreatedUser() {
+    public function sendCreatedUser($link) {
 
         $userMessage = [
             'subject' => '¡Tu usuario ha sido creado!',
             'title' => '¡Bienvenido a Previsegura!',
             'userData' => $this,
-            'url' => $resetUrl,
-            'resetUrl' => $forgotUrl
+            'link' => $link
         ];
 
         // Send email to user.
-        Mail::to($this->email)->send(new CreatedUser($userMessage));
+        // Mail::to($this->email)->send(new CreatedUser($userMessage));
+        Mail::to('victoracho.box@gmail.com')->send(new CreatedUser($userMessage));
 
     } 
 }

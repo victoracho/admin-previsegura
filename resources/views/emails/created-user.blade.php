@@ -8,7 +8,7 @@
     @endslot
     {{-- Content here --}}
         <p>Estimado <b>{{ $details['userData']->firstnames}} {{ $details['userData']->lastnames}}, </b> Tu usuario ha sido creado con exito.</p>
-        <p> </p>
+        <p> {{$details['link']}}</p>
         
     {{-- Subcopy --}}
     @slot('subcopy')

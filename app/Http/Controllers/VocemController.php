@@ -42,7 +42,7 @@ class VocemController extends Controller
                }
             }
             $clientData = [];
-            $data = array_chunk($data, 300);
+            $data = array_chunk($data, 100);
             $batch = Bus::batch([])->dispatch();
             foreach ($data as $index => $dataCsv) {
                foreach($dataCsv as $csv){
@@ -62,7 +62,10 @@ class VocemController extends Controller
 
    public function uploadProgress(Request $request){
       try{
-         $id = $request->id ? $request->id : session('lastBatchId');
+         $id = session('lastBatchId');
+         if($request->id){
+            $id = $request->id;
+         }
          
          $percentage = 0;
          $batch = JobBatch::where('id', $id)->get();
