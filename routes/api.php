@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetitionController;
+use App\Http\Controllers\VocemController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +14,10 @@ use App\Http\Controllers\PetitionController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::prefix('vocem')->group(function () {
+    Route::get('/validate-link/{id}', [VocemController::class, 'validateLink'])->name('vocem.uploadView');
+});
+
 
 Route::prefix('petition')->group(function () {
     Route::post('/save', [PetitionController::class, 'savePetition'])->name('petition.save');

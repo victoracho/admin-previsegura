@@ -21,6 +21,10 @@ Route::get('/', function () {
 });
 
 Route::prefix('vocem')->group(function () {
+    Route::get('/', function () {
+        return to_route('login');
+    });
+    Route::get('/login', [VocemController::class, 'login'])->name('vocem.login');
     Route::get('/upload/', [VocemController::class, 'uploadView'])->name('vocem.uploadView');
     Route::get('/upload/csv', [VocemController::class, 'uploadCsv'])->name('vocem.uploadCsv');
     Route::get('/upload/progress/{id?}', [VocemController::class, 'uploadProgress'])->name('vocem.uploadProgress');
@@ -29,7 +33,6 @@ Route::prefix('vocem')->group(function () {
 
 Route::post('/getAssistances', [PetitionController::class, 'getAssistances'])->name('petition.getAssistances');
 Route::post('/sendAssistances', [PetitionController::class, 'sendAssistances'])->name('petition.sendAssistances');
-Route::post('/getInfo', [PetitionController::class, 'getInfo'])->name('petition.getInfo');
 
 Route::middleware([
     'auth:sanctum',
