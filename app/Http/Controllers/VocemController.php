@@ -52,12 +52,28 @@ class VocemController extends Controller
             $header = null;
             $data = array();
             $records = array_map('str_getcsv', file($file));
+            $header = [
+               'fecha_generacion',
+               'tipo_documento',
+               'documento',
+               'apellidos',
+               'nombres',
+               'codigo_area_uno',
+               'numero_telefono_uno',
+               'codigo_area_dos',
+               'numero_telefono_dos',
+               'codigo_celular',
+               'numero_celular',
+               'email',
+               'codigo_area_uno_mod',
+               'numero_telefono_uno_mod',
+               'email_mod',
+               'fecha_registro',
+               'hora_registro'
+            ];
+               
             foreach ($records as $record) {
-               if(!$header){
-                  $header = $record;
-               } else {
-                  $data[] = $record; 
-               }
+               $data[] = $record;
             }
             $clientData = [];
             $data = array_chunk($data, 100);

@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('doc_type')->default('v');
-            $table->text('address')->nullable();
-            $table->string('cellphone');
-
+        Schema::table('contracts', function (Blueprint $table) {
+            $table->string('mod_phone_number');
+            $table->string('mod_email');
+            $table->string('registration_date');
         });
     }
 

@@ -47,32 +47,36 @@ class ProcessCsv implements ShouldQueue
         $contractLink = null;
         foreach ($this->clientData as $client) {
             // $contract = Contract::where('number_account', $client['numero_cuenta'])->get();
-            // if($contract->count()){
-                // $user = User::where('email', $client['email'])->get();
-                // if(!$user->count()){
-                    // }
+            if($contract->count()){
+                $user = User::where('email', $client['email'])->first();
+                if(!$user){
                     $user = new User;
-                    $user->firstnames = $client['nombres'];
-                    $user->lastnames = $client['apellidos'];
+                    $user->firstnames = $client['firstnames'];
+                    $user->lastnames = $client['lastnames'];
                     $user->doc = $client['documento'];
-                    $user->address = $client['direccion'];
-                    $user->email = Str::random(10);
-                    $user->phone_number = Str::random(10);
+                    $user->doc_type = $client['tipo_documento'];                    
+                    // $user->address = $client['direccion'];
+                    $user->email = $client['email'];
+                    $user->phone_number = $client['codigo_area_uno'].$client['numero_telefono_uno'];
+                    $user->cellphone = $client['codigo_celular'].$client['numero_celular'];
                     $user->save();
                     $user->refresh();
+                }
 
                 // $account = Account::where('number_account', $client['numero_cuenta'])->get();
                 // if(!$account->count()){
-                    $account = new Account;
-                    $account->user_id = $user->id;
-                    // $numberAccount = new Hashids('assistant-account', 20);
-                    $account->number_account = '123456';
+                    // $account = new Account;
+                    // $account->user_id = $user->id;
+                    // // $numberAccount = new Hashids('assistant-account', 20);
+                    // $account->number_account = '123456';
                     
-                    $account->save();
+                    // $account->save();
     
                     $contract = new Contract;
                     $contract->user_id = $user->id;
-                    $contract->account_id = $account->id;
+                    $contract->mod_phone_number = $client['codigo_area_uno_mod'].$client['numero_telefono_uno_mod'];
+                    $contract->registration_date = $client['fecha_registro'].$client['hora_registro'];
+                    // $contract->account_id = $account->id;
                     $contract->save();
                 // }
 
@@ -95,14 +99,17 @@ class ProcessCsv implements ShouldQueue
                 $contractLink->save();
                 $contractLink->refresh();
                 $link = 'previsegura.com/directDebit?contractLink='.$contractLink;
-            // }    
+                $user->sendCreatedUser($link);
+            }    
         }
-        $token = new Hashids('assistant-contract', 20);
-        $part = $token->decode($contractLink->token);
-        $part = $part[0];
-        $link = 'previsegura.com/directDebit?='.$part;
 
-        $user->sendCreatedUser($link);
+        
+        // $token = new Hashids('assistant-contract', 20);
+        // $part = $token->decode($contractLink->token);
+        // $part = $part[0];
+        // $link = 'previsegura.com/directDebit?='.$part;
+
+        // $user->sendCreatedUser($link);
     }
 
 

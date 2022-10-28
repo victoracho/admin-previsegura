@@ -17,7 +17,10 @@ class Contract extends Model
     protected $fillable = [
         'user_id',
         'account_id',
-        'direct_debit_acceptance'
+        'direct_debit_acceptance',
+        'mod_phone_number',
+        'mod_email',
+        'registration_date'
     ];
     
     public function contractAssistances() {
@@ -26,6 +29,10 @@ class Contract extends Model
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function mod() {
+        return $this->belongsTo(User::class, 'mod_id');
     }
 
     public function account() {
