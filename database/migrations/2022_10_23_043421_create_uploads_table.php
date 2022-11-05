@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('file_uploads', function (Blueprint $table) {
+        Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->string('upload_date');
             $table->string('size');
             $table->string('name');
-            $table->foreignId('uploader_id')->unsigned()->notNullable();
-            $table->foreign('uploader_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreignId('user_id')->unsigned()->notNullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('beneficiary', function (Blueprint $table) {
+        Schema::create('beneficiaries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unsigned()->notNullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreignId('contract_id')->unsigned()->notNullable();
             $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade');
             $table->timestamps();
+           
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
