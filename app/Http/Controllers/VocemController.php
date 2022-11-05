@@ -43,38 +43,86 @@ class VocemController extends Controller
          // if($request->has('csv')){
             // $filename = $request->csvFile->getClientOriginalName();
             // $fileUploads = public_path('uploads').'/'.$filename;
-
+               $path = public_path('uploads');
             // if(!file_exists($fileUploads)){
             //    $request->csvFile->move(public_path('uploads'), $filename);
             // }
-            $file = public_path('uploads').'/clients.csv';
 
+            $file = $path.'/clients.csv';
             $header = null;
             $data = array();
-            $records = array_map('str_getcsv', file($file));
+            $records = array_map(function($v){return str_getcsv($v, ";");}, file($file));
+            $newRecords = [];
+            foreach($records as $index => $record){
+               $newRecords[$index] = array_map(function($v){ return utf8_encode(str_replace(' ', '', $v));}, $record);
+            }
+
+            if (str_contains($file, 'beneficiarios')) { 
+               $header = [
+                  'fecha_generacion',
+                  'tipo_documento',
+                  'documento',
+                  'apellidos',
+                  'nombres',
+                  'codigo_area_uno',
+                  'numero_telefono_uno',
+                  'codigo_area_dos',
+                  'numero_telefono_dos',
+                  'codigo_celular',
+                  'numero_celular',
+                  'email',
+                  'codigo_area_uno_mod',
+                  'numero_telefono_uno_mod',
+                  'codigo_area_dos_mod',
+                  'numero_telefono_dos_mod',
+                  'codigo_celular_dos_mod',
+                  'numero_celular_dos_mod',
+                  'email_mod',
+                  'fecha_registro',
+                  'hora_registro'
+               ];   
+            }
             $header = [
-               'fecha_generacion',
-               'tipo_documento',
-               'documento',
-               'apellidos',
-               'nombres',
-               'codigo_area_uno',
-               'numero_telefono_uno',
-               'codigo_area_dos',
-               'numero_telefono_dos',
-               'codigo_celular',
-               'numero_celular',
-               'email',
-               'codigo_area_uno_mod',
-               'numero_telefono_uno_mod',
-               'email_mod',
-               'fecha_registro',
-               'hora_registro'
-            ];
-               
-            foreach ($records as $record) {
+               "fecha_generacion",
+               "correlativo",
+               "codigo_cliente",
+               "codigo_banco",
+               "tipo_servicio",
+               "tipo_documento",
+               "documento",
+               "apellidos",
+               "nombres",
+               "tipo_cuenta",
+               "numero_cuenta",
+               "codigo_area_uno",
+               "numero_telefono_uno",
+               "codigo_area_dos",
+               "numero_telefono_dos",
+               "codigo_celular",
+               "numero_celular",
+               "email",
+               "codigo_area_uno_mod",
+               "numero_telefono_uno_mod",
+               "codigo_area_dos_mod",
+               "numero_telefono_dos_mod",
+               "codigo_celular_mod",
+               "numero_celular_mod",
+               "email_mod",
+               "frecuencia",
+               "estatus_venta_contacto",
+               "motivo",
+               "fecha_registro",
+               "hora_registro",
+               "sinnombre_uno",
+               "sinnombre_dos",
+               "sinnombre_tres"
+            ];  
+       
+            foreach ($newRecords as $record) {
+
                $data[] = $record;
             }
+            // $header = explode(",", $header[0]);
             $clientData = [];
             $data = array_chunk($data, 100);
             $batch = Bus::batch([])->dispatch();
@@ -82,13 +130,14 @@ class VocemController extends Controller
                foreach($dataCsv as $csv){
                   $clientData[$index][] = array_combine($header, $csv);
                }
+
                $batch->add(new ProcessCsv($clientData[$index]));
                //ProcessCsv::dispatch($clientData[$index]);
             }
             //every time we process a batch
             session()->put('lastBatchId', $batch->id);
             return response()->json($batch->id);
-         //}
+         // }
       } catch(Exception $e){
          Log::error($e);
       }

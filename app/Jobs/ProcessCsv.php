@@ -46,19 +46,30 @@ class ProcessCsv implements ShouldQueue
         $user = null;
         $contractLink = null;
         foreach ($this->clientData as $client) {
-            // $contract = Contract::where('number_account', $client['numero_cuenta'])->get();
+            $contract = Contract::where('number_account', $client['numero_cuenta'])->get();
             if($contract->count()){
                 $user = User::where('email', $client['email'])->first();
                 if(!$user){
                     $user = new User;
-                    $user->firstnames = $client['firstnames'];
-                    $user->lastnames = $client['lastnames'];
+                    $user->firstnames = $client['nombres'];
+                    $user->lastnames = $client['apellidos'];
                     $user->doc = $client['documento'];
                     $user->doc_type = $client['tipo_documento'];                    
                     // $user->address = $client['direccion'];
                     $user->email = $client['email'];
+                    if($client['email_mod']){
+                        $user->email = $client['email_mod'];
+                    }
+
                     $user->phone_number = $client['codigo_area_uno'].$client['numero_telefono_uno'];
+                    if($client['codigo_area_uno_mod']){
+                        $user->phone_number = $client['codigo_area_uno_mod'].$client['numbero_telefono_uno_mod'];
+                    }
+
                     $user->cellphone = $client['codigo_celular'].$client['numero_celular'];
+                    if($client['codigo_celular_mod']){
+                        $user->cellphone = $client['codigo_celular_mod'].$client['numero_celular_mod'];
+                    }
                     $user->save();
                     $user->refresh();
                 }
@@ -99,7 +110,7 @@ class ProcessCsv implements ShouldQueue
                 $contractLink->save();
                 $contractLink->refresh();
                 $link = 'previsegura.com/directDebit?contractLink='.$contractLink;
-                $user->sendCreatedUser($link);
+                // $user->sendCreatedUser($link);
             }    
         }
 
