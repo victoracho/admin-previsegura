@@ -14,8 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('contracts', function (Blueprint $table) {
-            $table->string('mod_phone_number');
-            $table->string('mod_email');
             $table->string('registration_date');
         });
     }

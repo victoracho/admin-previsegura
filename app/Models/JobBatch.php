@@ -10,5 +10,7 @@ class JobBatch extends Model
     use HasFactory;
     protected $table = 'job_batches';
     protected $guarded = [];
-    
+    protected $fillable = [
+        'failed_jobs'
+    ];
 }

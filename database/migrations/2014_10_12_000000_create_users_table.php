@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('birthdate')->nullable();
             $table->foreignId('country_id')->unsigned()->nullable();
             $table->foreignId('doc_type_id')->unsigned()->nullable();       
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             
             $table->string('password')->nullable();

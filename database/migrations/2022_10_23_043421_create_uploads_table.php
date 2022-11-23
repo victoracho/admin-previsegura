@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
-            $table->string('upload_date');
             $table->string('size');
             $table->string('name');
-            $table->foreignId('user_id')->unsigned()->notNullable();
+            $table->foreignId('user_id')->unsigned()->nullable();
+            $table->string('batch_id');
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
