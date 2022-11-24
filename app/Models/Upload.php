@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 
-class FileUpload extends Model
+class Upload extends Model
 {
 
 
@@ -14,10 +14,9 @@ class FileUpload extends Model
      *
      * @var string[]
      */
-    protected $table = 'file_uploads';
+    protected $table = 'uploads';
     protected $fillable = [
-        'uploader_id',
-        'upload_date',
+        'user_id',
         'size',
         'name',
     ];
