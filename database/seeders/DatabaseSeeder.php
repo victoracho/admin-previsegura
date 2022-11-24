@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Plan;
 use App\Models\Assistance;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -71,5 +72,12 @@ class DatabaseSeeder extends Seeder
         $assistance->description = 'Asistencia financiera en enfermedad grave';
         $assistance->save();
 
+        $user = new User;
+        $user->firstnames = 'Daniel';
+        $user->lastnames = 'Sanchez';
+        $user->email = 'dakemz95@gmail.com';
+        $user->password = '$2y$10$qhElAxx7DwTTUUBRnBvHGuwSA54YqIxJo2ToxWROV52a85hxz6Lp6';
+        $user->cellphone = '12345678';
+        $user->save();
     }
 }
