@@ -1,7 +1,11 @@
 
 
 <template>
-    <h1>{{progressPercentage}}</h1>
+<q-linear-progress size="25px" :value="progress1" color="blue">
+    <div class="absolute-full flex flex-center">
+        <q-badge color="white" text-color="black" :label="progressLabel1"></q-badge>
+    </div>
+</q-linear-progress>
 </template>
 
 <script>

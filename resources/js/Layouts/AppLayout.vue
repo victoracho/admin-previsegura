@@ -27,6 +27,14 @@ const logout = () => {
     Inertia.post(route('logout'));
 };
 
+const home = () => {
+    Inertia.get(route('dashboard'));
+};
+
+const upload = () => {
+    Inertia.get(route('vocem.uploadView'));
+};
+
 const profileLink = () => {
     Inertia.get(route('profile.show'));
 };
@@ -43,6 +51,12 @@ const profileLink = () => {
                 <q-toolbar-title>Previsegura panel administrativo</q-toolbar-title>
                 <q-space/>
                 <q-tabs v-model="tab" shrink>
+                    <q-tab name="tab1">
+                        <q-btn flat round dense icon="home" @click="home" />
+                    </q-tab>
+                    <q-tab name="tab1">
+                        <q-btn flat round dense icon="upload" @click="upload" />
+                    </q-tab>
                     <q-tab name="tab1">
                         <q-btn flat round dense icon="person" @click="profileLink" />
                     </q-tab>

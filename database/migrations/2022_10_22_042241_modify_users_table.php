@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('doc_type')->default('v');
             $table->text('address')->nullable();
-            $table->string('cellphone');
+            $table->string('cellphone')->nullable();
 
         });
     }

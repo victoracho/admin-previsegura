@@ -20,18 +20,17 @@ Route::get('/', function () {
     return to_route('login');
 });
 
-Route::prefix('vocem')->group(function () {
-    Route::get('/', function () {
-        return to_route('login');
+Route::middleware('auth')->group(function(){
+    Route::post('/getAssistances', [PetitionController::class, 'getAssistances'])->name('petition.getAssistances');
+    Route::post('/sendAssistances', [PetitionController::class, 'sendAssistances'])->name('petition.sendAssistances');
+    Route::prefix('vocem')->group(function () {
+        Route::get('/upload/', [VocemController::class, 'uploadView'])->name('vocem.uploadView');
+        Route::post('/upload/csv', [VocemController::class, 'uploadCsv'])->name('vocem.uploadCsv');
+        Route::get('/upload/progress/{id?}', [VocemController::class, 'uploadProgress'])->name('vocem.uploadProgress');
+        Route::post('/upload/progress/{id?}', [VocemController::class, 'batchProgress'])->name('vocem.progress');
     });
-    Route::get('/upload/', [VocemController::class, 'uploadView'])->name('vocem.uploadView');
-    Route::get('/upload/csv', [VocemController::class, 'uploadCsv'])->name('vocem.uploadCsv');
-    Route::get('/upload/progress/{id?}', [VocemController::class, 'uploadProgress'])->name('vocem.uploadProgress');
-    Route::post('/upload/progress/{id?}', [VocemController::class, 'batchProgress'])->name('vocem.progress');
 });
 
-Route::post('/getAssistances', [PetitionController::class, 'getAssistances'])->name('petition.getAssistances');
-Route::post('/sendAssistances', [PetitionController::class, 'sendAssistances'])->name('petition.sendAssistances');
 
 Route::middleware([
     'auth:sanctum',

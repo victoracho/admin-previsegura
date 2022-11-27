@@ -179,12 +179,10 @@ class VocemController extends Controller
          if($request->id){
             $id = $request->id;
          }
-         
          $percentage = 0;
          $batch = DB::table('job_batches')->where('id', $id)->first();
          if($batch){
             $percentage = $batch;
-            $failed = $batch->failed_jobs;
          }
          
          return Inertia::render('Vocem/UploadProgress', [
