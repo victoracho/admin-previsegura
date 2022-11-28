@@ -27,10 +27,16 @@ use Illuminate\Support\Facades\DB;
 class VocemController extends Controller
 {
    public function uploadView(Request $request){
+      $id = session('lastBatchId');
+      $batch = DB::table('job_batches')->where('id', $id)->first();
+      session()->put('lastBatchId', null);
+      if($batch){
+         $id = $batch->id;
+         session()->put('lastBatchId', $id);
+      }
 
       return Inertia::render('Vocem/Upload', [
-         'error' => 'false',
-         'success'=> 'true'
+         'id' => $id
      ]);   
    }
 
@@ -143,7 +149,7 @@ class VocemController extends Controller
            }
            // $header = explode(",", $header[0]);
            $clientData = [];
-           $data = array_chunk($data, 300);
+           $data = array_chunk($data, 400);
            $batch = Bus::batch([])->dispatch();
            foreach ($data as $index => $dataCsv) {
                foreach($dataCsv as $csv){
@@ -168,23 +174,24 @@ class VocemController extends Controller
            session()->put('lastBatchId', $batch->id);
            return response()->json($batch->id);
          // }
-     } catch(Exception $e){
-         Log::error($e);
+      } catch (\Throwable $th) {
+         DB::rollback();
+         Log::error($th);
+         throw $th;
      }
    }
 
    public function uploadProgress(Request $request){
       try{
-         $id = session('lastBatchId');
-         if($request->id){
-            $id = $request->id;
-         }
+         $id = $request->id;
          $percentage = 0;
          $batch = DB::table('job_batches')->where('id', $id)->first();
+         session()->put('lastBatchId', null);
          if($batch){
             $percentage = $batch;
+            $id = $batch->id;
+            session()->put('lastBatchId', $id);
          }
-         
          return Inertia::render('Vocem/UploadProgress', [
             'percentage' => $percentage,
             'id' => $id

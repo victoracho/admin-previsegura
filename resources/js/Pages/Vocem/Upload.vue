@@ -70,16 +70,19 @@ export default {
   components: {
     AppLayout
   },
-  props: ['percentage', 'id'],
+  props: ['id'],
 
   created() {
-    this.getUploadProgress()
+    if(this.idBatch){
+      this.getUploadProgress()
+    }
   },
   data() {
     return {
       urlUpload : route('vocem.uploadCsv'),
       token : this.$page.props.csrf,
-       
+      idBatch: this.id ? this.id : null,
+      progressPercentage : 0.0,
     }
   },
   computed: {
@@ -91,29 +94,38 @@ export default {
     failed (response) {
       const error = response.xhr 
       const errorMsg = `Error: ${error.status}, ${error.statusText}.`
-      console.log(errorMsg)
+      this.progressPercentage = 0.0
     },
     uploaded (response) {
       const error = response.xhr
-      const result = error.statusText 
-      console.log(result)
+      this.idBatch = error.responseText
+      this.idBatch = this.idBatch.substring(1, this.idBatch.length - 1);
+      this.getUploadProgress()
     },
 
     getUploadProgress(){
       let self = this;
       let progressResponse = setInterval(() => {
         axios.post(route('vocem.progress'), {
-            id: self.id,
+            id: self.idBatch,
             progress: true
         }). then(function(response){
-            let totalJobs = parseInt(response.data.total_jobs)
-            let pendingJobs = parseInt(response.data.pending_jobs)
-            let completedJobs = totalJobs - pendingJobs
-            if(pendingJobs == 0){
-                self.progressPercentage = 100;
-            } else {
-                self.progressPercentage = parseInt(completedJobs / totalJobs * 100).toFixed(0)                            
-            }
+          if(!response.data.total_jobs){
+            clearInterval(progressResponse)
+            this.idBatch = null
+          }
+          let totalJobs = parseInt(response.data.total_jobs)
+          let pendingJobs = parseInt(response.data.pending_jobs)
+          let completedJobs = totalJobs - pendingJobs
+          if(pendingJobs == 0){
+              self.progressPercentage = 100;
+              clearInterval(progressResponse)
+          } else {
+              self.progressPercentage = parseInt(completedJobs / totalJobs * 100).toFixed(0)                            
+          }
+        }).catch((error)=> {
+          self.progressPercentage = 0.0
+          clearInterval(progressResponse)
         });  
       }, 1000); 
     }
