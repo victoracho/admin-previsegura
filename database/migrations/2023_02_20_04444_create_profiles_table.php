@@ -26,21 +26,21 @@ return new class extends Migration
       $table->text('address')->nullable();
       $table->string('doc', 100)->nullable();
       $table->string('dependency', 100)->nullable();
+      $table->string('race', 100)->nullable();
+
 
       $table->string('gender', 1)->nullable();
       $table->date('birthdate')->nullable();
 
       $table->foreignId('country_id')->unsigned()->nullable();
       $table->foreignId('doc_type_id')->unsigned()->nullable();
-      $table->foreignId('contract_id')->unsigned()->nullable();
       $table->foreignId('user_id')->unsigned()->nullable();
 
-      $table->string('email');
+      $table->string('email', 100)->nullable();
 
       $table->string('password')->nullable();
       // $table->foreign('doc_type_id')->references('id')->on('doc_type')->onDelete('set null');
       $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
-      $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('set null');
       $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 
       $table->foreign('state_id')->references('id')->on('country_states')->onDelete('set null');

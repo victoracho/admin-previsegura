@@ -21,6 +21,8 @@ class CreatePaymentsTable extends Migration
       $table->date('expire_date')->nullable();
       $table->date('payment_date')->nullable();
       $table->date('from')->nullable();
+      $table->date('to')->nullable();
+
       $table->string('additional_amount', 100)->nullable();
       $table->boolean('payed')->default(0)->nullable();
       $table->string('payment_number', 100)->nullable();

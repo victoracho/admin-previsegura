@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Permissions\HasPermissionsTrait;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -19,6 +20,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasPermissionsTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -26,14 +28,9 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'firstnames',
-        'lastnames',
         'email',
-        'phone_number',
         'password',
         'doc',
-        'address',
-        'doc_type'
     ];
 
     /**
@@ -48,7 +45,7 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
-/**
+    /**
      * The attributes that should be cast.
      *
      * @var array
@@ -66,18 +63,19 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function sendCreatedUser($link) {
 
-        $userMessage = [
-            'subject' => '¡Tu usuario ha sido creado!',
-            'title' => '¡Bienvenido a Previsegura!',
-            'userData' => $this,
-            'link' => $link
-        ];
-
-        // Send email to user.
-        // Mail::to($this->email)->send(new CreatedUser($userMessage));
-        Mail::to('victoracho.box@gmail.com')->send(new CreatedUser($userMessage));
-
-    } 
+    // public function sendCreatedUser($link)
+    // {
+    //
+    //     $userMessage = [
+    //         'subject' => '¡Tu usuario ha sido creado!',
+    //         'title' => '¡Bienvenido a Previsegura!',
+    //         'userData' => $this,
+    //         'link' => $link
+    //     ];
+    //
+    //     // Send email to user.
+    //     // Mail::to($this->email)->send(new CreatedUser($userMessage));
+    //     Mail::to('victoracho.box@gmail.com')->send(new CreatedUser($userMessage));
+    // }
 }
