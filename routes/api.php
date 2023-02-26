@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetitionController;
 use App\Http\Controllers\VocemController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ClientController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,8 +17,19 @@ use App\Http\Controllers\VocemController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('login', [AuthController::class, 'signIn'])->name('auth.login');
+Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('auth.resetPassword');
+Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgotPassword');
+Route::post('register', [AuthController::class, 'signUp'])->name('auth.register');
+Route::post('logout', [AuthController::class, 'logOut'])->name('auth.logout')->middleware(['auth:sanctum']);
+
 Route::prefix('vocem')->group(function () {
     Route::get('/validate-link/{id}', [VocemController::class, 'validateLink'])->name('vocem.uploadView');
+});
+
+Route::prefix('clients')->group(function () {
+    Route::post('/getContracts', [ClientController::class, 'getContracts'])->middleware(['auth:sanctum']);
 });
 
 

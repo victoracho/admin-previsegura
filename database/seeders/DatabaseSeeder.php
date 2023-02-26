@@ -13,7 +13,7 @@ use App\Models\Payment;
 use App\Models\Contract;
 use App\Models\Bank;
 use App\Models\FamilyMember;
-
+use App\Models\ContractAssistance;
 
 class DatabaseSeeder extends Seeder
 {
@@ -77,6 +77,11 @@ class DatabaseSeeder extends Seeder
         $assistance = new Assistance;
         $assistance->name = 'Asistencia financiera en enfermedad grave';
         $assistance->description = 'Asistencia financiera en enfermedad grave';
+        $assistance->save();
+
+        $assistance = new Assistance;
+        $assistance->name = 'Asistencia financiera en enfermedad grave';
+        $assistance->description = 'Asistencia Mascotas en el Cielo';
         $assistance->save();
 
         $bank = new Bank;
@@ -147,126 +152,188 @@ class DatabaseSeeder extends Seeder
 
         $contract = new Contract();
         $contract->status = 'ACTIVO';
-        $contract->status_date = '25/01/1992';
-        $contract->retirement_date = '25/01/2022';
+        $contract->status_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contract->registration_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contract->retirement_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
         $contract->plan = 'AMD1';
         $contract->bank_id = $bank->id;
-        $contract->emission = '28/03/2022';
-        $contract->expire_date = '28/03/2022';
+        $contract->emission = date('d-m-y h:i:s', strtotime('28-03-2021'));
+        $contract->expire_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contract->modality = 'MENSUAL';
         $contract->fee_quantity = '12';
         $contract->payment_type = 'MI SALUD';
         $contract->sales = 'NUEVA';
+        $contract->user_id = $user->id;
+        $contract->save();
 
         $profile = new Profile();
         $profile->firstnames = 'Luisa Helena';
         $profile->lastnames = 'Fraga Pena';
-        $profile->birthdate = '11/02/1973';
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('11/02/1972'));
         $profile->gender = 0;
         $profile->save();
 
         $familyMember = new FamilyMember();
-        $familyMember->deceased = 0;
         $familyMember->bond = 'CONYUGE';
-        $familyMember->inscription = '25/03/2021';
-        $familyMember->coverage_date = '25/03/2023';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
-        $familyMember->contract_id = $contract->id;
         $familyMember->save();
+
+        $contractAssistance = new ContractAssistance();
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2021'));
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->assistance_id = 4;
+        $contractAssistance->profile_id = $profile->id;
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->save();
 
         $profile = new Profile();
         $profile->firstnames = 'Jose Manuel';
         $profile->lastnames = 'Diaz Pena';
-        $profile->birthdate = '12/10/1988';
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('25/01/2022'));
         $profile->gender = 1;
         $profile->save();
 
         $familyMember = new FamilyMember();
-        $familyMember->deceased = 0;
         $familyMember->bond = 'HIJO';
-        $familyMember->inscription = '25/03/2021';
-        $familyMember->coverage_date = '25/03/2023';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
-        $familyMember->contract_id = $contract->id;
         $familyMember->save();
+
+        $contractAssistance = new ContractAssistance();
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->assistance_id = 4;
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->profile_id = $profile->id;
+        $contractAssistance->save();
 
         $profile = new Profile();
         $profile->firstnames = 'Jose Ramon';
         $profile->lastnames = 'Diaz Rojas';
-        $profile->birthdate = '12/05/2003';
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('04-05-2002'));
         $profile->gender = 1;
         $profile->save();
 
         $familyMember = new FamilyMember();
-        $familyMember->deceased = 0;
         $familyMember->bond = 'NIETO';
-        $familyMember->inscription = '25/03/2021';
-        $familyMember->coverage_date = '25/03/2023';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
-        $familyMember->contract_id = $contract->id;
         $familyMember->save();
+
+        $contractAssistance = new ContractAssistance();
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2021'));
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->assistance_id = 4;
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->profile_id = $familyMember->id;
+        $contractAssistance->save();
+
 
         $profile = new Profile();
         $profile->firstnames = 'Firulais';
         $profile->lastnames = 'Pena';
-        $profile->birthdate = '12/02/2017';
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('12-02-2017'));
         $profile->gender = 1;
         $profile->save();
 
         $familyMember = new FamilyMember();
-        $familyMember->deceased = 0;
         $familyMember->bond = 'MASCOTA';
-        $familyMember->inscription = '25/03/2021';
-        $familyMember->coverage_date = '25/03/2023';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
-        $familyMember->contract_id = $contract->id;
         $familyMember->save();
+
+        $contractAssistance = new ContractAssistance();
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->assistance_id = 8;
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->profile_id = $profile->id;
+        $contractAssistance->save();
 
         $profile = new Profile();
         $profile->firstnames = 'Maria Daniela';
         $profile->lastnames = 'Diaz Pena';
-        $profile->birthdate = '25/02/1998';
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('25-02-1998'));
         $profile->gender = 0;
         $profile->save();
 
         $familyMember = new FamilyMember();
-        $familyMember->deceased = 0;
         $familyMember->bond = 'HIJO';
-        $familyMember->inscription = '25/03/2021';
-        $familyMember->coverage_date = '25/03/2023';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
-        $familyMember->contract_id = $contract->id;
         $familyMember->save();
+
+        $contractAssistance = new ContractAssistance();
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $contractAssistance->assistance_id = 4;
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->profile_id = $familyMember->id;
+        $contractAssistance->save();
 
         $profile = new Profile();
         $profile->firstnames = 'Ana Carolina';
         $profile->lastnames = 'Diaz Rojas';
-        $profile->birthdate = '11/02/2007';
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('12-12-2017'));
         $profile->gender = 0;
         $profile->save();
 
         $familyMember = new FamilyMember();
-        $familyMember->deceased = 0;
         $familyMember->bond = 'NIETO';
-        $familyMember->inscription = '25/03/2021';
-        $familyMember->coverage_date = '25/03/2023';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
-        $familyMember->contract_id = $contract->id;
         $familyMember->save();
 
-        // $user = new User;
-        // $user->firstnames = 'Daniel';
-        // $user->lastnames = 'Sanchez';
-        // $user->email = 'dakemz95@gmail.com';
-        // $user->password = '$2y$10$qhElAxx7DwTTUUBRnBvHGuwSA54YqIxJo2ToxWROV52a85hxz6Lp6';
-        // $user->cellphone = '12345678';
-        // $user->save();
+        $contractAssistance = new ContractAssistance();
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->assistance_id = 4;
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->profile_id = $familyMember->id;
+        $contractAssistance->save();
+
+
+        $payment = new Payment();
+        $payment->amount = '28,13';
+        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->status = 'PAGADO';
+        $payment->iva = '4,5';
+        $payment->payment_date = date('d-m-y h:i:s', strtotime('15-03-2022'));
+        $payment->from = date('d-m-y h:i:s', strtotime('01-03-2022'));
+        $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->payment_number = '00002';
+        $payment->contract_id = $contract->id;
+        $payment->save();
+
+        $payment = new Payment();
+        $payment->amount = '28,13';
+        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-04-2022'));
+        $payment->status = 'VENCIDO';
+        $payment->iva = '4,5';
+        $payment->from = date('d-m-y h:i:s', strtotime('01-04-2022'));
+        $payment->to = date('d-m-y h:i:s', strtotime('31-04-2022'));
+        $payment->contract_id = $contract->id;
+        $payment->payment_number = '00003';
+        $payment->save();
+
+        $payment = new Payment();
+        $payment->amount = '28,13';
+        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->status = 'PAGADO';
+        $payment->payment_date = date('d-m-y h:i:s', strtotime('15-03-2022'));
+        $payment->from = date('d-m-y h:i:s', strtotime('01-03-2022'));
+        $payment->contract_id = $contract->id;
+        $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->payment_number = '00004';
+        $payment->save();
     }
 }

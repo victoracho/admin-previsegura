@@ -24,7 +24,7 @@ class CreatePaymentsTable extends Migration
       $table->date('to')->nullable();
 
       $table->string('additional_amount', 100)->nullable();
-      $table->boolean('payed')->default(0)->nullable();
+      $table->string('status')->default('PENDIENTE')->nullable();
       $table->string('payment_number', 100)->nullable();
 
       $table->timestamps();

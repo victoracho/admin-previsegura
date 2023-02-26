@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('contract_id')->unsigned()->notNullable();
             $table->foreignId('assistance_id')->unsigned()->notNullable();
             $table->timestamps();
-
             $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade');
             $table->foreign('assistance_id')->references('id')->on('assistances')->onDelete('cascade');
         });
@@ -33,5 +32,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('contract_assistances');
     }
-}
-;
+};
+

@@ -17,15 +17,8 @@ class CreateFamilyMembersTable extends Migration
       $table->id();
       $table->foreignId('user_id')->unsigned()->nullable();
       $table->foreignId('profile_id')->unsigned()->nullable();
-      $table->foreignId('contract_id')->unsigned()->nullable();
       $table->string('bond', 100)->nullable();
-      $table->date('coverage_date')->nullable();
-      $table->date('inscription')->nullable();
-      $table->string('additional_amount', 100)->nullable();
-      $table->boolean('deceased')->default(0)->nullable();
-      $table->boolean('deceased_date')->default(0)->nullable();
       $table->timestamps();
-      $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('set null');
       $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
       $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
     });

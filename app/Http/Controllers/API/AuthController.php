@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Profile;
 use App\Mail\ResetPassword;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
@@ -20,13 +21,17 @@ class AuthController extends BaseController
   public function signIn(Request $request)
   {
     try {
-      if (Auth::attempt(['doc' => $request->doc, 'password' => $request->password])) {
-        $authUser = Auth::user();
-        $token =  $authUser->createToken('MyAuthApp')->plainTextToken;
-        $role = $authUser->firstRole();
-        $data = $this->getUserData($authUser, $token);
+      if ($user = User::where(['email' => $request->email, 'doc' => $request->doc])->first()) {
+        if ($user) {
+          Auth::login($user);
+          $authUser = Auth::user();
+          $token =  $authUser->createToken('MyAuthApp')->plainTextToken;
+          $role = $authUser->firstRole();
+          $profile = Profile::where('user_id', $authUser->id)->first();
+          $data = $this->getUserData($profile, $token);
 
-        return $this->sendResponse($data, 'El cliente inicia sesion.');
+          return $this->sendResponse($data, 'El cliente inicia sesion.');
+        }
       } else {
         return $this->sendError('Desautorizado.', ['error' => 'Desautorizado']);
       }

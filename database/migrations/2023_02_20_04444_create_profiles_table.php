@@ -30,7 +30,7 @@ return new class extends Migration
 
 
       $table->string('gender', 1)->nullable();
-      $table->date('birthdate')->nullable();
+      $table->string('birthdate', 100)->nullable();
 
       $table->foreignId('country_id')->unsigned()->nullable();
       $table->foreignId('doc_type_id')->unsigned()->nullable();
@@ -42,7 +42,6 @@ return new class extends Migration
       // $table->foreign('doc_type_id')->references('id')->on('doc_type')->onDelete('set null');
       $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
       $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-
       $table->foreign('state_id')->references('id')->on('country_states')->onDelete('set null');
       $table->unique(['doc']);
       $table->unique(['email']);
@@ -50,6 +49,8 @@ return new class extends Migration
       $table->unique(['work_phone']);
       $table->unique(['main_phone']);
       $table->unique(['optional_phone']);
+      $table->boolean('deceased')->default(0)->nullable();
+      $table->boolean('deceased_date')->default(0)->nullable();
 
       $table->foreignId('current_team_id')->nullable();
       $table->string('profile_photo_path', 2048)->nullable();

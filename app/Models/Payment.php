@@ -24,7 +24,7 @@ class Payment extends Model
     'from',
     'to',
     'additional_amount',
-    'payed',
+    'status',
     'payment_number',
   ];
   public function contract()

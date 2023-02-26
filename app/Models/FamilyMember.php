@@ -14,23 +14,11 @@ class FamilyMember extends Model
    * @var string[]
    */
   protected $fillable = [
-    'contract_id',
     'user_id',
     'profile_id',
     'bond',
-    'coverage_date',
-    'additional_amount',
-    'deceased',
-    'deceased_date',
-    'inscription',
-
-
   ];
 
-  public function contract()
-  {
-    return $this->belongsTo(Contract::class, 'contract_id');
-  }
   public function profile()
   {
     return $this->belongsTo(Profile::class, 'profile_id');
@@ -38,5 +26,9 @@ class FamilyMember extends Model
   public function user()
   {
     return $this->belongsTo(User::class, 'user_id');
+  }
+  public function assistances()
+  {
+    return $this->belongsToMany(Assistance::class, 'contract_assistances', 'contract_id', 'assistance_id')->withPivot('id');
   }
 }

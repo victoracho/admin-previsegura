@@ -11,6 +11,8 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Mail\CreatedUser;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
+
 
 class Profile extends Authenticatable
 {
@@ -32,23 +34,42 @@ class Profile extends Authenticatable
     'mobile_phone',
     'optional_phone',
     'work_phone',
+    'deceased',
+    'deceased_date',
     'address',
     'doc',
+    'birthdate',
     'dependency',
     'state_id',
     'country_id',
+    'user_id',
     'gender',
   ];
 
   // Relations
   public function country()
   {
-    return $this->hasOne(Country::class, 'country_id');
+    return $this->belongsTo(Country::class, 'country_id');
   }
+  public function user()
+  {
+    return $this->belongsTo(User::class, 'user_id');
+  }
+
   public function state()
   {
     return $this->belongsTo(CountryState::class, 'state_id');
   }
+  public function familymember()
+  {
+    return $this->hasone(FamilyMember::class, 'profile_id');
+  }
+
+  public function getAgeAttribute()
+  {
+    return $this->birthdate ? Carbon::parse($this->birthdate)->age : null;
+  }
+
 
   // public function sendCreatedUser($link)
   // {
