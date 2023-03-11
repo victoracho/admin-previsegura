@@ -29,7 +29,7 @@ class ContractAssistanceResource extends JsonResource
       'additional_amount' => $this->additional_amount,
       'profile' => new ProfileInContractAssistanceResource($this->profile),
       'bond' => new FamilyMemberResource($this->familyMember),
-      'assistanceType' =>  new AssistanceResource($this->assistance
+      'assistanceDescription' =>  new AssistanceResource($this->assistance)
 
     ];
   }
