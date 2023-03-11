@@ -6,7 +6,7 @@ use App\Http\Resources\API\ContractAssistanceResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Hashids\Hashids;
 
-class  AssisanceResource extends JsonResource
+class  AssistanceResource extends JsonResource
 {
   /**
    * Transform the resource into an array.

@@ -335,5 +335,88 @@ class DatabaseSeeder extends Seeder
         $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
         $payment->payment_number = '00004';
         $payment->save();
+
+        $contract = new Contract();
+        $contract->status = 'ACTIVO';
+        $contract->status_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contract->registration_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contract->retirement_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
+        $contract->plan = 'AMD1';
+        $contract->bank_id = $bank->id;
+        $contract->emission = date('d-m-y h:i:s', strtotime('28-03-2021'));
+        $contract->expire_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contract->modality = 'MENSUAL';
+        $contract->fee_quantity = '12';
+        $contract->payment_type = 'MI SALUD';
+        $contract->sales = 'NUEVA';
+        $contract->user_id = $user->id;
+        $contract->save();
+
+        $profile = new Profile();
+        $profile->firstnames = 'Maria Helena';
+        $profile->lastnames = 'Luna Torres';
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('11/02/1962'));
+        $profile->gender = 0;
+        $profile->save();
+
+        $familyMember = new FamilyMember();
+        $familyMember->bond = 'MADRE';
+        $familyMember->user_id = $user->id;
+        $familyMember->profile_id = $profile->id;
+        $familyMember->save();
+
+        $contractAssistance = new ContractAssistance();
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2021'));
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->assistance_id = 4;
+        $contractAssistance->profile_id = $profile->id;
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->save();
+
+        $payment = new Payment();
+        $payment->amount = '28,13';
+        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->status = 'PAGADO';
+        $payment->payment_date = date('d-m-y h:i:s', strtotime('15-03-2022'));
+        $payment->from = date('d-m-y h:i:s', strtotime('01-03-2022'));
+        $payment->contract_id = $contract->id;
+        $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->payment_number = '00004';
+        $payment->save();
+
+        $profile = new Profile();
+        $profile->firstnames = 'Emiliano Jose';
+        $profile->lastnames = 'Marchan Diaz';
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('11/06/1933'));
+        $profile->gender = 0;
+        $profile->save();
+
+        $familyMember = new FamilyMember();
+        $familyMember->bond = 'PADRE';
+        $familyMember->user_id = $user->id;
+        $familyMember->profile_id = $profile->id;
+        $familyMember->save();
+
+        $contractAssistance = new ContractAssistance();
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2021'));
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->assistance_id = 4;
+        $contractAssistance->profile_id = $profile->id;
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->save();
+
+        $payment = new Payment();
+        $payment->amount = '28,13';
+        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->status = 'PAGADO';
+        $payment->payment_date = date('d-m-y h:i:s', strtotime('15-03-2022'));
+        $payment->from = date('d-m-y h:i:s', strtotime('01-03-2022'));
+        $payment->contract_id = $contract->id;
+        $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->payment_number = '00004';
+        $payment->save();
     }
 }
