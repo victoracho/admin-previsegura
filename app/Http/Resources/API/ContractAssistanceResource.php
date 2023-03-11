@@ -5,6 +5,8 @@ namespace App\Http\Resources\API;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\API\ProfileInContractAssistanceResource;
 use App\Http\Resources\API\FamilyMemberResource;
+use App\Http\Resources\API\AssistanceResource;
+
 
 use Hashids\Hashids;
 
@@ -27,6 +29,7 @@ class ContractAssistanceResource extends JsonResource
       'additional_amount' => $this->additional_amount,
       'profile' => new ProfileInContractAssistanceResource($this->profile),
       'bond' => new FamilyMemberResource($this->familyMember),
+      'assistance' =>  new AssistanceResource($this->assistance)
 
     ];
   }
