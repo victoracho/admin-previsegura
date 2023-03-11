@@ -29,7 +29,7 @@ Route::prefix('vocem')->group(function () {
 });
 
 Route::prefix('clients')->group(function () {
-    Route::post('/getContracts', [ClientController::class, 'getContracts'])->middleware(['auth:sanctum']);
+    Route::get('/getContracts', [ClientController::class, 'getContracts'])->middleware(['auth:sanctum']);
 });
 
 
