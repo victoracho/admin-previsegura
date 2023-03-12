@@ -156,6 +156,7 @@ class DatabaseSeeder extends Seeder
         $contract->registration_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contract->retirement_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
+        $contract->code = '20230301';
         $contract->plan = 'AMD1';
         $contract->bank_id = $bank->id;
         $contract->emission = date('d-m-y h:i:s', strtotime('28-03-2021'));
@@ -342,6 +343,8 @@ class DatabaseSeeder extends Seeder
         $contract->registration_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contract->retirement_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
+        $lastContract = Contract::latest()->first();
+        $contract->code = date('y') . date('m') . '0' . $lastContract->id + 1;
         $contract->plan = 'AMD1';
         $contract->bank_id = $bank->id;
         $contract->emission = date('d-m-y h:i:s', strtotime('28-03-2021'));

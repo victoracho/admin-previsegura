@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('contracts', function (Blueprint $table) {
             $table->string('registration_date');
+            $table->string('code');
         });
     }
 
@@ -26,7 +27,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-
         });
     }
 };

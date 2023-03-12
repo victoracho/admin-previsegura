@@ -16,6 +16,7 @@ class Contract extends Model
      */
     protected $fillable = [
         'user_id',
+        'code',
         'account_id',
         'direct_debit_acceptance',
         'mod_phone_number',

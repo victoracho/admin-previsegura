@@ -21,6 +21,7 @@ class ContractResource extends JsonResource
 
     return [
       'id' => $hashids->encode($this->id),
+      'code' => $this->code,
       'user_id' => $userHash->encode($this->user_id),
       'direct_debit_acceptance' => $this->direct_debit_acceptance,
       'mod_phone_number' => $this->mod_phone_number,
