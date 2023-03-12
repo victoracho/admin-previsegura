@@ -21,7 +21,7 @@ class AuthController extends BaseController
   public function signIn(Request $request)
   {
     try {
-      return $request;
+      return json_decode($request);
       if ($user = User::where(['email' => $request->email, 'doc' => $request->doc])->first()) {
         if ($user) {
           Auth::login($user);
