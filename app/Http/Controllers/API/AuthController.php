@@ -23,6 +23,7 @@ class AuthController extends BaseController
     try {
       echo $request->email;
       echo $request->doc;
+      die();
       if ($user = User::where(['email' => $request->email, 'doc' => $request->doc])->first()) {
         if ($user) {
           Auth::login($user);
