@@ -26,7 +26,7 @@ class FamilyMemberResource extends JsonResource
       'lastnames' => $this->profile->lastnames,
       'main_phone' => $this->profile->main_phone,
       'mobile_phone' => $this->profile->mobile_phone,
-      'birthdate' => $this->profile->birthdate,
+      'birthdate' => date('d/m/Y', strtotime($this->profile->birthdate)),
       'work_phone' => $this->profile->work_phone,
       'optional_phone' => $this->profile->optional_phone,
       'deceased' => $this->profile->deceased == 1 ? true : false,
