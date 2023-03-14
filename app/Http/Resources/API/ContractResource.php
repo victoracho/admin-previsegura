@@ -43,8 +43,6 @@ class ContractResource extends JsonResource
 
       'family_members' => FamilyMemberResource::collection($this->contractAssistances),
       'payments' => PaymentResource::collection($this->payments),
-      'comments' => [],
-
     ];
   }
 }

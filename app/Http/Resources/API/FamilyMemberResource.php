@@ -29,6 +29,8 @@ class FamilyMemberResource extends JsonResource
       'birthdate' => $this->profile->birthdate,
       'work_phone' => $this->profile->work_phone,
       'optional_phone' => $this->profile->optional_phone,
+      'deceased' => $this->profile->deceased,
+      'deceased_date' => date('d/m/Y', strtotime($this->profile->deceased_date)),
       'address' => $this->profile->address,
       'doc' => $this->profile->doc,
       'dependency' => $this->profile->dependency,

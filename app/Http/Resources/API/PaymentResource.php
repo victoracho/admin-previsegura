@@ -31,6 +31,7 @@ class PaymentResource extends JsonResource
       'additional_amount' => $this->additional_amount,
       'status' => $this->status,
       'payment_number' => $this->payment_number,
+      'comments' => []
 
     ];
   }
