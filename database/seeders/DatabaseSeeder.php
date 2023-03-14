@@ -14,6 +14,7 @@ use App\Models\Contract;
 use App\Models\Bank;
 use App\Models\FamilyMember;
 use App\Models\ContractAssistance;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -160,16 +161,23 @@ class DatabaseSeeder extends Seeder
 
         $contract = new Contract();
         $contract->status = 'ACTIVO';
-        $contract->status_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contract->registration_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contract->retirement_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $dt = Carbon::create(1990, 03, 23, 0);
+        $contract->status_date = $dt->toDateTimeString();
+        $dt = Carbon::create(1990, 01, 25, 0);
+        $contract->registration_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contract->retirement_date = $dt->toDateTimeString();
+        $dt = Carbon::create(1991, 03, 25, 0);
+        $contract->coverage_date = $dt->toDateTimeString();
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
         $contract->code = '20230301';
         $contract->plan = 'AMD1';
         $contract->bank_id = $bank->id;
         $contract->assistance_id = 4;
-        $contract->emission = date('d-m-y h:i:s', strtotime('28-03-2021'));
-        $contract->expire_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $dt = Carbon::create(2021, 03, 28, 0);
+        $contract->emission = $dt->toDateTimeString();
+        $dt = Carbon::create(2025, 01, 25, 0);
+        $contract->expire_date = $dt->toDateTimeString();
         $contract->modality = 'MENSUAL';
         $contract->fee_quantity = '4';
         $contract->payment_type = 'MI SALUD';
@@ -180,6 +188,7 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Luisa Helena';
         $profile->lastnames = 'Fraga Pena';
+        $dt = Carbon::create(1972, 02, 25, 0);
         $profile->birthdate = date('d-m-y h:i:s', strtotime('11/02/1972'));
         $profile->gender = 0;
         $profile->save();
@@ -247,7 +256,6 @@ class DatabaseSeeder extends Seeder
         $contractAssistance->family_member_id = $familyMember->id;
         $contractAssistance->profile_id = $profile->id;
         $contractAssistance->save();
-
 
         $profile = new Profile();
         $profile->firstnames = 'Firulais';
@@ -360,6 +368,7 @@ class DatabaseSeeder extends Seeder
         $contract->status = 'ACTIVO';
         $contract->status_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contract->registration_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contract->coverage_date = date('d-m-y h:i:s', strtotime('25-03-1990'));
         $contract->retirement_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
         $lastContract = Contract::latest()->first();

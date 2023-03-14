@@ -23,7 +23,7 @@ class ProfileResource extends JsonResource
       'lastnames' => $this->lastnames,
       'main_phone' => $this->main_phone,
       'mobile_phone' => $this->mobile_phone,
-      'birthdate' => $this->birthdate,
+      'birthdate' => date('d/m/Y', strtotime($this->birthdate)),
       'work_phone' => $this->work_phone,
       'optional_phone' => $this->optional_phone,
       'address' => $this->address,
