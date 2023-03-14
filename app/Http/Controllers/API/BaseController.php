@@ -39,29 +39,6 @@ class BaseController extends Controller
       $objUser->id = $hashids->encode($user->id);
       $state = null;
       $country = null;
-      if ($user->state_id) {
-        $state = (object)[];
-        $state->name = $user->state->name;
-        $state->id = $hashids->encode($user->state->id);
-      }
-      if ($user->country_id) {
-        $country = (object)[];
-        $country->name = $user->country->name;
-        $country->number_code = $user->country->number_code;
-        $country->id = $hashids->encode($user->country->id);
-      }
-      $objUser->country = $country;
-      $objUser->state = $state;
-      $objUser->firstnames = $user->firstnames;
-      $objUser->lastnames = $user->lastnames;
-      $objUser->gender = $user->gender;
-      $objUser->email = $user->email;
-      $objUser->birthdate = $user->birthdate;
-      $objUser->age = $user->getAgeAttribute();
-      $objUser->main_phone = $user->main_phone;
-      $objUser->mobile_phone = $user->mobile_phone;
-      $objUser->optional_phone = $user->optional_phone;
-      $objUser->work_phone = $user->work_phone;
       $profileUser = User::find($user->id);
       $role = $profileUser->firstRole();
       $role = $role->only(['slug', 'name']);

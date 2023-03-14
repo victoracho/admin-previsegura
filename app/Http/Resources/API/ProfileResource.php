@@ -4,7 +4,6 @@ namespace App\Http\Resources\API;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Hashids\Hashids;
-use App\Http\Resources\API\ContractResource;
 
 class ProfileResource extends JsonResource
 {
@@ -25,19 +24,16 @@ class ProfileResource extends JsonResource
       'main_phone' => $this->main_phone,
       'mobile_phone' => $this->mobile_phone,
       'birthdate' => $this->birthdate,
-      'age' => $this->getAgeAttribute(),
       'work_phone' => $this->work_phone,
       'optional_phone' => $this->optional_phone,
       'address' => $this->address,
       'doc' => $this->doc,
       'dependency' => $this->dependency,
       'state_id' => $this->state_id,
+      'gender' => $this->gender,
       'country_id' => $this->country_id,
       'gender' => $this->gender,
-      'created_at' => $this->created_at,
-      'updated_at' => $this->updated_at,
-      'contracts' => ContractResource::collection($this->contracts)
-
+      'fecha_ingreso' => $this->created_at->format('d/m/Y'),
     ];
   }
 }

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::table('contracts', function (Blueprint $table) {
             $table->string('registration_date');
+            $table->foreignId('assistance_id')->unsigned()->nullable();
+            $table->foreign('assistance_id')->references('id')->on('assistances')->onDelete('cascade');
             $table->string('code');
         });
     }

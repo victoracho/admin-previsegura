@@ -22,7 +22,7 @@ class PaymentResource extends JsonResource
     $hashids = new Hashids('contract-helper', 20);
     return [
       'id' => $hashids->encode($this->id),
-      'amount' => $this->coverage_date,
+      'amount' => $this->amount,
       'iva' => $this->iva,
       'expire_date' => $this->expire_date,
       'payment_date' => $this->payment_date,

@@ -36,6 +36,7 @@ class Contract extends Model
         'fee_quantity',
         'bank_id',
         'profile_id',
+        'assistance_id',
         'emission',
         'sales',
     ];
@@ -53,6 +54,10 @@ class Contract extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function assistance()
+    {
+        return $this->belongsTo(Assistance::class, 'assistance_id');
     }
 
     public function mod()

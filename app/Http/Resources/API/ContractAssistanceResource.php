@@ -3,7 +3,7 @@
 namespace App\Http\Resources\API;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\API\ProfileInContractAssistanceResource;
+use App\Http\Resources\API\ProfileResource;
 use App\Http\Resources\API\FamilyMemberResource;
 use App\Http\Resources\API\AssistanceResource;
 
@@ -27,9 +27,8 @@ class ContractAssistanceResource extends JsonResource
       'coverage_date' => $this->coverage_date,
       'inscription' => $this->inscription,
       'additional_amount' => $this->additional_amount,
-      'profile' => new ProfileInContractAssistanceResource($this->profile),
+      'profile' => new ProfileResource($this->profile),
       'bond' => new FamilyMemberResource($this->familyMember),
-      'assistanceDescription' =>  new AssistanceResource($this->assistance)
 
     ];
   }

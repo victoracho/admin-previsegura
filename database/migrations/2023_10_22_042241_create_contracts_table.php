@@ -35,10 +35,7 @@ return new class extends Migration
             $table->string('fee_quantity', 100)->nullable();
             $table->string('correlative', 100)->nullable();
             $table->string('sales', 100)->nullable();
-
-
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');

@@ -9,8 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use App\Mail\CreatedUser;
-use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 
@@ -37,6 +35,7 @@ class Profile extends Authenticatable
     'deceased',
     'deceased_date',
     'address',
+    'email',
     'doc',
     'birthdate',
     'dependency',
