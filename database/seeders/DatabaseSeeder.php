@@ -208,6 +208,7 @@ class DatabaseSeeder extends Seeder
         $profile->gender = 1;
         $profile->save();
 
+
         $familyMember = new FamilyMember();
         $familyMember->bond = 'HIJO';
         $familyMember->user_id = $user->id;
@@ -227,7 +228,7 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Jose Ramon';
         $profile->lastnames = 'Diaz Rojas';
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('04-05-2002'));
+        $profile->birthdate = date('d-m-y h:i:s', strtotime('25/01/2022'));
         $profile->gender = 1;
         $profile->save();
 
@@ -238,13 +239,13 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2021'));
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contractAssistance->additional_amount =  '0,00';
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contractAssistance->family_member_id = $familyMember->id;
-        $contractAssistance->profile_id = $familyMember->id;
+        $contractAssistance->profile_id = $profile->id;
         $contractAssistance->save();
 
 
@@ -286,13 +287,14 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
         $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
         $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contractAssistance->family_member_id = $familyMember->id;
         $contractAssistance->additional_amount =  '0,00';
-        $contractAssistance->profile_id = $familyMember->id;
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->profile_id = $profile->id;
         $contractAssistance->save();
 
         $profile = new Profile();
@@ -309,15 +311,15 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
+        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
         $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
         $contractAssistance->additional_amount =  '0,00';
         $contractAssistance->family_member_id = $familyMember->id;
-        $contractAssistance->profile_id = $familyMember->id;
+        $contractAssistance->profile_id = $profile->id;
         $contractAssistance->save();
-
 
         $payment = new Payment();
         $payment->amount = '28,13';
