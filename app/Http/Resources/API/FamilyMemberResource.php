@@ -29,7 +29,8 @@ class FamilyMemberResource extends JsonResource
       'birthdate' => $this->profile->birthdate,
       'work_phone' => $this->profile->work_phone,
       'optional_phone' => $this->profile->optional_phone,
-      'deceased' => $this->profile->deceased,
+      'deceased' => $this->profile->deceased == 1 ? true : false,
+      'gender' => $this->profile->gender == 1 ? 'M' : 'F',
       'deceased_date' => date('d/m/Y', strtotime($this->profile->deceased_date)),
       'address' => $this->profile->address,
       'doc' => $this->profile->doc,
@@ -37,7 +38,6 @@ class FamilyMemberResource extends JsonResource
       'state_id' => $this->profile->state_id,
       'gender' => $this->profile->gender,
       'country_id' => $this->profile->country_id,
-      'gender' => $this->profile->gender,
       'fecha_ingreso' => $this->profile->created_at->format('d/m/Y'),
 
     ];

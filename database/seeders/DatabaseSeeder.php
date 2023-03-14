@@ -146,6 +146,7 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Pedro';
         $profile->lastnames = 'Marchan';
+        $profile->gender = 1;
         $profile->doc = '12050603';
         $profile->birthdate = date('d-m-y h:i:s', strtotime('25-01-1965'));
         $profile->main_phone = '02124534544';

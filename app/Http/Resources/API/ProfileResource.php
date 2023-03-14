@@ -30,9 +30,8 @@ class ProfileResource extends JsonResource
       'doc' => $this->doc,
       'dependency' => $this->dependency,
       'state_id' => $this->state_id,
-      'gender' => $this->gender,
+      'gender' => $this->gender == 1 ? 'M' : 'F',
       'country_id' => $this->country_id,
-      'gender' => $this->gender,
       'fecha_ingreso' => $this->created_at->format('d/m/Y'),
     ];
   }
