@@ -153,7 +153,7 @@ class DatabaseSeeder extends Seeder
         $profile->work_phone = '02125602343';
         $profile->optional_phone = '0412334234';
         $profile->address = 'Animas a platanal, edif El dorado, piso 3 apto 32';
-        $profile->address =  'PREVISEGURA, C.A.';
+        $profile->dependency =  'PREVISEGURA, C.A.';
         $profile->user_id = $user->id;
         $profile->save();
 
