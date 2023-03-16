@@ -149,7 +149,8 @@ class DatabaseSeeder extends Seeder
         $profile->lastnames = 'Marchan';
         $profile->gender = 1;
         $profile->doc = '12050603';
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('25-01-1965'));
+        $dt = Carbon::create(1965, 02, 30, 0);
+        $profile->birthdate = $dt->toDateTimeString();
         $profile->main_phone = '02124534544';
         $profile->mobile_phone = '04142345044';
         $profile->work_phone = '02125602343';
@@ -189,7 +190,7 @@ class DatabaseSeeder extends Seeder
         $profile->firstnames = 'Luisa Helena';
         $profile->lastnames = 'Fraga Pena';
         $dt = Carbon::create(1972, 02, 25, 0);
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('11/02/1972'));
+        $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 0;
         $profile->save();
 
@@ -200,7 +201,8 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
         $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2021'));
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->additional_amount =  '0,00';
@@ -237,7 +239,8 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Jose Ramon';
         $profile->lastnames = 'Diaz Rojas';
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('25/01/2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 1;
         $profile->save();
 
@@ -248,11 +251,13 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->inscription = $dt->toDateTimeString();
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
         $contractAssistance->additional_amount =  '0,00';
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $dt = Carbon::create(2022, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
         $contractAssistance->family_member_id = $familyMember->id;
         $contractAssistance->profile_id = $profile->id;
         $contractAssistance->save();
@@ -260,7 +265,8 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Firulais';
         $profile->lastnames = 'Pena';
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('12-02-2017'));
+        $dt = Carbon::create(2022, 01, 25, 0);
+        $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 1;
         $profile->save();
 
@@ -271,11 +277,14 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString;
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->inscription = $dt->toDateTimeString();
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
         $contractAssistance->additional_amount =  '0,00';
         $contractAssistance->family_member_id = $familyMember->id;
         $contractAssistance->profile_id = $profile->id;
@@ -284,7 +293,8 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Maria Daniela';
         $profile->lastnames = 'Diaz Pena';
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('25-02-1998'));
+        $dt = Carbon::create(1998, 04, 10, 0);
+        $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 0;
         $profile->save();
 
@@ -295,11 +305,14 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->inscription = $dt->toDateTimeString();
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
         $contractAssistance->additional_amount =  '0,00';
         $contractAssistance->family_member_id = $familyMember->id;
         $contractAssistance->profile_id = $profile->id;
@@ -308,7 +321,8 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Ana Carolina';
         $profile->lastnames = 'Diaz Rojas';
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('12-12-2017'));
+        $dt = Carbon::create(2017, 12, 12, 0);
+        $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 0;
         $profile->save();
 
@@ -319,11 +333,12 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
+        $contractAssistance->inscription = $dt->toDateTimeString();
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
         $contractAssistance->additional_amount =  '0,00';
         $contractAssistance->family_member_id = $familyMember->id;
         $contractAssistance->profile_id = $profile->id;
@@ -331,23 +346,32 @@ class DatabaseSeeder extends Seeder
 
         $payment = new Payment();
         $payment->amount = '28,13';
-        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $dt = Carbon::create(2023, 04, 30, 0);
+        $payment->expire_date = $dt->toDateTimeString();
         $payment->status = 'PAGADO';
         $payment->iva = '4,5';
-        $payment->payment_date = date('d-m-y h:i:s', strtotime('15-03-2022'));
-        $payment->from = date('d-m-y h:i:s', strtotime('01-03-2022'));
-        $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $dt = Carbon::create(2023, 01, 30, 0);
+        $payment->payment_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->from = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 31, 0);
+        $payment->to = $dt->toDateTimeString();
         $payment->payment_number = '00002';
         $payment->contract_id = $contract->id;
         $payment->save();
 
         $payment = new Payment();
         $payment->amount = '28,13';
-        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-04-2022'));
+        $dt = Carbon::create(2023, 04, 30, 0);
+        $payment->expire_date = $dt->toDateTimeString();
         $payment->status = 'VENCIDO';
         $payment->iva = '4,5';
-        $payment->from = date('d-m-y h:i:s', strtotime('01-04-2022'));
-        $payment->to = date('d-m-y h:i:s', strtotime('31-04-2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->from = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 30, 0);
+        $payment->to = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->payment_date = $dt->toDateTimeString();
         $payment->contract_id = $contract->id;
         $payment->payment_number = '00003';
         $payment->save();
@@ -355,29 +379,39 @@ class DatabaseSeeder extends Seeder
         $payment = new Payment();
         $payment->iva = '4,5';
         $payment->amount = '28,13';
-        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $dt = Carbon::create(2023, 04, 30, 0);
+        $payment->expire_date = $dt->toDateTimeString();
         $payment->status = 'PAGADO';
-        $payment->payment_date = date('d-m-y h:i:s', strtotime('15-03-2022'));
-        $payment->from = date('d-m-y h:i:s', strtotime('01-03-2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->payment_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->from = $dt->toDateTimeString();
         $payment->contract_id = $contract->id;
-        $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $dt = Carbon::create(2023, 01, 30, 0);
+        $payment->to = $dt->toDateTimeString();
         $payment->payment_number = '00004';
         $payment->save();
 
         $contract = new Contract();
         $contract->status = 'ACTIVO';
-        $contract->status_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contract->registration_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contract->coverage_date = date('d-m-y h:i:s', strtotime('25-03-1990'));
-        $contract->retirement_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $dt = Carbon::create(1990, 03, 23, 0);
+        $contract->status_date = $dt->toDateTimeString();
+        $dt = Carbon::create(1990, 01, 25, 0);
+        $contract->registration_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contract->retirement_date = $dt->toDateTimeString();
+        $dt = Carbon::create(1991, 03, 25, 0);
+        $contract->coverage_date = $dt->toDateTimeString();
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
         $lastContract = Contract::latest()->first();
         $contract->code = date('y') . date('m') . '0' . $lastContract->id + 1;
         $contract->plan = 'AMD1';
         $contract->bank_id = $bank->id;
         $contract->assistance_id = 4;
-        $contract->emission = date('d-m-y h:i:s', strtotime('28-03-2021'));
-        $contract->expire_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
+        $dt = Carbon::create(2023, 01, 28, 0);
+        $contract->emission = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contract->expire_date = $dt->toDateTimeString();
         $contract->modality = 'MENSUAL';
         $contract->fee_quantity = '2';
         $contract->payment_type = 'MI SALUD';
@@ -388,7 +422,8 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Maria Helena';
         $profile->lastnames = 'Luna Torres';
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('11/02/1962'));
+        $dt = Carbon::create(1962, 02, 11, 0);
+        $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 0;
         $profile->save();
 
@@ -399,8 +434,10 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2021'));
+        $dt = Carbon::create(2025, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->inscription = $dt->toDateTimeString();
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
         $contractAssistance->additional_amount =  '0,00';
@@ -409,21 +446,26 @@ class DatabaseSeeder extends Seeder
         $contractAssistance->save();
 
         $payment = new Payment();
-        $payment->amount = '28,13';
         $payment->iva = '4,5';
-        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $payment->amount = '28,13';
+        $dt = Carbon::create(2023, 04, 30, 0);
+        $payment->expire_date = $dt->toDateTimeString();
         $payment->status = 'PAGADO';
-        $payment->payment_date = date('d-m-y h:i:s', strtotime('15-03-2022'));
-        $payment->from = date('d-m-y h:i:s', strtotime('01-03-2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->payment_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->from = $dt->toDateTimeString();
         $payment->contract_id = $contract->id;
-        $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $dt = Carbon::create(2023, 01, 30, 0);
+        $payment->to = $dt->toDateTimeString();
         $payment->payment_number = '00004';
         $payment->save();
 
         $profile = new Profile();
         $profile->firstnames = 'Emiliano Jose';
         $profile->lastnames = 'Marchan Diaz';
-        $profile->birthdate = date('d-m-y h:i:s', strtotime('11/06/1933'));
+        $dt = Carbon::create(2023, 06, 11, 0);
+        $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 1;
         $profile->save();
 
@@ -434,8 +476,10 @@ class DatabaseSeeder extends Seeder
         $familyMember->save();
 
         $contractAssistance = new ContractAssistance();
-        $contractAssistance->coverage_date = date('d-m-y h:i:s', strtotime('25-01-2023'));
-        $contractAssistance->inscription = date('d-m-y h:i:s', strtotime('25-01-2021'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->inscription = $dt->toDateTimeString();
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
         $contractAssistance->additional_amount =  '0,00';
@@ -446,12 +490,16 @@ class DatabaseSeeder extends Seeder
         $payment = new Payment();
         $payment->iva = '4,5';
         $payment->amount = '28,13';
-        $payment->expire_date = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $dt = Carbon::create(2023, 04, 30, 0);
+        $payment->expire_date = $dt->toDateTimeString();
         $payment->status = 'PAGADO';
-        $payment->payment_date = date('d-m-y h:i:s', strtotime('15-03-2022'));
-        $payment->from = date('d-m-y h:i:s', strtotime('01-03-2022'));
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->payment_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->from = $dt->toDateTimeString();
         $payment->contract_id = $contract->id;
-        $payment->to = date('d-m-y h:i:s', strtotime('31-03-2022'));
+        $dt = Carbon::create(2023, 01, 30, 0);
+        $payment->to = $dt->toDateTimeString();
         $payment->payment_number = '00004';
         $payment->save();
     }
