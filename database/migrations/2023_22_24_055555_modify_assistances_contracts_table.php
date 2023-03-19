@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('family_member_id')->unsigned()->nullable();
             $table->date('coverage_date')->nullable();
             $table->date('inscription')->nullable();
-            $table->string('additional_amount', 100)->nullable();
+            $table->float('additional_amount')->nullable();
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
             $table->foreign('family_member_id')->references('id')->on('family_members')->onDelete('cascade');
         });

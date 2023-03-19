@@ -291,7 +291,7 @@ class DatabaseSeeder extends Seeder
         $contractAssistance->assistance_id = 4;
         $dt = Carbon::create(2023, 01, 25, 0);
         $contractAssistance->coverage_date = $dt->toDateTimeString();
-        $contractAssistance->additional_amount =  '0,00';
+        $contractAssistance->additional_amount =  0.00;
         $contractAssistance->family_member_id = $familyMember->id;
         $contractAssistance->profile_id = $profile->id;
         $contractAssistance->save();
@@ -317,7 +317,7 @@ class DatabaseSeeder extends Seeder
         $contractAssistance->contract_id = $contract->id;
         $contractAssistance->assistance_id = 4;
         $contractAssistance->coverage_date = $dt->toDateTimeString();
-        $contractAssistance->additional_amount =  '0,00';
+        $contractAssistance->additional_amount =  0.00;
         $contractAssistance->family_member_id = $familyMember->id;
         $contractAssistance->profile_id = $profile->id;
         $contractAssistance->save();
@@ -400,7 +400,7 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Maria Helena';
         $profile->lastnames = 'Luna Torres';
-        $dt = Carbon::create(1962, 02, 11, 0);
+        $dt = Carbon::create(1935, 02, 11, 0);
         $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 0;
         $profile->save();
@@ -424,8 +424,8 @@ class DatabaseSeeder extends Seeder
         $contractAssistance->save();
 
         $payment = new Payment();
-        $payment->iva = '4,5';
-        $payment->amount = '28,13';
+        $payment->iva = 4.5;
+        $payment->amount = 28.13;
         $dt = Carbon::create(2023, 04, 30, 0);
         $payment->expire_date = $dt->toDateTimeString();
         $payment->status = 'PAGADO';
@@ -442,7 +442,7 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Emiliano Jose';
         $profile->lastnames = 'Marchan Diaz';
-        $dt = Carbon::create(2023, 06, 11, 0);
+        $dt = Carbon::create(1932, 06, 11, 0);
         $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 1;
         $profile->save();
@@ -467,7 +467,7 @@ class DatabaseSeeder extends Seeder
 
         $payment = new Payment();
         $payment->iva = 4.5;
-        $payment->amount = '28,13';
+        $payment->amount = 28.13;
         $dt = Carbon::create(2023, 04, 30, 0);
         $payment->expire_date = $dt->toDateTimeString();
         $payment->status = 'PAGADO';

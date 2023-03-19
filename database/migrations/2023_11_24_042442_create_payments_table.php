@@ -16,14 +16,14 @@ class CreatePaymentsTable extends Migration
     Schema::create('payments', function (Blueprint $table) {
       $table->id();
       $table->foreignId('contract_id')->unsigned()->nullable();
-      $table->string('amount', 100)->nullable();
-      $table->string('iva', 100)->nullable();
+      $table->float('amount')->nullable();
+      $table->float('iva')->nullable();
       $table->date('expire_date')->nullable();
       $table->date('payment_date')->nullable();
       $table->date('from')->nullable();
       $table->date('to')->nullable();
 
-      $table->string('additional_amount', 100)->nullable();
+      $table->float('additional_amount')->nullable();
       $table->string('status')->default('PENDIENTE')->nullable();
       $table->string('payment_number', 100)->nullable();
 

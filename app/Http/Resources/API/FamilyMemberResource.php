@@ -21,7 +21,7 @@ class FamilyMemberResource extends JsonResource
     return [
       'coverage_date' => date('d/m/Y', strtotime($this->coverage_date)),
       'inscription' => date('d/m/Y', strtotime($this->inscription)),
-      'additional_amount' => $this->additional_amount,
+      'additional_amount' =>  floatval($this->additional_amount),
       'bond' => $this->familyMember->bond,
       'firstnames' => $this->profile->firstnames,
       'lastnames' => $this->profile->lastnames,
@@ -32,7 +32,7 @@ class FamilyMemberResource extends JsonResource
       'optional_phone' => $this->profile->optional_phone,
       'deceased' => $this->profile->deceased == 1 ? true : false,
       'gender' => $this->profile->gender == 1 ? 'M' : 'F',
-      'deceased_date' => date('d/m/Y', strtotime($this->profile->deceased_date)),
+      'deceased_date' => $this->profile->deceased_date ? date('d/m/Y', strtotime($this->profile->deceased_date)) : null,
       'address' => $this->profile->address,
       'doc' => $this->profile->doc,
       'dependency' => $this->profile->dependency,
