@@ -30,7 +30,7 @@ return new class extends Migration
 
 
       $table->string('gender', 1)->nullable();
-      $table->string('birthdate', 100)->nullable();
+      $table->date('birthdate', 100)->nullable();
 
       $table->foreignId('country_id')->unsigned()->nullable();
       $table->foreignId('doc_type_id')->unsigned()->nullable();
@@ -50,7 +50,7 @@ return new class extends Migration
       $table->unique(['main_phone']);
       $table->unique(['optional_phone']);
       $table->boolean('deceased')->default(0)->nullable();
-      $table->boolean('deceased_date')->default(0)->nullable();
+      $table->date('deceased_date')->nullable();
 
       $table->foreignId('current_team_id')->nullable();
       $table->string('profile_photo_path', 2048)->nullable();

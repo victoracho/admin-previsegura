@@ -4,6 +4,7 @@ namespace App\Http\Resources\API;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Hashids\Hashids;
+use Carbon\Carbon;
 
 class FamilyMemberResource extends JsonResource
 {
@@ -26,7 +27,7 @@ class FamilyMemberResource extends JsonResource
       'lastnames' => $this->profile->lastnames,
       'main_phone' => $this->profile->main_phone,
       'mobile_phone' => $this->profile->mobile_phone,
-      'birthdate' => date('d/m/Y', strtotime($this->profile->birthdate)),
+      'birthdate' =>  $this->profile->birthdate,
       'work_phone' => $this->profile->work_phone,
       'optional_phone' => $this->profile->optional_phone,
       'deceased' => $this->profile->deceased == 1 ? true : false,
@@ -36,10 +37,8 @@ class FamilyMemberResource extends JsonResource
       'doc' => $this->profile->doc,
       'dependency' => $this->profile->dependency,
       'state_id' => $this->profile->state_id,
-      'gender' => $this->profile->gender,
       'country_id' => $this->profile->country_id,
       'fecha_ingreso' => $this->profile->created_at->format('d/m/Y'),
-
     ];
   }
 }
