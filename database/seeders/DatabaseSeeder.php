@@ -217,7 +217,7 @@ class DatabaseSeeder extends Seeder
         $profile = new Profile();
         $profile->firstnames = 'Jose Manuel';
         $profile->lastnames = 'Diaz Pena';
-        $dt = Carbon::create(2022, 01, 25, 0);
+        $dt = Carbon::create(1989, 01, 25, 0);
         $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 1;
         $profile->save();
