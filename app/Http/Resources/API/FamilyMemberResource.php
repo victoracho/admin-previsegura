@@ -38,6 +38,9 @@ class FamilyMemberResource extends JsonResource
       'dependency' => $this->profile->dependency,
       'state_id' => $this->profile->state_id,
       'country_id' => $this->profile->country_id,
+      'city' => 'Caracas',
+      'state' => 'Distrito Capital',
+      'country' => 'Venezuela',
       'fecha_ingreso' => $this->profile->created_at->format('d/m/Y'),
     ];
   }

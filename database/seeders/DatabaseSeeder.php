@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
         $assistance->save();
 
         $assistance = new Assistance;
-        $assistance->name = 'Asistencia financiera en enfermedad grave';
+        $assistance->name = 'Asistencia Mascotas en el Cielo';
         $assistance->description = 'Asistencia Mascotas en el Cielo';
         $assistance->save();
 
@@ -528,7 +528,7 @@ class DatabaseSeeder extends Seeder
         $dt = Carbon::create(2023, 01, 25, 0);
         $contractAssistance->inscription = $dt->toDateTimeString();
         $contractAssistance->contract_id = $contract->id;
-        $contractAssistance->assistance_id = 4;
+        $contractAssistance->assistance_id = 8;
         $dt = Carbon::create(2023, 01, 25, 0);
         $contractAssistance->coverage_date = $dt->toDateTimeString();
         $contractAssistance->additional_amount =  0.00;
@@ -556,7 +556,7 @@ class DatabaseSeeder extends Seeder
         $dt = Carbon::create(2023, 01, 25, 0);
         $contractAssistance->inscription = $dt->toDateTimeString();
         $contractAssistance->contract_id = $contract->id;
-        $contractAssistance->assistance_id = 4;
+        $contractAssistance->assistance_id = 8;
         $dt = Carbon::create(2023, 01, 25, 0);
         $contractAssistance->coverage_date = $dt->toDateTimeString();
         $contractAssistance->additional_amount =  0.00;
@@ -594,6 +594,95 @@ class DatabaseSeeder extends Seeder
         $dt = Carbon::create(2023, 01, 30, 0);
         $payment->to = $dt->toDateTimeString();
         $payment->payment_number = '00008';
+        $payment->save();
+
+        $contract = new Contract();
+        $contract->status = 'ACTIVO';
+        $dt = Carbon::create(1990, 03, 23, 0);
+        $contract->status_date = $dt->toDateTimeString();
+        $dt = Carbon::create(1990, 01, 25, 0);
+        $contract->registration_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contract->retirement_date = $dt->toDateTimeString();
+        $dt = Carbon::create(1991, 03, 25, 0);
+        $contract->coverage_date = $dt->toDateTimeString();
+        $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
+        $lastContract = Contract::latest()->first();
+        $contract->code = date('y') . date('m') . '0' . $lastContract->id + 1;
+        $contract->plan = 'AMD1';
+        $contract->bank_id = $bank->id;
+        $contract->assistance_id = 6;
+        $dt = Carbon::create(2023, 01, 28, 0);
+        $contract->emission = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contract->expire_date = $dt->toDateTimeString();
+        $contract->modality = 'MENSUAL';
+        $contract->fee_quantity = '2';
+        $contract->payment_type = 'MI SALUD';
+        $contract->sales = 'NUEVA';
+        $contract->user_id = $user->id;
+        $contract->save();
+
+        $profile = new Profile();
+        $profile->firstnames = 'Maria Helena';
+        $profile->firstnames = 'Marchan';
+        $dt = Carbon::create(1960, 06, 12, 0);
+        $profile->birthdate = $dt->toDateTimeString();
+        $profile->gender = 0;
+        $profile->save();
+
+
+        $familyMember = new FamilyMember();
+        $familyMember->bond = 'HERMANO';
+        $familyMember->user_id = $user->id;
+        $familyMember->profile_id = $profile->id;
+        $familyMember->save();
+
+
+        $contractAssistance = new ContractAssistance();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->inscription = $dt->toDateTimeString();
+        $contractAssistance->contract_id = $contract->id;
+        $contractAssistance->assistance_id = 8;
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $contractAssistance->coverage_date = $dt->toDateTimeString();
+        $contractAssistance->additional_amount =  100;
+        $contractAssistance->family_member_id = $familyMember->id;
+        $contractAssistance->profile_id = $profile->id;
+        $contractAssistance->save();
+
+        $payment = new Payment();
+        $payment->iva = 4.5;
+        $payment->amount = 100;
+        $dt = Carbon::create(2023, 04, 30, 0);
+        $payment->expire_date = $dt->toDateTimeString();
+        $payment->status = 'PAGADO';
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->payment_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->from = $dt->toDateTimeString();
+        $payment->contract_id = $contract->id;
+        $dt = Carbon::create(2023, 01, 30, 0);
+        $payment->to = $dt->toDateTimeString();
+        $payment->payment_number = '00008';
+        $payment->save();
+
+        $payment = new Payment();
+        $payment->iva = 4.5;
+        $payment->amount = 100;
+        $dt = Carbon::create(2023, 04, 30, 0);
+        $payment->expire_date = $dt->toDateTimeString();
+        $payment->status = 'PAGADO';
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->payment_date = $dt->toDateTimeString();
+        $dt = Carbon::create(2023, 01, 25, 0);
+        $payment->from = $dt->toDateTimeString();
+        $payment->contract_id = $contract->id;
+        $dt = Carbon::create(2023, 01, 30, 0);
+        $payment->to = $dt->toDateTimeString();
+        $payment->payment_number = '00009';
         $payment->save();
     }
 }
