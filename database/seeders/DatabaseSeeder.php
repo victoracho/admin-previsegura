@@ -190,7 +190,7 @@ class DatabaseSeeder extends Seeder
 
         $profile = new Profile();
         $profile->firstnames = 'Luisa Helena';
-        $profile->lastnames = 'Fraga Pena';
+        $profile->lastnames = 'Fraga Peña';
         $dt = Carbon::create(1972, 02, 25, 0);
         $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 0;
@@ -217,7 +217,7 @@ class DatabaseSeeder extends Seeder
 
         $profile = new Profile();
         $profile->firstnames = 'Jose Manuel';
-        $profile->lastnames = 'Diaz Pena';
+        $profile->lastnames = 'Diaz Peña';
         $dt = Carbon::create(1989, 01, 25, 0);
         $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 1;
@@ -271,14 +271,14 @@ class DatabaseSeeder extends Seeder
 
         $profile = new Profile();
         $profile->firstnames = 'Maria Daniela';
-        $profile->lastnames = 'Diaz Pena';
+        $profile->lastnames = 'Diaz Peña';
         $dt = Carbon::create(1998, 04, 10, 0);
         $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 0;
         $profile->save();
 
         $familyMember = new FamilyMember();
-        $familyMember->bond = 'HIJO';
+        $familyMember->bond = 'HIJA';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
         $familyMember->save();
@@ -306,7 +306,7 @@ class DatabaseSeeder extends Seeder
         $profile->save();
 
         $familyMember = new FamilyMember();
-        $familyMember->bond = 'NIETO';
+        $familyMember->bond = 'NIETA';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
         $familyMember->save();
@@ -383,7 +383,7 @@ class DatabaseSeeder extends Seeder
         $contract->coverage_date = $dt->toDateTimeString();
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
         $lastContract = Contract::latest()->first();
-        $contract->code = date('y') . date('m') . '0' . $lastContract->id + 1;
+        $contract->code = '20230302';
         $contract->plan = 'AMD1';
         $contract->bank_id = $bank->id;
         $contract->assistance_id = 4;
@@ -494,7 +494,7 @@ class DatabaseSeeder extends Seeder
         $contract->coverage_date = $dt->toDateTimeString();
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
         $lastContract = Contract::latest()->first();
-        $contract->code = date('y') . date('m') . '0' . $lastContract->id + 1;
+        $contract->code = '20230303';
         $contract->plan = 'AMD1';
         $contract->bank_id = $bank->id;
         $contract->assistance_id = 8;
@@ -609,7 +609,7 @@ class DatabaseSeeder extends Seeder
         $contract->coverage_date = $dt->toDateTimeString();
         $contract->covenant = 'INDUSTRIAS EL PLANETA C.A.';
         $lastContract = Contract::latest()->first();
-        $contract->code = date('y') . date('m') . '0' . $lastContract->id + 1;
+        $contract->code = '20230304';
         $contract->plan = 'AMD1';
         $contract->bank_id = $bank->id;
         $contract->assistance_id = 6;
@@ -634,7 +634,7 @@ class DatabaseSeeder extends Seeder
 
 
         $familyMember = new FamilyMember();
-        $familyMember->bond = 'HERMANO';
+        $familyMember->bond = 'HERMANA';
         $familyMember->user_id = $user->id;
         $familyMember->profile_id = $profile->id;
         $familyMember->save();

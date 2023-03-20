@@ -24,7 +24,7 @@ class FamilyMemberResource extends JsonResource
       'additional_amount' =>  floatval($this->additional_amount),
       'bond' => $this->familyMember->bond,
       'firstnames' => $this->profile->firstnames,
-      'lastnames' => $this->profile->lastnames,
+      'lastnames' => $this->profile->lastnames ? $this->profile->lastnames : '',
       'main_phone' => $this->profile->main_phone,
       'mobile_phone' => $this->profile->mobile_phone,
       'birthdate' =>  $this->profile->birthdate,
