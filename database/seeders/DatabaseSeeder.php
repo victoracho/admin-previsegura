@@ -626,7 +626,7 @@ class DatabaseSeeder extends Seeder
 
         $profile = new Profile();
         $profile->firstnames = 'Maria Helena';
-        $profile->firstnames = 'Marchan';
+        $profile->lastnames = 'Marchan';
         $dt = Carbon::create(1960, 06, 12, 0);
         $profile->birthdate = $dt->toDateTimeString();
         $profile->gender = 0;
