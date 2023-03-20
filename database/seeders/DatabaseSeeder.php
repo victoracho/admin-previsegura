@@ -150,6 +150,7 @@ class DatabaseSeeder extends Seeder
         $profile->lastnames = 'Marchan';
         $profile->gender = 1;
         $profile->doc = '12050603';
+        $profile->email = 'pedro@gmail.com';
         $dt = Carbon::create(1965, 02, 30, 0);
         $profile->birthdate = $dt->toDateTimeString();
         $profile->main_phone = '02124534544';
