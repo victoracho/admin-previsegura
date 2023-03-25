@@ -23,7 +23,7 @@ class PetitionController extends Controller
             $petitions = $petitions->map(function ($petition) {
                 $obj = (object)[];
                 $obj->id = $petition->id;
-                $user = Profile::where('id', $petition->user->id)->first();
+                $user = Profile::where('user_id', $petition->user->id)->first();
                 $obj->user = $user->email;
                 $names = $user->firstnames . ' ' . $user->lastnames;
                 $obj->doc = $user->doc;
@@ -101,7 +101,7 @@ class PetitionController extends Controller
             }
             $data = [];
             $data['assistances'] = $arr;
-            $data['user'] = Profile::where('id', $petition->user->id)->first();
+            $data['user'] = Profile::where('user_id', $petition->user->id)->first();
             $data['plan'] = $petition->plan;
             return response()->json([
                 'success' => 'true',
@@ -184,7 +184,7 @@ class PetitionController extends Controller
             }
 
             if ($request->user) {
-                $user = Profile::where('id', $petition->user->id)->first();
+                $user = Profile::where('user_id', $petition->user->id)->first();
                 $user->firstnames = $request->user['firstnames'];
                 $user->lastnames = $request->user['lastnames'];
                 $user->email = $request->user['email'];
@@ -256,6 +256,7 @@ class PetitionController extends Controller
                 $profile->email = $request->email;
                 $profile->main_phone = $request->phone_number;
                 $profile->save();
+
             endif;
 
             $petition = new Petition;
