@@ -23,14 +23,12 @@ class PetitionController extends Controller
             $petitions = $petitions->map(function ($petition) {
                 $obj = (object)[];
                 $obj->id = $petition->id;
-                $user = clone $petition->user;
+                $user = Profile::where('id', $petition->user->id)->first();
                 $obj->user = $user->email;
                 $names = $user->firstnames . ' ' . $user->lastnames;
                 $obj->doc = $user->doc;
-                $obj->phone_number = $user->phone_number;
-                $obj->user_type = $user->user_type;
+                $obj->phone_number = $user->main_phone;
                 $obj->names = $names;
-                $obj->user_type = $obj->user_type == '1' ? 'Nuevo' : 'Registrado';
                 $obj->date = Carbon::parse($petition->created_at);
                 $obj->date = $obj->date->format('d m Y');
                 $obj->assistances = 'Ver';
@@ -103,7 +101,7 @@ class PetitionController extends Controller
             }
             $data = [];
             $data['assistances'] = $arr;
-            $data['user'] = $petition->user;
+            $data['user'] = Profile::where('id', $petition->user->id)->first();
             $data['plan'] = $petition->plan;
             return response()->json([
                 'success' => 'true',
@@ -186,13 +184,12 @@ class PetitionController extends Controller
             }
 
             if ($request->user) {
-                $user = $petition->user;
+                $user = Profile::where('id', $petition->user->id)->first();
                 $user->firstnames = $request->user['firstnames'];
                 $user->lastnames = $request->user['lastnames'];
                 $user->email = $request->user['email'];
                 $user->doc = $request->user['doc'];
-                $user->phone_number = $request->user['phone_number'];
-                $user->user_type = $request->user['type'] == 'Nuevo' ? 1 : 2;
+                $user->main_phone = $request->user['phone_number'];
                 $user->save();
             }
 
@@ -233,15 +230,15 @@ class PetitionController extends Controller
         try {
             DB::beginTransaction();
 
-            $request->validate([
-                'firstnames' => 'required|min:3|max:150',
-                'lastnames' => 'required|min:3|max:150',
-                'email' => 'required|email|max:255|regex:/(.*)@myemail\.com/i|unique:users',
-                'phone_number' => 'required|numeric|min:10',
-                'user_type' => 'required',
-                'doc' => 'required',
-                'plan' => 'required'
-            ]);
+            // $request->validate([
+            //     'firstnames' => 'required|min:3|max:150',
+            //     'lastnames' => 'required|min:3|max:150',
+            //     'email' => 'required|email|max:255|regex:/(.*)@myemail\.com/i|unique:users',
+            //     'phone_number' => 'required|numeric|min:10',
+            //     'user_type' => 'required',
+            //     'doc' => 'required',
+            //     'plan' => 'required'
+            // ]);
 
             $user = User::where('email', $request->email)->first();
             if (!$user) :
