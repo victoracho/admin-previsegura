@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Petition;
 use App\Models\Plan;
 use App\Models\User;
+use App\Models\Profile;
 use App\Models\Assistance;
 use App\Models\AssistancePetition;
 use Inertia\Inertia;
@@ -232,27 +233,32 @@ class PetitionController extends Controller
         try {
             DB::beginTransaction();
 
-            // $request->validate([
-            //     'firstnames' => 'required|min:3|max:150',
-            //     'lastnames' => 'required|min:3|max:150',
-            //     'email'=>'required|email|max:255|regex:/(.*)@myemail\.com/i|unique:users',
-            //     'phone_number' => 'required|numeric|min:10',
-            //     'client' => 'required',
-            //     'plan' => 'required'
-            // ]);
+            $request->validate([
+                'firstnames' => 'required|min:3|max:150',
+                'lastnames' => 'required|min:3|max:150',
+                'email' => 'required|email|max:255|regex:/(.*)@myemail\.com/i|unique:users',
+                'phone_number' => 'required|numeric|min:10',
+                'user_type' => 'required',
+                'doc' => 'required',
+                'plan' => 'required'
+            ]);
 
             $user = User::where('email', $request->email)->first();
-            if (!$user) {
+            if (!$user) :
+                $profile = new Profile;
+                $profile->firstnames = $request->firstnames;
+                $profile->lastnames = $request->lastnames;
+                $profile->doc = $request->doc;
+                $profile->email = $request->email;
+                $profile->main_phone = $request->phone_number;
+                $profile->save();
+
                 $user = new User;
-                $user->firstnames = $request->firstnames;
-                $user->lastnames = $request->lastnames;
-                $user->doc = $request->identification;
-                $user->user_type = $request->client;
-                $user->phone_number = $request->phone_number;
                 $user->email = $request->email;
+                $user->doc = $request->doc;
                 $user->save();
                 $user->refresh();
-            }
+            endif;
 
             $petition = new Petition;
             $petition->user_id = $user->id;
