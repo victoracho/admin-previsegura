@@ -242,19 +242,20 @@ class PetitionController extends Controller
 
             $user = User::where('email', $request->email)->first();
             if (!$user) :
-                $profile = new Profile;
-                $profile->firstnames = $request->firstnames;
-                $profile->lastnames = $request->lastnames;
-                $profile->doc = $request->doc;
-                $profile->email = $request->email;
-                $profile->main_phone = $request->phone_number;
-                $profile->save();
-
                 $user = new User;
                 $user->email = $request->email;
                 $user->doc = $request->doc;
                 $user->save();
                 $user->refresh();
+
+                $profile = new Profile;
+                $profile->firstnames = $request->firstnames;
+                $profile->lastnames = $request->lastnames;
+                $profile->user_id = $user->id;
+                $profile->doc = $request->doc;
+                $profile->email = $request->email;
+                $profile->main_phone = $request->phone_number;
+                $profile->save();
             endif;
 
             $petition = new Petition;
