@@ -30,6 +30,10 @@
               <br>
             <q-checkbox v-model="assisCitas" label="Combo citas médicas"></q-checkbox>
               <br>
+            <q-checkbox v-model="assisHospitalizacion" label="Asistencia financiera en hospitalización"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisEnfermedad" label="Asistencia financiera en enfermedad grave"></q-checkbox>
+              <br>
             <q-checkbox v-model="assisOndotologica" label="Asistencia odontológica"></q-checkbox>
               <br>
             <q-checkbox v-model="assisMascotas" label="Mascotas de cielo"></q-checkbox>
@@ -55,6 +59,11 @@
             <q-checkbox v-model="assisOndotologica" disable label="Asistencia odontológica"></q-checkbox>
               <br>
             <q-checkbox v-model="assisMascotas" disable label="Mascotas de cielo"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisEnfermedad" disable label="Asistencia financiera en enfermedad grave"></q-checkbox>
+              <br>
+            <q-checkbox v-model="assisHospitalizacion" disable label="Asistencia financiera en hospitalización"></q-checkbox>
+
           </q-card-section>
           </q-card>
 				</q-dialog>
