@@ -28,7 +28,6 @@ return new class extends Migration
       $table->string('dependency', 100)->nullable();
       $table->string('race', 100)->nullable();
 
-
       $table->string('gender', 1)->nullable();
       $table->date('birthdate', 100)->nullable();
 

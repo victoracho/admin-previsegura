@@ -19,19 +19,21 @@ class PetitionController extends Controller
     public function index()
     {
         try {
-            $petitions = Petition::with(['user', 'plan', 'assistancePetitions'])->orderBy('created_at', 'DESC')->get();
+            $petitions = Petition::with(['user', 'plan', 'assistances'])->orderBy('created_at', 'DESC')->get();
             $petitions = $petitions->map(function ($petition) {
                 $obj = (object)[];
                 $obj->id = $petition->id;
                 $user = Profile::where('user_id', $petition->user->id)->first();
-                $obj->user = $user->email;
                 $names = $user->firstnames . ' ' . $user->lastnames;
                 $obj->doc = $user->doc;
+                $obj->email = $user->email;
                 $obj->phone_number = $user->main_phone;
                 $obj->names = $names;
                 $obj->date = Carbon::parse($petition->created_at);
                 $obj->date = $obj->date->format('d m Y');
-                $obj->assistances = 'Ver';
+                $obj->assistances = $petition->assistances->map(function ($assistance) {
+                    return $assistance->id;
+                });
                 $plan = clone $petition->plan;
                 $obj->plan = $plan->name;
                 return $obj;
@@ -244,7 +246,7 @@ class PetitionController extends Controller
             if (!$user) :
                 $user = new User;
                 $user->email = $request->email;
-                $user->doc = $request->doc;
+                $user->doc = $request->identification;
                 $user->save();
                 $user->refresh();
 
@@ -252,11 +254,10 @@ class PetitionController extends Controller
                 $profile->firstnames = $request->firstnames;
                 $profile->lastnames = $request->lastnames;
                 $profile->user_id = $user->id;
-                $profile->doc = $request->doc;
+                $profile->doc = $request->identification;
                 $profile->email = $request->email;
                 $profile->main_phone = $request->phone_number;
                 $profile->save();
-
             endif;
 
             $petition = new Petition;
@@ -273,7 +274,7 @@ class PetitionController extends Controller
                 $assistancePetition->save();
             }
             DB::commit();
-            $petition->sendCreatedMail();
+            // $petition->sendCreatedMail();
             return response()->json([
                 'success' => 'true',
                 'error' => 'null'

@@ -20,36 +20,36 @@ class Petition extends Model
         'plan_id',
     ];
 
-    public function assistancePetitions() {
-        return $this->hasMany(AssistancePetition::class, 'petition_id');
+    public function assistances()
+    {
+        return $this->belongsToMany(Assistance::class, 'assistance_petitions', 'petition_id', 'assistance_id');
     }
 
-    public function assistances() {
-        return $this->hasManyThrough(AssistancePetition::class, Assistance::class);
-    }
-    
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function plan() {
+    public function plan()
+    {
         return $this->belongsTo(Plan::class, 'plan_id');
     }
 
-        // mail created petition
-    public function sendCreatedMail() {
+    // mail created petition
+    public function sendCreatedMail()
+    {
         try {
-                $admin = getenv('APP_ADMIN');
-                $adminMessage = [
-                    'subject' => '¡Un usuario ha creado una solicitud!',
-                    'title' => '¡Bienvenido a Previsegura!',
-                    'petition' => $this,
-                    'admin' => $admin
-                ];
-            
-                // Send email to admin.
-                Mail::to(env('MAIL_ADDRESS'))->send(new createdPetition($adminMessage));
-                
+            $admin = getenv('APP_ADMIN');
+            $adminMessage = [
+                'subject' => '¡Un usuario ha creado una solicitud!',
+                'title' => '¡Bienvenido a Previsegura!',
+                'petition' => $this,
+                'admin' => $admin
+            ];
+
+            // Send email to admin.
+            Mail::to(env('MAIL_ADDRESS'))->send(new createdPetition($adminMessage));
+
             return response()->json([
                 'success' => true
             ], 200);
@@ -59,7 +59,5 @@ class Petition extends Model
                 'error' => $th->getMessage()
             ], 200);
         }
-    } 
-    
-
+    }
 }
