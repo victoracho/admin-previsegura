@@ -19,7 +19,7 @@ class PetitionController extends Controller
     public function index()
     {
         try {
-            $petitions = Petition::with(['user', 'plan', 'assistances'])->orderBy('created_at', 'DESC')->get();
+            $petitions = Petition::with(['user', 'plan'])->orderBy('created_at', 'DESC')->get();
             $petitions = $petitions->map(function ($petition) {
                 $obj = (object)[];
                 $obj->id = $petition->id;
@@ -31,21 +31,21 @@ class PetitionController extends Controller
                 $obj->names = $names;
                 $obj->date = Carbon::parse($petition->created_at);
                 $obj->date = $obj->date->format('d m Y');
-                $obj->assistances = $petition->assistances->map(function ($assistance) {
-                    return $assistance->id;
-                });
+                $obj->assistances = 'Ver';
                 $plan = clone $petition->plan;
                 $obj->plan = $plan->name;
                 return $obj;
             });
             $plans = Plan::all();
+            $assistances = Assistance::all();
             $plans = $plans->map(function ($plan) {
                 return $plan->name;
             });
 
             return Inertia::render('Petition/Index', [
                 'petitions' => $petitions,
-                'plans' => $plans
+                'plans' => $plans,
+                'assistances' => $assistances
             ]);
         } catch (\Throwable $th) {
             DB::rollback();
@@ -57,16 +57,11 @@ class PetitionController extends Controller
     {
         try {
             $petition = Petition::find($request->id);
-            $assistances = $petition->assistancePetitions;
-            $arr = [];
-            foreach ($assistances as $assistance) {
-                $arr[] = $assistance->assistance;
-            }
-
+            $assistances = $petition->assistances;
             return response()->json([
                 'success' => 'true',
                 'error' => 'null',
-                'data' => $arr
+                'data' => $assistances,
             ], 200);
         } catch (\Throwable $th) {
             DB::rollback();
@@ -96,13 +91,7 @@ class PetitionController extends Controller
     {
         try {
             $petition = Petition::find($request->id);
-            $assistances = $petition->assistancePetitions;
-            $arr = [];
-            foreach ($assistances as $assistance) {
-                $arr[] = $assistance->assistance;
-            }
-            $data = [];
-            $data['assistances'] = $arr;
+            $data['assistances'] = $petition->assistances;
             $data['user'] = Profile::where('user_id', $petition->user->id)->first();
             $data['plan'] = $petition->plan;
             return response()->json([
@@ -122,7 +111,6 @@ class PetitionController extends Controller
         try {
             $petition = Petition::find($request->id);
             $assistances = $petition->assistancePetitions;
-            $arr = [];
             foreach ($assistances as $assistance) {
                 $assistance->delete();
             }
@@ -190,7 +178,7 @@ class PetitionController extends Controller
                 $user->firstnames = $request->user['firstnames'];
                 $user->lastnames = $request->user['lastnames'];
                 $user->email = $request->user['email'];
-                $user->doc = $request->user['doc'];
+                $user->user_type = $request->user['type'];
                 $user->main_phone = $request->user['phone_number'];
                 $user->save();
             }
@@ -257,6 +245,7 @@ class PetitionController extends Controller
                 $profile->doc = $request->identification;
                 $profile->email = $request->email;
                 $profile->main_phone = $request->phone_number;
+                $profile->user_type = $request->user['type'];
                 $profile->save();
             endif;
 

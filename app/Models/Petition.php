@@ -20,6 +20,11 @@ class Petition extends Model
         'plan_id',
     ];
 
+    public function assistancePetitions()
+    {
+        return $this->hasMany(AssistancePetition::class, 'petition_id');
+    }
+
     public function assistances()
     {
         return $this->belongsToMany(Assistance::class, 'assistance_petitions', 'petition_id', 'assistance_id');

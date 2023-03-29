@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('doc_type')->default('v');
             $table->text('address')->nullable();
             $table->string('cellphone')->nullable();
-
         });
     }
 
@@ -29,7 +28,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-
         });
     }
 };

@@ -123,13 +123,12 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { Quasar } from 'quasar'
 // import 'primeicons/primeicons.css';
 export default {
     components: {
         AppLayout
     },
-    props: ['petitions', 'plans'],
+    props: ['petitions', 'assistances', 'plans'],
     created() {
         this.rows = this.petitions;
         this.columns = [
@@ -290,7 +289,7 @@ export default {
                 assisMascotas: this.assisMascotas,
                 user: user,
                 plan: this.plan,
-
+                phone_number: this.phone_number,
 
             })
                 .then((res) => {

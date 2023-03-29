@@ -50,7 +50,7 @@ return new class extends Migration
       $table->unique(['optional_phone']);
       $table->boolean('deceased')->default(0)->nullable();
       $table->date('deceased_date')->nullable();
-
+      $table->string('user_type')->nullable();
       $table->foreignId('current_team_id')->nullable();
       $table->string('profile_photo_path', 2048)->nullable();
       $table->timestamps();
