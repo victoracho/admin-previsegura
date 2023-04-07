@@ -27,7 +27,7 @@ class FamilyMemberResource extends JsonResource
       'lastnames' => $this->profile->lastnames ? $this->profile->lastnames : '',
       'main_phone' => $this->profile->main_phone,
       'mobile_phone' => $this->profile->mobile_phone,
-      'birthdate' =>  $this->profile->birthdate,
+      'deceased_date' => $this->profile->birthdate ? date('d/m/Y', strtotime($this->profile->birthdate)) : null,
       'work_phone' => $this->profile->work_phone,
       'email' => $this->profile->email,
       'optional_phone' => $this->profile->optional_phone,
@@ -37,11 +37,9 @@ class FamilyMemberResource extends JsonResource
       'address' => $this->profile->address,
       'doc' => $this->profile->doc,
       'dependency' => $this->profile->dependency,
-      'state_id' => $this->profile->state_id,
-      'country_id' => $this->profile->country_id,
-      'city' => 'Caracas',
-      'state' => 'Distrito Capital',
-      'country' => 'Venezuela',
+      'city' => $this->profile->city_id ? $this->profile->city->name : null,
+      'state' => $this->profile->state_id ? $this->profile->state->name : null,
+      'country' => $this->profile->country_id ? $this->profile->country->name : null,
       'fecha_ingreso' => $this->profile->created_at->format('d/m/Y'),
     ];
   }

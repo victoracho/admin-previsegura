@@ -91,7 +91,19 @@ class PetitionController extends Controller
     {
         try {
             $petition = Petition::find($request->id);
+            $assistances = Assistance::all();
             $data['assistances'] = $petition->assistances;
+            $petitionAssistances = $data['assistances'];
+            $assistances = $assistances->map(function ($assistance) use ($petitionAssistances) {
+                $obj = (object)[];
+                $obj->id = $assistance->id;
+                $obj->name = $assistance->name;
+                $obj->selected = false;
+                if (array_key_exists($assistance->id, $petitionAssistances)) :
+                    $obj->selected = true;
+                endif;
+            });
+            $data['assistances'] = $assistances;
             $data['user'] = Profile::where('user_id', $petition->user->id)->first();
             $data['plan'] = $petition->plan;
             return response()->json([
@@ -114,6 +126,7 @@ class PetitionController extends Controller
             foreach ($assistances as $assistance) {
                 $assistance->delete();
             }
+            $assistances = $request->assistances;
             if ($request->assisFuneraria) {
                 $assis = new AssistancePetition;
                 $assis->petition_id = $request->id;

@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Permission;
 
-class NewRolesPermissionsSeeder extends Seeder
+class RolesPermissionsSeeder extends Seeder
 {
   /**
    * Run the database seeds.

@@ -15,4 +15,9 @@ class CountryState extends Model
 
   protected $dates = ['deleted_at'];
   protected $fillable = ['name', 'country'];
+
+  public function country()
+  {
+    return $this->belongsTo(Country::class, 'country');
+  }
 }

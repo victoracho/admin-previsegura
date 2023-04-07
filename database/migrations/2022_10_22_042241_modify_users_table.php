@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('doc_type')->default('v');
             $table->text('address')->nullable();
             $table->string('cellphone')->nullable();
+            $table->date('temporary_date')->nullable();
         });
     }
 

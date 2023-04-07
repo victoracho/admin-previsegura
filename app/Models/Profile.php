@@ -41,6 +41,7 @@ class Profile extends Authenticatable
     'dependency',
     'state_id',
     'country_id',
+    'city_id',
     'user_id',
     'gender',
   ];
@@ -59,6 +60,11 @@ class Profile extends Authenticatable
   {
     return $this->belongsTo(CountryState::class, 'state_id');
   }
+  public function city()
+  {
+    return $this->belongsTo(City::class, 'city_id');
+  }
+
   public function familymember()
   {
     return $this->hasone(FamilyMember::class, 'profile_id');

@@ -21,19 +21,22 @@ class AuthController extends BaseController
   public function signIn(Request $request)
   {
     try {
-      if ($user = User::where(['email' => $request->email, 'doc' => $request->doc])->first()) {
-        if ($user) {
-          Auth::login($user);
-          $authUser = Auth::user();
-          $token =  $authUser->createToken('MyAuthApp')->plainTextToken;
-          $role = $authUser->firstRole();
-          $profile = Profile::where('user_id', $authUser->id)->first();
-          $data = $this->getUserData($profile, $token);
-
-          return $this->sendResponse($data, 'El cliente inicia sesion.');
-        }
-      } else {
+      if (
+        !Auth::attempt(['email' => $request->username, 'password' => $request->password]) &&
+        !Auth::attempt(['doc' => $request->username, 'password' => $request->password])
+      ) {
         return $this->sendError('Desautorizado.', ['error' => 'Desautorizado']);
+      }
+      $user = Auth::user();
+      if ($user) {
+        Auth::login($user);
+        $authUser = Auth::user();
+        $token =  $authUser->createToken('MyAuthApp')->plainTextToken;
+        $role = $authUser->firstRole();
+        $profile = Profile::where('user_id', $authUser->id)->first();
+        $data = $this->getUserData($profile, $token);
+
+        return $this->sendResponse($data, 'El cliente inicia sesion.');
       }
     } catch (\Throwable $th) {
       throw $th;

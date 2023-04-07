@@ -29,7 +29,7 @@ class ContractResource extends JsonResource
         'id' => $hashids->encode($this->id),
         'status' => $this->status,
         'status_date' => date('d/m/Y', strtotime($this->status_date)),
-        'coverage_date' => $this->coverage_date,
+        'coverage_date' => date('d/m/Y', strtotime($this->coverage_date)),
         'covenant' => $this->covenant,
         'plan' => $this->plan,
         'bank_name' => $this->bank->name,

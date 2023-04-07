@@ -22,25 +22,8 @@
                     </q-card-section>
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox v-model="assisFuneraria"
-                            label="Asistencia funeraria nacional e internacional"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisFinanciera" label="Asistencia financiera en duelo"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisMedica"
-                            label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisCitas" label="Combo citas médicas"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisHospitalizacion"
-                            label="Asistencia financiera en hospitalización"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisEnfermedad"
-                            label="Asistencia financiera en enfermedad grave"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisOndotologica" label="Asistencia odontológica"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisMascotas" label="Mascotas de cielo"></q-checkbox>
+                        <q-checkbox v-for="assistance in assistances" :label="assistance.name">
+                        </q-checkbox>
                         <q-card-actions align="right">
                             <q-btn flat label="Cerrar" color="primary" v-close-popup />
                             <q-btn flat label="Editar" color="primary" @click="onOKClick()" v-close-popup />
@@ -52,27 +35,8 @@
                 <q-card style="width: 800px">
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox v-model="assisFuneraria" disable
-                            label="Asistencia funeraria nacional e internacional"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisFinanciera" disable
-                            label="Asistencia financiera en duelo"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisMedica" disable
-                            label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisCitas" disable label="Combo citas médicas"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisOndotologica" disable label="Asistencia odontológica"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisMascotas" disable label="Mascotas de cielo"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisEnfermedad" disable
-                            label="Asistencia financiera en enfermedad grave"></q-checkbox>
-                        <br>
-                        <q-checkbox v-model="assisHospitalizacion" disable
-                            label="Asistencia financiera en hospitalización"></q-checkbox>
-
+                        <q-checkbox v-for="assistance in assistances" :disable="assistance.selected"
+                            :label="assistance.name"></q-checkbox>
                     </q-card-section>
                 </q-card>
             </q-dialog>
@@ -102,7 +66,6 @@
                                 <q-btn round color="primary" icon="visibility" size="sm"
                                     @click="assistances(props.row.id)" />
                             </q-td>
-
                             <q-td key="date" :props="props">
                                 {{ props.row.date }}
                             </q-td>
@@ -149,16 +112,55 @@ export default {
             rows: null,
             currentPetition: null,
             columns: null,
-            assisCitas: false,
-            assisEnfermedad: false,
-            assisFinanciera: false,
-            assisFuneraria: false,
-            assisHospitalizacion: false,
-            assisMedica: false,
-            assisOndotologica: false,
-            assisMascotas: false,
             firstnames: null,
             lastnames: null,
+            assistances: [
+                {
+                    name: "Asistencia funeraria nacional e internacional",
+                    id: 1,
+                    selected: false
+                },
+                {
+                    name: "Asistencia financiera en duelo",
+                    id: 2,
+                    selected: false
+                },
+                {
+                    name: "Asistencia médica telefónica y domiciliaria",
+                    id: 3,
+                    selected: false
+                },
+                {
+                    name: "Combo citas medicas",
+                    id: 4,
+                    selected: false
+                },
+                {
+                    name: "Asistencia odontológica",
+                    id: 5,
+                    selected: false
+
+                },
+                {
+                    name: "Asistencia financiera en hospitalización",
+                    id: 6,
+                    selected: false
+
+                },
+                {
+                    name: "Asistencia financiera enfermedad grave",
+                    id: 7,
+                    selected: false
+
+                },
+                {
+                    name: "Asistencia mascotas en el cielo",
+                    id: 8,
+                    selected: false
+
+                },
+
+            ],
             plan: null,
             doc: null,
             maximizedToggle: true,
@@ -190,7 +192,7 @@ export default {
             await axios.post(route('petition.getInfo'), { id: id })
                 .then((res) => {
                     console.log(res.data.data.assistances);
-                    const assistances = res.data.data.assistances
+                    this.assistances = res.data.data.assistances
                     this.firstnames = res.data.data.user.firstnames
                     this.lastnames = res.data.data.user.lastnames
                     this.email = res.data.data.user.email
@@ -198,8 +200,6 @@ export default {
                     this.plan = res.data.data.plan.name
                     this.doc = res.data.data.user.doc
                     this.type = res.data.data.user.user_type == 1 ? 'nuevo' : 'registrado'
-
-                    this.checkAssistances(assistances)
                 })
             this.$refs.dialog.show()
         },
@@ -220,44 +220,6 @@ export default {
                 })
             this.$refs.assistancesDialog.show()
         },
-        checkAssistances(assistances) {
-            this.assisCitas = false
-            this.assisOndotologica = false
-            this.assisEnfermedad = false
-            this.assisFuneraria = false
-            this.assisFinanciera = false
-            this.assisHospitalizacion = false
-            this.assisMedica = false
-            this.assisMascotas = false
-
-            assistances.forEach(element => {
-                switch (element.name) {
-                    case "Asistencia funeraria nacional e internacional":
-                        this.assisFuneraria = true;
-                        break;
-                    case "Asistencia financiera en duelo":
-                        this.assisFinanciera = true;
-                        break;
-                    case "Asistencia médica telefónica y domiciliaria":
-                        this.assisMedica = true;
-                        break;
-                    case "Combo citas médicas":
-                        this.assisCitas = true;
-                        break;
-                    case "Asistencia odontológica":
-                        this.assisOndotologica = true;
-                        break;
-                    case "Asistencia financiera en hospitalización":
-                        this.assisHospitalizacion = true;
-                        break;
-                    case "Mascotas de cielo":
-                        this.assisMascotas = true;
-                        break;
-                    case "Asistencia financiera en enfermedad grave":
-                        this.assisEnfermedad = true;
-                }
-            });
-        },
         hide() {
             this.$refs.dialog.hide()
         },
@@ -277,16 +239,12 @@ export default {
                 type: this.type,
                 doc: this.doc
             }
+            const sendAssistances = this.assistances.map(x => {
+                return x.id;
+            });
             await axios.post(route('petition.sendAssistances'), {
                 id: this.currentPetition,
-                assisCitas: this.assisCitas,
-                assisOdontologica: this.assisOndotologica,
-                assisEnfermedad: this.assisEnfermedad,
-                assisFuneraria: this.assisFuneraria,
-                assisFinanciera: this.assisFinanciera,
-                assisHospitalizacion: this.assisHospitalizacion,
-                assisMedica: this.assisMedica,
-                assisMascotas: this.assisMascotas,
+                assistances: this.assistances,
                 user: user,
                 plan: this.plan,
                 phone_number: this.phone_number,

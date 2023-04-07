@@ -1,0 +1,3113 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class CitiesTableSeeder extends Seeder
+{
+
+    /**
+     * Auto generated seed file
+     *
+     * @return void
+     */
+    public function run()
+    {
+        
+
+        \DB::table('cities')->delete();
+        
+        \DB::table('cities')->insert(array (
+            0 => 
+            array (
+                'name' => 'Caracas',
+                'country_id' => 242,
+                'state_id' => 2199,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            1 => 
+            array (
+                'name' => 'Maracaibo',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            2 => 
+            array (
+                'name' => 'Valencia',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            3 => 
+            array (
+                'name' => 'Barquisimeto',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            4 => 
+            array (
+                'name' => 'Ciudad Guayana',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            5 => 
+            array (
+                'name' => 'Catia La Mar',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            6 => 
+            array (
+                'name' => 'Ciudad 2181',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            7 => 
+            array (
+                'name' => 'Maturín',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            8 => 
+            array (
+                'name' => 'Santa Teresa del Tuy',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            9 => 
+            array (
+                'name' => 'Barcelona',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            10 => 
+            array (
+                'name' => 'San Cristóbal',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            11 => 
+            array (
+                'name' => 'Maracay',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            12 => 
+            array (
+                'name' => 'Cumaná',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            13 => 
+            array (
+                'name' => 'Cabimas',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            14 => 
+            array (
+                'name' => 'Puerto La Cruz',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            15 => 
+            array (
+                'name' => 'Merida',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            16 => 
+            array (
+                'name' => 'Punto Fijo',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            17 => 
+            array (
+                'name' => 'Barinas',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            18 => 
+            array (
+                'name' => 'Coro',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            19 => 
+            array (
+                'name' => 'La Guaira',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            20 => 
+            array (
+                'name' => 'Turmero',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            21 => 
+            array (
+                'name' => 'Los Teques',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            22 => 
+            array (
+                'name' => 'Baruta',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            23 => 
+            array (
+                'name' => 'Cúa',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            24 => 
+            array (
+                'name' => 'La Victoria',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            25 => 
+            array (
+                'name' => 'El Tigre',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            26 => 
+            array (
+                'name' => 'Puerto Cabello',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            27 => 
+            array (
+                'name' => 'Guarenas',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            28 => 
+            array (
+                'name' => 'Guacara',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            29 => 
+            array (
+                'name' => 'Tocuyito',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            30 => 
+            array (
+                'name' => 'Acarigua',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            31 => 
+            array (
+                'name' => 'Guanare',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            32 => 
+            array (
+                'name' => 'Valera',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            33 => 
+            array (
+                'name' => 'Guatire',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            34 => 
+            array (
+                'name' => 'San Diego',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            35 => 
+            array (
+                'name' => 'Carúpano',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            36 => 
+            array (
+                'name' => 'Santa Rita',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            37 => 
+            array (
+                'name' => 'Anaco',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            38 => 
+            array (
+                'name' => 'Palo Negro',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            39 => 
+            array (
+                'name' => 'Ocumare del Tuy',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            40 => 
+            array (
+                'name' => 'Villa de Cura',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            41 => 
+            array (
+                'name' => 'Yaritagua',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            42 => 
+            array (
+                'name' => 'Calabozo',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            43 => 
+            array (
+                'name' => 'Táriba',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            44 => 
+            array (
+                'name' => 'Guasdualito',
+                'country_id' => 242,
+                'state_id' => 2178,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            45 => 
+            array (
+                'name' => 'Machiques',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            46 => 
+            array (
+                'name' => 'San Fernando',
+                'country_id' => 242,
+                'state_id' => 2178,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            47 => 
+            array (
+                'name' => 'Cagua',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            48 => 
+            array (
+                'name' => 'Ciudad Ojeda',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            49 => 
+            array (
+                'name' => 'Porlamar',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            50 => 
+            array (
+                'name' => 'San Carlos',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            51 => 
+            array (
+                'name' => 'Charalla242',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            52 => 
+            array (
+                'name' => 'Valle de La Pascua',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            53 => 
+            array (
+                'name' => 'Carora',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            54 => 
+            array (
+                'name' => 'Santa Lucía',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            55 => 
+            array (
+                'name' => 'Quíbor',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            56 => 
+            array (
+                'name' => 'Socopó',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            57 => 
+            array (
+                'name' => 'El Limón',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            58 => 
+            array (
+                'name' => 'Rubio',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            59 => 
+            array (
+                'name' => 'Cantaura',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            60 => 
+            array (
+                'name' => 'La Grita',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            61 => 
+            array (
+                'name' => 'Maiquetía',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            62 => 
+            array (
+                'name' => 'San Juan de los Morros',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            63 => 
+            array (
+                'name' => 'Tucupita',
+                'country_id' => 242,
+                'state_id' => 2184,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            64 => 
+            array (
+                'name' => 'Puerto Ayacucho',
+                'country_id' => 242,
+                'state_id' => 2176,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            65 => 
+            array (
+                'name' => 'San Carlos del 2197',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            66 => 
+            array (
+                'name' => 'San Felipe',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            67 => 
+            array (
+                'name' => 'Cabudare',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            68 => 
+            array (
+                'name' => 'Caripito',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            69 => 
+            array (
+                'name' => 'Zaraza',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            70 => 
+            array (
+                'name' => 'San Antonio del 2194',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            71 => 
+            array (
+                'name' => 'Upata',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            72 => 
+            array (
+                'name' => 'Trujillo',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            73 => 
+            array (
+                'name' => 'Sanare',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            74 => 
+            array (
+                'name' => 'Santa Cruz de Los Taques',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            75 => 
+            array (
+                'name' => 'El Tocuyo',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            76 => 
+            array (
+                'name' => 'Altagracia de Orituco',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            77 => 
+            array (
+                'name' => 'Lecherías',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            78 => 
+            array (
+                'name' => 'La Asunción',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            79 => 
+            array (
+                'name' => 'Santa Rita',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            80 => 
+            array (
+                'name' => 'Sabaneta',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            81 => 
+            array (
+                'name' => 'Puerto Píritu',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            82 => 
+            array (
+                'name' => 'La Colonia Tovar',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            83 => 
+            array (
+                'name' => 'Tucacas',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            84 => 
+            array (
+                'name' => 'Onoto',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            85 => 
+            array (
+                'name' => 'San José de Aerocuar',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            86 => 
+            array (
+                'name' => 'Uracoa',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            87 => 
+            array (
+                'name' => 'Bruzual',
+                'country_id' => 242,
+                'state_id' => 2178,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            88 => 
+            array (
+                'name' => 'Mucuchíes',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            89 => 
+            array (
+                'name' => 'Mapire',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            90 => 
+            array (
+                'name' => 'San Fernando de Atabapo',
+                'country_id' => 242,
+                'state_id' => 2176,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            91 => 
+            array (
+                'name' => 'San Carlos de Río Negro',
+                'country_id' => 242,
+                'state_id' => 2176,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            92 => 
+            array (
+                'name' => 'Maroa',
+                'country_id' => 242,
+                'state_id' => 2176,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            93 => 
+            array (
+                'name' => 'La Esmeralda',
+                'country_id' => 242,
+                'state_id' => 2176,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            94 => 
+            array (
+                'name' => 'Chacao',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            95 => 
+            array (
+                'name' => 'San Francisco',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            96 => 
+            array (
+                'name' => 'Pampatar',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            97 => 
+            array (
+                'name' => 'Petare',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            98 => 
+            array (
+                'name' => 'San Antonio de Los Altos',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            99 => 
+            array (
+                'name' => 'Los Guayos',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            100 => 
+            array (
+                'name' => 'Naguanagua',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            101 => 
+            array (
+                'name' => 'El Hatillo',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            102 => 
+            array (
+                'name' => 'El Valle del Espíritu Santo',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            103 => 
+            array (
+                'name' => 'Juangriego',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            104 => 
+            array (
+                'name' => 'Palmira',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            105 => 
+            array (
+                'name' => 'Capacho Nuevo',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            106 => 
+            array (
+                'name' => 'Capacho Viejo',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            107 => 
+            array (
+                'name' => 'Santa Cruz',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            108 => 
+            array (
+                'name' => 'Motatán',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            109 => 
+            array (
+                'name' => 'Mariara',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            110 => 
+            array (
+                'name' => 'El Junko',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            111 => 
+            array (
+                'name' => 'La Plaza de P2179chí',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            112 => 
+            array (
+                'name' => 'Santa Ana',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            113 => 
+            array (
+                'name' => 'San Juan Bautista',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            114 => 
+            array (
+                'name' => 'San Joaquín',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            115 => 
+            array (
+                'name' => 'San Mateo',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            116 => 
+            array (
+                'name' => 'Carvajal',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            117 => 
+            array (
+                'name' => 'Carrizal',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            118 => 
+            array (
+                'name' => 'San Josecito',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            119 => 
+            array (
+                'name' => 'Ureña',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            120 => 
+            array (
+                'name' => 'Caraballeda',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            121 => 
+            array (
+                'name' => 'Naiguatá',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            122 => 
+            array (
+                'name' => 'La Sabana',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            123 => 
+            array (
+                'name' => 'Macuto',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            124 => 
+            array (
+                'name' => 'Carayaca',
+                'country_id' => 242,
+                'state_id' => 2200,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            125 => 
+            array (
+                'name' => 'El Consejo',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            126 => 
+            array (
+                'name' => 'Cojedes',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            127 => 
+            array (
+                'name' => 'Duaca',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            128 => 
+            array (
+                'name' => 'Pampán',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            129 => 
+            array (
+                'name' => 'Guanta',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            130 => 
+            array (
+                'name' => 'Las Tejerías',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            131 => 
+            array (
+                'name' => 'San Francisco de Yare',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            132 => 
+            array (
+                'name' => 'Boraure',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            133 => 
+            array (
+                'name' => 'Guama',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            134 => 
+            array (
+                'name' => 'San Pablo',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            135 => 
+            array (
+                'name' => 'Tovar',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            136 => 
+            array (
+                'name' => 'Agua Blanca',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            137 => 
+            array (
+                'name' => 'Araure',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            138 => 
+            array (
+                'name' => 'Betijoque',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            139 => 
+            array (
+                'name' => 'Escuque',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            140 => 
+            array (
+                'name' => 'Urachiche',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            141 => 
+            array (
+                'name' => 'Sabana de Parra',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            142 => 
+            array (
+                'name' => 'El Vigía',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            143 => 
+            array (
+                'name' => 'Tinaquillo',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            144 => 
+            array (
+                'name' => 'Tabay',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            145 => 
+            array (
+                'name' => 'Morón',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            146 => 
+            array (
+                'name' => 'Güigüe',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            147 => 
+            array (
+                'name' => 'San Pedro de Coche',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            148 => 
+            array (
+                'name' => 'Michelena',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            149 => 
+            array (
+                'name' => 'Bejuma',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            150 => 
+            array (
+                'name' => 'Montalbán',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            151 => 
+            array (
+                'name' => 'San José de Barlo242nto',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            152 => 
+            array (
+                'name' => 'Cordero',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            153 => 
+            array (
+                'name' => 'Chivacoa',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            154 => 
+            array (
+                'name' => 'Punta de Mata',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            155 => 
+            array (
+                'name' => 'Bailadores',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            156 => 
+            array (
+                'name' => 'Tía Juana',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            157 => 
+            array (
+                'name' => 'El Dividi242',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            158 => 
+            array (
+                'name' => 'Ejido',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            159 => 
+            array (
+                'name' => 'San Rafael de Onoto',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            160 => 
+            array (
+                'name' => 'Independencia',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            161 => 
+            array (
+                'name' => 'Cocorote',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            162 => 
+            array (
+                'name' => 'Pampanito',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            163 => 
+            array (
+                'name' => 'Mamporal',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            164 => 
+            array (
+                'name' => 'Colón',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            165 => 
+            array (
+                'name' => 'Barinitas',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            166 => 
+            array (
+                'name' => 'Higuerote',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            167 => 
+            array (
+                'name' => 'El Toro',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            168 => 
+            array (
+                'name' => 'Marigüitar',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            169 => 
+            array (
+                'name' => 'Zea',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            170 => 
+            array (
+                'name' => 'Píritu',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            171 => 
+            array (
+                'name' => 'Paraíso de Chabasquén',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            172 => 
+            array (
+                'name' => 'Obispos',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            173 => 
+            array (
+                'name' => 'Campo Elías',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            174 => 
+            array (
+                'name' => 'Biscucuy',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            175 => 
+            array (
+                'name' => 'Las Mesas',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            176 => 
+            array (
+                'name' => 'Valle de Guanape',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            177 => 
+            array (
+                'name' => 'Macapo',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            178 => 
+            array (
+                'name' => 'Bobures',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            179 => 
+            array (
+                'name' => 'Güiria',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            180 => 
+            array (
+                'name' => 'Lagunillas',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            181 => 
+            array (
+                'name' => 'Boconoito',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            182 => 
+            array (
+                'name' => 'Santa Ana',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            183 => 
+            array (
+                'name' => 'Pueblo Llano',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            184 => 
+            array (
+                'name' => 'La 242la de Coro',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            185 => 
+            array (
+                'name' => 'Santa Elena de Arenales',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            186 => 
+            array (
+                'name' => 'San Rafael de El Moján',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            187 => 
+            array (
+                'name' => 'Río Caribe',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            188 => 
+            array (
+                'name' => 'Sabana de Mendoza',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            189 => 
+            array (
+                'name' => 'Sabana Grande',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            190 => 
+            array (
+                'name' => 'Santa Isabel',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            191 => 
+            array (
+                'name' => 'Araya',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            192 => 
+            array (
+                'name' => 'Yaracal',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            193 => 
+            array (
+                'name' => 'Chejendé',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            194 => 
+            array (
+                'name' => 'Punta de Piedras',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            195 => 
+            array (
+                'name' => 'Boca de Río',
+                'country_id' => 242,
+                'state_id' => 2191,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            196 => 
+            array (
+                'name' => 'La Quebrada',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            197 => 
+            array (
+                'name' => 'Arapuey',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            198 => 
+            array (
+                'name' => 'Yaguaraparo',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            199 => 
+            array (
+                'name' => 'Seboruco',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            200 => 
+            array (
+                'name' => 'Nueva Bolivia',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            201 => 
+            array (
+                'name' => 'San Antonio del Golfo',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            202 => 
+            array (
+                'name' => 'Los Puertos de Altagracia',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            203 => 
+            array (
+                'name' => 'La Fría',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            204 => 
+            array (
+                'name' => 'Tocópero',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            205 => 
+            array (
+                'name' => 'Boconó',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            206 => 
+            array (
+                'name' => 'San Sebastián',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            207 => 
+            array (
+                'name' => 'San Casimiro',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            208 => 
+            array (
+                'name' => 'Sinamaica',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            209 => 
+            array (
+                'name' => 'Santa Cruz de Mora',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            210 => 
+            array (
+                'name' => 'Aragua',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            211 => 
+            array (
+                'name' => 'Irapa',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            212 => 
+            array (
+                'name' => 'Píritu',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            213 => 
+            array (
+                'name' => 'Villa Bruzual',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            214 => 
+            array (
+                'name' => 'Lobatera',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            215 => 
+            array (
+                'name' => 'Cumanacoa',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            216 => 
+            array (
+                'name' => 'Concepción',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            217 => 
+            array (
+                'name' => 'San Timoteo',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            218 => 
+            array (
+                'name' => 'Caucagua',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            219 => 
+            array (
+                'name' => 'El Piñal',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            220 => 
+            array (
+                'name' => 'Timotes',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            221 => 
+            array (
+                'name' => 'Bachaquero',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            222 => 
+            array (
+                'name' => 'Puerto Cumarebo',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            223 => 
+            array (
+                'name' => 'La Tendida',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            224 => 
+            array (
+                'name' => 'Pueblo Nuevo El Chivo',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            225 => 
+            array (
+                'name' => 'Sarare',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            226 => 
+            array (
+                'name' => 'Torondoy',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            227 => 
+            array (
+                'name' => 'Santa Apolonia',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            228 => 
+            array (
+                'name' => 'La Concepción',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            229 => 
+            array (
+                'name' => 'Quiriquire',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            230 => 
+            array (
+                'name' => 'Cariaco',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            231 => 
+            array (
+                'name' => 'Casanay',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            232 => 
+            array (
+                'name' => 'El Cobre',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            233 => 
+            array (
+                'name' => 'Caripe',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            234 => 
+            array (
+                'name' => 'Ocumare de la Costa',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            235 => 
+            array (
+                'name' => 'Río Chico',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            236 => 
+            array (
+                'name' => 'San Simón',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            237 => 
+            array (
+                'name' => 'La Azulita',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            238 => 
+            array (
+                'name' => 'Aroa',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            239 => 
+            array (
+                'name' => 'Palmasola',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            240 => 
+            array (
+                'name' => 'Farriar',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            241 => 
+            array (
+                'name' => 'Yumare',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            242 => 
+            array (
+                'name' => 'Delicias',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            243 => 
+            array (
+                'name' => 'San Antonio',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            244 => 
+            array (
+                'name' => 'El Pao',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            245 => 
+            array (
+                'name' => 'Tinaco',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            246 => 
+            array (
+                'name' => 'Coloncito',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            247 => 
+            array (
+                'name' => 'Umuquena',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            248 => 
+            array (
+                'name' => 'Mirimire',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            249 => 
+            array (
+                'name' => 'Nirgua',
+                'country_id' => 242,
+                'state_id' => 2196,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            250 => 
+            array (
+                'name' => 'Delta Amacuro',
+                'country_id' => 242,
+                'state_id' => 2182,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            251 => 
+            array (
+                'name' => 'Tucaní',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            252 => 
+            array (
+                'name' => 'Santo Domingo',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            253 => 
+            array (
+                'name' => 'Pueblo Nuevo',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            254 => 
+            array (
+                'name' => 'Monte Carmelo',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            255 => 
+            array (
+                'name' => 'San Juan de Payara',
+                'country_id' => 242,
+                'state_id' => 2178,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            256 => 
+            array (
+                'name' => 'San Juan de los Cayos',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            257 => 
+            array (
+                'name' => 'Santa Bárbara',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            258 => 
+            array (
+                'name' => 'Carache',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            259 => 
+            array (
+                'name' => 'La Villa del Rosario',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            260 => 
+            array (
+                'name' => 'Churuguara',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            261 => 
+            array (
+                'name' => 'Boca de Uchire',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            262 => 
+            array (
+                'name' => 'Cúpira',
+                'country_id' => 242,
+                'state_id' => 2189,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            263 => 
+            array (
+                'name' => 'Ospino',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            264 => 
+            array (
+                'name' => 'Tunapuy',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            265 => 
+            array (
+                'name' => 'Abejales',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            266 => 
+            array (
+                'name' => 'Libertad',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            267 => 
+            array (
+                'name' => 'Barrancas',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            268 => 
+            array (
+                'name' => 'Chichiriviche',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            269 => 
+            array (
+                'name' => 'Camaguán',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            270 => 
+            array (
+                'name' => 'El Playón',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            271 => 
+            array (
+                'name' => 'Clarines',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            272 => 
+            array (
+                'name' => 'Camatagua',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            273 => 
+            array (
+                'name' => 'Siquisique',
+                'country_id' => 242,
+                'state_id' => 2187,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            274 => 
+            array (
+                'name' => 'Caicara',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            275 => 
+            array (
+                'name' => 'Barrancas',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            276 => 
+            array (
+                'name' => 'Dabajuro',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            277 => 
+            array (
+                'name' => 'Santa Cruz de Bucaral',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            278 => 
+            array (
+                'name' => 'Queniquea',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            279 => 
+            array (
+                'name' => 'San José de 2181',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            280 => 
+            array (
+                'name' => 'Tucupido',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            281 => 
+            array (
+                'name' => 'Santa María de Caparo',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            282 => 
+            array (
+                'name' => 'Guaraque',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            283 => 
+            array (
+                'name' => 'San Luis',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            284 => 
+            array (
+                'name' => 'El Sombrero',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            285 => 
+            array (
+                'name' => 'Mene de Mauroa',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            286 => 
+            array (
+                'name' => 'Cabure',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            287 => 
+            array (
+                'name' => 'Pregonero',
+                'country_id' => 242,
+                'state_id' => 2194,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            288 => 
+            array (
+                'name' => 'Temblador',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            289 => 
+            array (
+                'name' => 'Santa Bárbara',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            290 => 
+            array (
+                'name' => 'El Pilar',
+                'country_id' => 242,
+                'state_id' => 2193,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            291 => 
+            array (
+                'name' => 'El Cantón',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            292 => 
+            array (
+                'name' => 'Santa Ana',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            293 => 
+            array (
+                'name' => 'Tumeremo',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            294 => 
+            array (
+                'name' => 'Biruaca',
+                'country_id' => 242,
+                'state_id' => 2178,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            295 => 
+            array (
+                'name' => 'Libertad',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            296 => 
+            array (
+                'name' => 'Las 242gas',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            297 => 
+            array (
+                'name' => 'San José de Guaribe',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            298 => 
+            array (
+                'name' => 'Urumaco',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            299 => 
+            array (
+                'name' => 'La Cruz de Taratara',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            300 => 
+            array (
+                'name' => 'Barbacoas',
+                'country_id' => 242,
+                'state_id' => 2179,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            301 => 
+            array (
+                'name' => 'San José de Guanipa',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            302 => 
+            array (
+                'name' => 'Sierra Imataca',
+                'country_id' => 242,
+                'state_id' => 2184,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            303 => 
+            array (
+                'name' => 'Ciudad Bolivia',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            304 => 
+            array (
+                'name' => '2179 de Barcelona',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            305 => 
+            array (
+                'name' => 'Pariaguán',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            306 => 
+            array (
+                'name' => 'Píritu',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            307 => 
+            array (
+                'name' => 'Guanarito',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            308 => 
+            array (
+                'name' => 'Encontrados',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            309 => 
+            array (
+                'name' => 'Canaguá',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            310 => 
+            array (
+                'name' => 'El Socorro',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            311 => 
+            array (
+                'name' => 'El Paradero',
+                'country_id' => 242,
+                'state_id' => 2195,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            312 => 
+            array (
+                'name' => 'Casigua El Cubo',
+                'country_id' => 242,
+                'state_id' => 2197,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            313 => 
+            array (
+                'name' => 'Ciudad de Nutrias',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            314 => 
+            array (
+                'name' => 'Capatárida',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            315 => 
+            array (
+                'name' => 'Guayabal',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            316 => 
+            array (
+                'name' => 'Papelón',
+                'country_id' => 242,
+                'state_id' => 2192,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            317 => 
+            array (
+                'name' => 'San Mateo',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            318 => 
+            array (
+                'name' => 'El Chaparro',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            319 => 
+            array (
+                'name' => 'Aguasay',
+                'country_id' => 242,
+                'state_id' => 2190,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            320 => 
+            array (
+                'name' => 'Ortiz',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            321 => 
+            array (
+                'name' => 'Jacura',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            322 => 
+            array (
+                'name' => 'Chaguaramas',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            323 => 
+            array (
+                'name' => 'Las Mercedes',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            324 => 
+            array (
+                'name' => 'El Palmar',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            325 => 
+            array (
+                'name' => 'Caicara del Orinoco',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            326 => 
+            array (
+                'name' => 'Soledad',
+                'country_id' => 242,
+                'state_id' => 2177,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            327 => 
+            array (
+                'name' => 'Achaguas',
+                'country_id' => 242,
+                'state_id' => 2178,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            328 => 
+            array (
+                'name' => 'Aricagua',
+                'country_id' => 242,
+                'state_id' => 2188,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            329 => 
+            array (
+                'name' => 'Arismendi',
+                'country_id' => 242,
+                'state_id' => 2180,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            330 => 
+            array (
+                'name' => 'Pedregal',
+                'country_id' => 242,
+                'state_id' => 2185,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            331 => 
+            array (
+                'name' => 'El Baúl',
+                'country_id' => 242,
+                'state_id' => 2183,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            332 => 
+            array (
+                'name' => 'Curiapo',
+                'country_id' => 242,
+                'state_id' => 2184,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            333 => 
+            array (
+                'name' => 'Guasipati',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            334 => 
+            array (
+                'name' => 'Pedernales',
+                'country_id' => 242,
+                'state_id' => 2184,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            335 => 
+            array (
+                'name' => 'El Callao',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            336 => 
+            array (
+                'name' => 'Santa María de Ipire',
+                'country_id' => 242,
+                'state_id' => 2186,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            337 => 
+            array (
+                'name' => 'Elorza',
+                'country_id' => 242,
+                'state_id' => 2178,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            338 => 
+            array (
+                'name' => 'Maripa',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            339 => 
+            array (
+                'name' => 'Santa Elena de Uairén',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            340 => 
+            array (
+                'name' => 'Ciudad Piar',
+                'country_id' => 242,
+                'state_id' => 2181,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            341 => 
+            array (
+                'name' => 'Isla Ratón',
+                'country_id' => 242,
+                'state_id' => 2176,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            342 => 
+            array (
+                'name' => 'San Juan de Manapiare',
+                'country_id' => 242,
+                'state_id' => 2176,
+                'created_at' => '2022-03-08 11:15:06',
+                'deleted_at' => NULL,
+                'updated_at' => NULL,
+            ),
+        ));
+        
+        
+    }
+}
