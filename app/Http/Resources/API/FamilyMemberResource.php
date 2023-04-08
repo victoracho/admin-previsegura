@@ -19,8 +19,8 @@ class FamilyMemberResource extends JsonResource
     $hashids = new Hashids('user-helper', 20);
 
     return [
-      'coverage_date' => date('d/m/Y', strtotime($this->coverage_date)),
-      'inscription' => date('d/m/Y', strtotime($this->inscription)),
+      'coverage_date' => $this->coverage_date ? date('d/m/Y', strtotime($this->coverage_date)) : null,
+      'inscription' => $this->inscription ? date('d/m/Y', strtotime($this->inscription)) : null,
       'additional_amount' =>  floatval($this->additional_amount),
       'bond' => $this->familyMember->bond,
       'firstnames' => $this->profile->firstnames,

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->unsigned()->notNullable();
             $table->foreignId('account_id')->unsigned()->nullable();
             $table->foreignId('bank_id')->unsigned()->notNullable();
+            $table->foreignId('assistance_id')->unsigned()->notNullable();
 
             $table->boolean('direct_debit_acceptance')->default(0);
             $table->string('status', 100)->nullable();
@@ -39,6 +40,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
+            $table->foreign('assistance_id')->references('id')->on('assistances')->onDelete('cascade');
         });
     }
 

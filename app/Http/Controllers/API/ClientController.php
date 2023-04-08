@@ -7,7 +7,7 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Http\Resources\API\ContractResource;
 use App\Models\Profile;
 use App\Http\Resources\API\ProfileResource;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ClientController extends BaseController
 {
@@ -17,9 +17,6 @@ class ClientController extends BaseController
       if ($user = $request->user()) {
         $token = $request->bearerToken();
         $profile = Profile::where('user_id', $user->id)->first();
-        // $success = $this->getUserData($profile, $token);
-        // $role = $success['role'];
-        // $success['role'] = $role;
         $success['perfil'] = new ProfileResource($profile);
         $success['contracts'] = ContractResource::collection($user->contracts);
         return $this->sendResponse($success, 'Informacion de cliente entregada.');
