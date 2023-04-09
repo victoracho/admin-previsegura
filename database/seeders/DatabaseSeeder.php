@@ -108,21 +108,21 @@ class DatabaseSeeder extends Seeder
         $bank = Bank::first();
 
         $role = role::where('slug', 'role-admin')->get();
-        // $user = new user;
-        // $user->doc = '24203490';
-        // $user->email = 'victoracho.box@gmail.com';
-        // $user->password = bcrypt('8726231');
-        // $user->save();
-        // $user->refresh();
-        // $user->roles()->attach($role);
-        // $user->save();
-        //
-        // $profile = new profile();
-        // $profile->firstnames = 'victor manuel';
-        // $profile->lastnames = 'gonzalez pereira';
-        // $profile->doc = '24203490';
-        // $profile->user_id = $user->id;
-        // $profile->save();
+        $user = new user;
+        $user->doc = '24203490';
+        $user->email = 'victoracho.box@gmail.com';
+        $user->password = bcrypt('8726231');
+        $user->save();
+        $user->refresh();
+        $user->roles()->attach($role);
+        $user->save();
+
+        $profile = new profile();
+        $profile->firstnames = 'victor manuel';
+        $profile->lastnames = 'gonzalez pereira';
+        $profile->doc = '24203490';
+        $profile->user_id = $user->id;
+        $profile->save();
 
 
         $user = new user();
