@@ -107,25 +107,25 @@ class DatabaseSeeder extends Seeder
 
         $bank = Bank::first();
 
-        $role = Role::where('slug', 'role-admin')->get();
-        $user = new User;
-        $user->doc = '24203490';
-        $user->email = 'victoracho.box@gmail.com';
-        $user->password = bcrypt('8726231');
-        $user->save();
-        $user->refresh();
-        $user->roles()->attach($role);
-        $user->save();
+        // $role = role::where('slug', 'role-admin')->get();
+        // $user = new user;
+        // $user->doc = '24203490';
+        // $user->email = 'victoracho.box@gmail.com';
+        // $user->password = bcrypt('8726231');
+        // $user->save();
+        // $user->refresh();
+        // $user->roles()->attach($role);
+        // $user->save();
+        //
+        // $profile = new profile();
+        // $profile->firstnames = 'victor manuel';
+        // $profile->lastnames = 'gonzalez pereira';
+        // $profile->doc = '24203490';
+        // $profile->user_id = $user->id;
+        // $profile->save();
 
-        $profile = new Profile();
-        $profile->firstnames = 'victor manuel';
-        $profile->lastnames = 'Gonzalez Pereira';
-        $profile->doc = '24203490';
-        $profile->user_id = $user->id;
-        $profile->save();
 
-
-        $user = new User();
+        $user = new user();
         $user->email = 'danielcuomo14@gmail.com';
         $user->password = bcrypt('123456789');
         $user->doc = '202020202';
@@ -134,14 +134,14 @@ class DatabaseSeeder extends Seeder
         $user->roles()->attach($role);
         $user->save();
 
-        $profile = new Profile();
-        $profile->firstnames = 'Daniel';
-        $profile->lastnames = 'Cuomo';
+        $profile = new profile();
+        $profile->firstnames = 'daniel';
+        $profile->lastnames = 'cuomo';
         $profile->doc = '20202020';
         $profile->user_id = $user->id;
         $profile->save();
 
-        $role = Role::where('slug', 'role-user')->get();
+        $role = role::where('slug', 'role-user')->get();
         $user = new User();
         $user->email = 'pedro@gmail.com';
         $user->password = bcrypt('123456789');
