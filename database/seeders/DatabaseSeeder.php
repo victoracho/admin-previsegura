@@ -14,6 +14,7 @@ use App\Models\Contract;
 use App\Models\Bank;
 use App\Models\FamilyMember;
 use App\Models\ContractAssistance;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
@@ -691,6 +692,7 @@ class DatabaseSeeder extends Seeder
             $payment->to = $dt->toDateTimeString();
             $payment->payment_number = '00009';
             $payment->save();
+            DB::commit();
         } catch (\Throwable $th) {
             DB::rollback();
             throw $th;
