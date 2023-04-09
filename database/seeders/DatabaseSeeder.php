@@ -187,7 +187,7 @@ class DatabaseSeeder extends Seeder
         $contract->assistance_id = 4;
         $dt = Carbon::create(2023, 03, 29, 0);
         $contract->emission = $dt->toDateTimeString();
-        $dt = Carbon::create(2023, 03, 29, 0);
+        $dt = Carbon::create(2025, 03, 29, 0);
         $contract->expire_date = $dt->toDateTimeString();
         $contract->modality = 'MENSUAL';
         $contract->fee_quantity = '4';
@@ -515,7 +515,7 @@ class DatabaseSeeder extends Seeder
         $contract->assistance_id = 8;
         $dt = Carbon::create(2023, 03, 30, 0);
         $contract->emission = $dt->toDateTimeString();
-        $dt = Carbon::create(2023, 03, 30, 0);
+        $dt = Carbon::create(2025, 03, 30, 0);
         $contract->expire_date = $dt->toDateTimeString();
         $contract->modality = 'MENSUAL';
         $contract->fee_quantity = '2';
@@ -632,7 +632,7 @@ class DatabaseSeeder extends Seeder
         $contract->assistance_id = 6;
         $dt = Carbon::create(2023, 04, 01, 0);
         $contract->emission = $dt->toDateTimeString();
-        $dt = Carbon::create(2023, 04, 01, 0);
+        $dt = Carbon::create(2025, 04, 01, 0);
         $contract->expire_date = $dt->toDateTimeString();
         $contract->modality = 'MENSUAL';
         $contract->fee_quantity = '2';
