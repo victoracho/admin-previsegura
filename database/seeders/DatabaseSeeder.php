@@ -107,7 +107,7 @@ class DatabaseSeeder extends Seeder
 
         $bank = Bank::first();
 
-        // $role = role::where('slug', 'role-admin')->get();
+        $role = role::where('slug', 'role-admin')->get();
         // $user = new user;
         // $user->doc = '24203490';
         // $user->email = 'victoracho.box@gmail.com';
