@@ -75,7 +75,7 @@ class PetitionController extends Controller
             $data['arr'] = $arr;
             $assistances = $assistances->map(function ($assistance) use ($arr) {
                 $obj = (object)[];
-                $obj->value = $assistance->id;
+                $obj->value = strval($assistance->id);
                 $obj->label = $assistance->name;
                 return $obj;
             });
@@ -117,7 +117,7 @@ class PetitionController extends Controller
             $data['assistances'] = $petition->assistances;
             $arr = [];
             foreach ($data['assistances'] as $assistance) {
-                $arr[] = $assistance->id;
+                $arr[] = strval($assistance->id);
             }
             $data['arr'] = $arr;
             $assistances = $assistances->map(function ($assistance) use ($arr) {

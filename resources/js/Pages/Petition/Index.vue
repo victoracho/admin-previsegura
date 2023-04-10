@@ -179,8 +179,8 @@ export default {
             this.currentPetition = id
             await axios.post(route('petition.getInfo'), { id: id })
                 .then((res) => {
-                    console.log(res.data.data.assistances);
                     this.selection = res.data.data.arr
+                    console.log(this.selection)
                     this.firstnames = res.data.data.user.firstnames
                     this.lastnames = res.data.data.user.lastnames
                     this.email = res.data.data.user.email
@@ -195,8 +195,8 @@ export default {
             this.currentpetition = id
             await axios.post(route('petition.getAssistances'), { id: id })
                 .then((res) => {
-                    console.log(res.data.data)
                     this.selection = res.data.data.arr
+                    console.log(res.data.data.arr)
                     this.firstnames = null
                     this.lastnames = null
                     this.email = null
