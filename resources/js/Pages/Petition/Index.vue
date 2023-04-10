@@ -22,7 +22,7 @@
                     </q-card-section>
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox v-for="assistance in assistances" :label="assistance.name">
+                        <q-checkbox v-for="assistance in assis" :label="assistance.name">
                         </q-checkbox>
                         <q-card-actions align="right">
                             <q-btn flat label="Cerrar" color="primary" v-close-popup />
@@ -35,7 +35,7 @@
                 <q-card style="width: 800px">
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox v-for="assistance in assistances" :disable="assistance.selected"
+                        <q-checkbox v-for="assistance in assis" :disable="assistance.selected"
                             :label="assistance.name"></q-checkbox>
                     </q-card-section>
                 </q-card>
@@ -114,7 +114,7 @@ export default {
             columns: null,
             firstnames: null,
             lastnames: null,
-            assistances: [
+            assis: [
                 {
                     name: "Asistencia funeraria nacional e internacional",
                     id: 1,
@@ -192,7 +192,7 @@ export default {
             await axios.post(route('petition.getInfo'), { id: id })
                 .then((res) => {
                     console.log(res.data.data.assistances);
-                    this.assistances = res.data.data.assistances
+                    this.assis = res.data.data.assistances
                     this.firstnames = res.data.data.user.firstnames
                     this.lastnames = res.data.data.user.lastnames
                     this.email = res.data.data.user.email
@@ -207,7 +207,8 @@ export default {
             this.currentpetition = id
             await axios.post(route('petition.getAssistances'), { id: id })
                 .then((res) => {
-                    this.assistances = res.data.data
+                    console.log(res.data.data)
+                    this.assis = res.data.data
                     this.firstnames = null
                     this.lastnames = null
                     this.email = null
