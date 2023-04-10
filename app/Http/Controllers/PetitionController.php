@@ -66,7 +66,23 @@ class PetitionController extends Controller
     {
         try {
             $petition = Petition::find($request->id);
-            $assistances = $petition->assistances;
+            $assistances = Assistance::all();
+            $data['assistances'] = $petition->assistances;
+            $arr = [];
+            foreach ($data['assistances'] as $assistance) {
+                $arr[] = $assistance->id;
+            }
+            $assistances = $assistances->map(function ($assistance) use ($arr) {
+                $obj = (object)[];
+                $obj->id = $assistance->id;
+                $obj->name = $assistance->name;
+                $obj->selected = false;
+                if (array_key_exists($assistance->id, $arr)) :
+                    $obj->selected = true;
+                endif;
+                return $obj;
+            });
+
             return response()->json([
                 'success' => 'true',
                 'error' => 'null',
@@ -114,6 +130,7 @@ class PetitionController extends Controller
                 if (array_key_exists($assistance->id, $arr)) :
                     $obj->selected = true;
                 endif;
+                return $obj;
             });
             $data['assistances'] = $assistances;
             $data['user'] = Profile::where('user_id', $petition->user->id)->first();
