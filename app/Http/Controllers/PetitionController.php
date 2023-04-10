@@ -102,13 +102,16 @@ class PetitionController extends Controller
             $petition = Petition::find($request->id);
             $assistances = Assistance::all();
             $data['assistances'] = $petition->assistances;
-            $petitionAssistances = $data['assistances'];
-            $assistances = $assistances->map(function ($assistance) use ($petitionAssistances) {
+            $arr = [];
+            foreach ($data['assistances'] as $assistance) {
+                $arr[] = $assistance->id;
+            }
+            $assistances = $assistances->map(function ($assistance) use ($arr) {
                 $obj = (object)[];
                 $obj->id = $assistance->id;
                 $obj->name = $assistance->name;
                 $obj->selected = false;
-                if (array_key_exists($assistance->id, $petitionAssistances)) :
+                if (array_key_exists($assistance->id, $arr)) :
                     $obj->selected = true;
                 endif;
             });

@@ -207,7 +207,7 @@ export default {
             this.currentpetition = id
             await axios.post(route('petition.getAssistances'), { id: id })
                 .then((res) => {
-                    const assistances = res.data.data
+                    this.assistances = res.data.data
                     this.firstnames = null
                     this.lastnames = null
                     this.email = null
