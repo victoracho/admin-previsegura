@@ -22,21 +22,20 @@
                     </q-card-section>
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox disable="true" value="1" v-model="selection"
+                        <q-checkbox disable="true" val="1" v-model="selection"
                             label="Asistencia funeraria nacional e internacional"></q-checkbox>
-                        <q-checkbox disable="true" value="2" v-model="selection"
+                        <q-checkbox disable="true" val="2" v-model="selection"
                             label="Asistencia financiera en duelo"></q-checkbox>
-                        <q-checkbox disable="true" value="3" v-model="selection"
+                        <q-checkbox disable="true" val="3" v-model="selection"
                             label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
-                        <q-checkbox disable="true" value="4" v-model="selection"
-                            label="Combo citas medicas"></q-checkbox>
-                        <q-checkbox disable="true" value="5" v-model="selection"
+                        <q-checkbox disable="true" val="4" v-model="selection" label="Combo citas medicas"></q-checkbox>
+                        <q-checkbox disable="true" val="5" v-model="selection"
                             label="Asistencia odontológica"></q-checkbox>
-                        <q-checkbox disable="true" value="6" v-model="selection"
+                        <q-checkbox disable="true" val="6" v-model="selection"
                             label="Asistencia financiera en hospitalización"></q-checkbox>
-                        <q-checkbox disable="true" value="7" v-model="selection"
+                        <q-checkbox disable="true" val="7" v-model="selection"
                             label="Asistencia financiera en enfermedad grave"></q-checkbox>
-                        <q-checkbox disable="true" value="8" v-model="selection"
+                        <q-checkbox disable="true" val="8" v-model="selection"
                             label="Asistencia mascotas en el cielo"></q-checkbox>
 
                         <q-card-actions align="right">
@@ -50,21 +49,20 @@
                 <q-card style="width: 800px">
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox disable="true" value="1" v-model="selection"
+                        <q-checkbox disable="true" val="1" v-model="selection"
                             label="Asistencia funeraria nacional e internacional"></q-checkbox>
-                        <q-checkbox disable="true" value="2" v-model="selection"
+                        <q-checkbox disable="true" val="2" v-model="selection"
                             label="Asistencia financiera en duelo"></q-checkbox>
-                        <q-checkbox disable="true" value="3" v-model="selection"
+                        <q-checkbox disable="true" val="3" v-model="selection"
                             label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
-                        <q-checkbox disable="true" value="4" v-model="selection"
-                            label="Combo citas medicas"></q-checkbox>
-                        <q-checkbox disable="true" value="5" v-model="selection"
+                        <q-checkbox disable="true" val="4" v-model="selection" label="Combo citas medicas"></q-checkbox>
+                        <q-checkbox disable="true" val="5" v-model="selection"
                             label="Asistencia odontológica"></q-checkbox>
-                        <q-checkbox disable="true" value="6" v-model="selection"
+                        <q-checkbox disable="true" val="6" v-model="selection"
                             label="Asistencia financiera en hospitalización"></q-checkbox>
-                        <q-checkbox disable="true" value="7" v-model="selection"
+                        <q-checkbox disable="true" val="7" v-model="selection"
                             label="Asistencia financiera en enfermedad grave"></q-checkbox>
-                        <q-checkbox disable="true" value="8" v-model="selection"
+                        <q-checkbox disable="true" val="8" v-model="selection"
                             label="Asistencia mascotas en el cielo"></q-checkbox>
                     </q-card-section>
                 </q-card>
