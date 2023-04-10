@@ -267,7 +267,7 @@ class PetitionController extends Controller
                 $profile->doc = $request->identification;
                 $profile->email = $request->email;
                 $profile->main_phone = $request->phone_number;
-                $profile->user_type = $request->user['type'] == 1 ? 'nuevo' : 'viejo';
+                $profile->user_type = $request->client == 1 ? 'nuevo' : 'viejo';
                 $profile->save();
             endif;
 
