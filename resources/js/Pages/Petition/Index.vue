@@ -22,7 +22,7 @@
                     </q-card-section>
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox v-for="assistance in assis" :label="assistance.name">
+                        <q-option-group v-model="group" :options="assis" color="primary" />
                         </q-checkbox>
                         <q-card-actions align="right">
                             <q-btn flat label="Cerrar" color="primary" v-close-popup />
@@ -35,8 +35,7 @@
                 <q-card style="width: 800px">
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox v-for="assistance in assis" :disable="assistance.selected"
-                            :label="assistance.name"></q-checkbox>
+                        <q-option-group v-model="group" :options="assis" color="primary" />
                     </q-card-section>
                 </q-card>
             </q-dialog>
@@ -116,50 +115,39 @@ export default {
             lastnames: null,
             assis: [
                 {
-                    name: "Asistencia funeraria nacional e internacional",
-                    id: 1,
-                    selected: false
+                    label: "Asistencia funeraria nacional e internacional",
+                    value: 1,
                 },
                 {
-                    name: "Asistencia financiera en duelo",
-                    id: 2,
-                    selected: false
+                    label: "Asistencia financiera en duelo",
+                    value: 2,
                 },
                 {
-                    name: "Asistencia médica telefónica y domiciliaria",
-                    id: 3,
-                    selected: false
+                    label: "Asistencia médica telefónica y domiciliaria",
+                    value: 3,
                 },
                 {
-                    name: "Combo citas medicas",
-                    id: 4,
-                    selected: false
+                    label: "Combo citas medicas",
+                    value: 4,
                 },
                 {
-                    name: "Asistencia odontológica",
-                    id: 5,
-                    selected: false
+                    label: "Asistencia odontológica",
+                    value: 5,
+                },
+                {
+                    label: "Asistencia financiera en hospitalización",
+                    value: 6,
 
                 },
                 {
-                    name: "Asistencia financiera en hospitalización",
-                    id: 6,
-                    selected: false
+                    label: "Asistencia financiera enfermedad grave",
+                    value: 7,
 
                 },
                 {
-                    name: "Asistencia financiera enfermedad grave",
-                    id: 7,
-                    selected: false
-
+                    label: "Asistencia mascotas en el cielo",
+                    value: 8,
                 },
-                {
-                    name: "Asistencia mascotas en el cielo",
-                    id: 8,
-                    selected: false
-
-                },
-
             ],
             plan: null,
             doc: null,

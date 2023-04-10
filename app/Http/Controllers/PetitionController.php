@@ -72,14 +72,11 @@ class PetitionController extends Controller
             foreach ($data['assistances'] as $assistance) {
                 $arr[] = $assistance->id;
             }
+            $data['arr'] = $arr;
             $assistances = $assistances->map(function ($assistance) use ($arr) {
                 $obj = (object)[];
-                $obj->id = $assistance->id;
-                $obj->name = $assistance->name;
-                $obj->selected = false;
-                if (array_key_exists($assistance->id, $arr)) :
-                    $obj->selected = true;
-                endif;
+                $obj->value = $assistance->id;
+                $obj->label = $assistance->name;
                 return $obj;
             });
 
@@ -122,14 +119,11 @@ class PetitionController extends Controller
             foreach ($data['assistances'] as $assistance) {
                 $arr[] = $assistance->id;
             }
+            $data['arr'] = $arr;
             $assistances = $assistances->map(function ($assistance) use ($arr) {
                 $obj = (object)[];
-                $obj->id = $assistance->id;
-                $obj->name = $assistance->name;
-                $obj->selected = false;
-                if (array_key_exists($assistance->id, $arr)) :
-                    $obj->selected = true;
-                endif;
+                $obj->value = $assistance->id;
+                $obj->label = $assistance->name;
                 return $obj;
             });
             $data['assistances'] = $assistances;
