@@ -114,6 +114,7 @@ export default {
             columns: null,
             firstnames: null,
             lastnames: null,
+            selection: [],
             assis: [
                 {
                     name: "Asistencia funeraria nacional e internacional",
