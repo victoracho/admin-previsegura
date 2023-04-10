@@ -110,7 +110,7 @@ class DatabaseSeeder extends Seeder
 
             $bank = Bank::first();
 
-            $role = role::where('slug', 'role-admin')->get();
+            $role = Role::where('slug', 'role-admin')->get();
             $user = new user;
             $user->doc = '24203490';
             $user->email = 'victoracho.box@gmail.com';
@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
             $profile->user_id = $user->id;
             $profile->save();
 
-            $role = role::where('slug', 'role-user')->get();
+            $role = Role::where('slug', 'role-user')->get();
             $user = new User();
             $user->email = 'pedro@gmail.com';
             $user->password = bcrypt('123456789');

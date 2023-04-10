@@ -36,10 +36,10 @@ class BaseController extends Controller
       $hashids = new Hashids('client-helper', 20);
       $objUser = (object)[];
       $objUser = $user->clone();
-      $objUser->id = $hashids->encode($user->id);
+      $objUser->id = $hashids->encode($user->user_id);
       $state = null;
       $country = null;
-      $profileUser = User::find($user->id);
+      $profileUser = User::find($user->user_id);
       $role = $profileUser->firstRole();
       $role = $role->only(['slug', 'name']);
 
