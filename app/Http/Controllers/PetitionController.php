@@ -23,17 +23,26 @@ class PetitionController extends Controller
             $petitions = $petitions->map(function ($petition) {
                 $obj = (object)[];
                 $obj->id = $petition->id;
-                $user = Profile::where('user_id', $petition->user->id)->first();
-                $names = $user->firstnames . ' ' . $user->lastnames;
-                $obj->doc = $user->doc;
-                $obj->email = $user->email;
-                $obj->phone_number = $user->main_phone;
-                $obj->names = $names;
-                $obj->date = Carbon::parse($petition->created_at);
-                $obj->date = $obj->date->format('d m Y');
+                $obj->doc = null;
+                $obj->email = null;
+                $obj->phone_number = null;
+                $obj->names = null;
+                $obj->date = null;
+                $obj->plan = null;
                 $obj->assistances = 'Ver';
-                $plan = clone $petition->plan;
-                $obj->plan = $plan->name;
+                $user = Profile::where('user_id', $petition->user->id)->first();
+                if ($user) {
+                    $names = $user->firstnames . ' ' . $user->lastnames;
+                    $obj->doc = $user->doc;
+                    $obj->email = $user->email;
+                    $obj->phone_number = $user->main_phone;
+                    $obj->names = $names;
+                    $obj->date = Carbon::parse($petition->created_at);
+                    $obj->date = $obj->date->format('d m Y');
+                    $obj->assistances = 'Ver';
+                    $plan = clone $petition->plan;
+                    $obj->plan = $plan->name;
+                }
                 return $obj;
             });
             $plans = Plan::all();
