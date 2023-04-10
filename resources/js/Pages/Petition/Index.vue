@@ -113,6 +113,7 @@ export default {
             columns: null,
             firstnames: null,
             lastnames: null,
+            group: null,
             assis: [
                 {
                     label: "Asistencia funeraria nacional e internacional",
@@ -180,7 +181,7 @@ export default {
             await axios.post(route('petition.getInfo'), { id: id })
                 .then((res) => {
                     console.log(res.data.data.assistances);
-                    this.assis = res.data.data.assistances
+                    this.group = res.data.data.arr
                     this.firstnames = res.data.data.user.firstnames
                     this.lastnames = res.data.data.user.lastnames
                     this.email = res.data.data.user.email
@@ -195,8 +196,7 @@ export default {
             this.currentpetition = id
             await axios.post(route('petition.getAssistances'), { id: id })
                 .then((res) => {
-                    console.log(res.data.data)
-                    this.assis = res.data.data
+                    this.group = res.data.arr
                     this.firstnames = null
                     this.lastnames = null
                     this.email = null
