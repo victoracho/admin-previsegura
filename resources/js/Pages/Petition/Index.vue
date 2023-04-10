@@ -215,8 +215,6 @@ export default {
                     this.plan = null
                     this.doc = null
                     this.type = null
-
-                    this.checkAssistances(assistances)
                 })
             this.$refs.assistancesDialog.show()
         },
