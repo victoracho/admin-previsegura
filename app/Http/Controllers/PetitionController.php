@@ -83,7 +83,7 @@ class PetitionController extends Controller
             return response()->json([
                 'success' => 'true',
                 'error' => 'null',
-                'data' => $assistances,
+                'data' => $arr,
             ], 200);
         } catch (\Throwable $th) {
             DB::rollback();
