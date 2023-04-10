@@ -22,8 +22,8 @@
                     </q-card-section>
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-option-group v-model="group" :options="assis" color="primary" />
-                        </q-checkbox>
+                        <q-checkbox v-for="assistance in assis" disable="true" :value="assistance.id"
+                            v-model="selection" :label="assistance.name"></q-checkbox>
                         <q-card-actions align="right">
                             <q-btn flat label="Cerrar" color="primary" v-close-popup />
                             <q-btn flat label="Editar" color="primary" @click="onOKClick()" v-close-popup />
@@ -35,7 +35,8 @@
                 <q-card style="width: 800px">
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-option-group v-model="group" :options="assis" color="primary" />
+                        <q-checkbox v-for="assistance in assis" disable="true" :value="assistance.id"
+                            v-model="selection" :label="assistance.name"></q-checkbox>
                     </q-card-section>
                 </q-card>
             </q-dialog>
@@ -113,42 +114,40 @@ export default {
             columns: null,
             firstnames: null,
             lastnames: null,
-            group: null,
             assis: [
                 {
-                    label: "Asistencia funeraria nacional e internacional",
-                    value: 1,
+                    name: "Asistencia funeraria nacional e internacional",
+                    id: 1,
                 },
                 {
-                    label: "Asistencia financiera en duelo",
-                    value: 2,
+                    name: "Asistencia financiera en duelo",
+                    id: 2,
                 },
                 {
-                    label: "Asistencia médica telefónica y domiciliaria",
-                    value: 3,
+                    name: "Asistencia médica telefónica y domiciliaria",
+                    id: 3,
                 },
                 {
-                    label: "Combo citas medicas",
-                    value: 4,
+                    name: "Combo citas medicas",
+                    id: 4,
                 },
                 {
-                    label: "Asistencia odontológica",
-                    value: 5,
+                    name: "Asistencia odontológica",
+                    id: 5,
                 },
                 {
-                    label: "Asistencia financiera en hospitalización",
-                    value: 6,
+                    name: "Asistencia financiera en hospitalización",
+                    id: 6,
+                },
+                {
+                    name: "Asistencia financiera enfermedad grave",
+                    id: 7,
+                },
+                {
+                    name: "Asistencia mascotas en el cielo",
+                    id: 8,
+                },
 
-                },
-                {
-                    label: "Asistencia financiera enfermedad grave",
-                    value: 7,
-
-                },
-                {
-                    label: "Asistencia mascotas en el cielo",
-                    value: 8,
-                },
             ],
             plan: null,
             doc: null,
@@ -181,7 +180,7 @@ export default {
             await axios.post(route('petition.getInfo'), { id: id })
                 .then((res) => {
                     console.log(res.data.data.assistances);
-                    this.group = res.data.data.arr
+                    this.selection = res.data.data.arr
                     this.firstnames = res.data.data.user.firstnames
                     this.lastnames = res.data.data.user.lastnames
                     this.email = res.data.data.user.email
@@ -196,7 +195,8 @@ export default {
             this.currentpetition = id
             await axios.post(route('petition.getAssistances'), { id: id })
                 .then((res) => {
-                    this.group = res.data.arr
+                    console.log(res.data.data)
+                    this.selection = res.data.data.arr
                     this.firstnames = null
                     this.lastnames = null
                     this.email = null
