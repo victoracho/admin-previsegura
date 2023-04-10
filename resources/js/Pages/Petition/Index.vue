@@ -22,8 +22,23 @@
                     </q-card-section>
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox v-for="assistance in assis" disable="true" :value="assistance.id"
-                            v-model="selection" :label="assistance.name"></q-checkbox>
+                        <q-checkbox disable="true" value="1" v-model="selection"
+                            label="Asistencia funeraria nacional e internacional"></q-checkbox>
+                        <q-checkbox disable="true" value="2" v-model="selection"
+                            label="Asistencia financiera en duelo"></q-checkbox>
+                        <q-checkbox disable="true" value="3" v-model="selection"
+                            label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
+                        <q-checkbox disable="true" value="4" v-model="selection"
+                            label="Combo citas medicas"></q-checkbox>
+                        <q-checkbox disable="true" value="5" v-model="selection"
+                            label="Asistencia odontológica"></q-checkbox>
+                        <q-checkbox disable="true" value="6" v-model="selection"
+                            label="Asistencia financiera en hospitalización"></q-checkbox>
+                        <q-checkbox disable="true" value="7" v-model="selection"
+                            label="Asistencia financiera en enfermedad grave"></q-checkbox>
+                        <q-checkbox disable="true" value="8" v-model="selection"
+                            label="Asistencia mascotas en el cielo"></q-checkbox>
+
                         <q-card-actions align="right">
                             <q-btn flat label="Cerrar" color="primary" v-close-popup />
                             <q-btn flat label="Editar" color="primary" @click="onOKClick()" v-close-popup />
@@ -35,8 +50,22 @@
                 <q-card style="width: 800px">
                     <q-card-section>
                         <div class="text-h6">Asistencias</div>
-                        <q-checkbox v-for="assistance in assis" disable="true" :value="assistance.id"
-                            v-model="selection" :label="assistance.name"></q-checkbox>
+                        <q-checkbox disable="true" value="1" v-model="selection"
+                            label="Asistencia funeraria nacional e internacional"></q-checkbox>
+                        <q-checkbox disable="true" value="2" v-model="selection"
+                            label="Asistencia financiera en duelo"></q-checkbox>
+                        <q-checkbox disable="true" value="3" v-model="selection"
+                            label="Asistencia médica telefónica y domiciliaria"></q-checkbox>
+                        <q-checkbox disable="true" value="4" v-model="selection"
+                            label="Combo citas medicas"></q-checkbox>
+                        <q-checkbox disable="true" value="5" v-model="selection"
+                            label="Asistencia odontológica"></q-checkbox>
+                        <q-checkbox disable="true" value="6" v-model="selection"
+                            label="Asistencia financiera en hospitalización"></q-checkbox>
+                        <q-checkbox disable="true" value="7" v-model="selection"
+                            label="Asistencia financiera en enfermedad grave"></q-checkbox>
+                        <q-checkbox disable="true" value="8" v-model="selection"
+                            label="Asistencia mascotas en el cielo"></q-checkbox>
                     </q-card-section>
                 </q-card>
             </q-dialog>
@@ -116,38 +145,6 @@ export default {
             lastnames: null,
             selection: [],
             assis: [
-                {
-                    name: "Asistencia funeraria nacional e internacional",
-                    id: 1,
-                },
-                {
-                    name: "Asistencia financiera en duelo",
-                    id: 2,
-                },
-                {
-                    name: "Asistencia médica telefónica y domiciliaria",
-                    id: 3,
-                },
-                {
-                    name: "Combo citas medicas",
-                    id: 4,
-                },
-                {
-                    name: "Asistencia odontológica",
-                    id: 5,
-                },
-                {
-                    name: "Asistencia financiera en hospitalización",
-                    id: 6,
-                },
-                {
-                    name: "Asistencia financiera enfermedad grave",
-                    id: 7,
-                },
-                {
-                    name: "Asistencia mascotas en el cielo",
-                    id: 8,
-                },
 
             ],
             plan: null,
@@ -196,8 +193,8 @@ export default {
             this.currentpetition = id
             await axios.post(route('petition.getAssistances'), { id: id })
                 .then((res) => {
-                    this.selection = res.data.data.arr
-                    console.log(res.data.data.arr)
+                    this.selection = res.data.arr
+                    console.log(res.data.arr)
                     this.firstnames = null
                     this.lastnames = null
                     this.email = null
