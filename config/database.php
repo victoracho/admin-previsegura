@@ -62,6 +62,25 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        'previsoft' => [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
+            'host' => '159.89.83.202',
+            'port' => env('DB_PORT', '3306'),
+            'database' => 'dbprevisoftr1',
+            'username' => 'victoracho',
+            'password' => 'Previsegura2020!',
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb3',
+            'collation' => 'utf8mb3_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => false,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',

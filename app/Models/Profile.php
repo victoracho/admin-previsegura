@@ -35,8 +35,10 @@ class Profile extends Authenticatable
     'deceased',
     'deceased_date',
     'address',
+    'secondary_address',
     'email',
     'doc',
+    'rif',
     'birthdate',
     'dependency',
     'state_id',
@@ -44,6 +46,7 @@ class Profile extends Authenticatable
     'city_id',
     'user_id',
     'gender',
+    'civil_status',
   ];
 
   // Relations

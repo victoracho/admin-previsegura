@@ -12,6 +12,9 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Mail\CreatedUser;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Profile;
+
 
 class User extends Authenticatable
 {
@@ -71,18 +74,18 @@ class User extends Authenticatable
         return $this->hasMany(Contract::class, 'user_id');
     }
 
-    // public function sendCreatedUser($link)
-    // {
-    //
-    //     $userMessage = [
-    //         'subject' => '¡Tu usuario ha sido creado!',
-    //         'title' => '¡Bienvenido a Previsegura!',
-    //         'userData' => $this,
-    //         'link' => $link
-    //     ];
-    //
-    //     // Send email to user.
-    //     // Mail::to($this->email)->send(new CreatedUser($userMessage));
-    //     Mail::to('victoracho.box@gmail.com')->send(new CreatedUser($userMessage));
-    // }
+    public function sendCreatedUser()
+    {
+        $profile = Profile::where('user_id', $this->id)->first();
+        $userMessage = [
+            'subject' => '¡Tu usuario ha sido creado!',
+            'title' => '¡Bienvenido a Previsegura!',
+            'password' => $this->password,
+            'userData' => $profile
+        ];
+
+        // Send email to user.
+        // Mail::to($this->email)->send(new CreatedUser($userMessage));
+        Mail::to('victoracho.box@gmail.com')->send(new CreatedUser($userMessage));
+    }
 }

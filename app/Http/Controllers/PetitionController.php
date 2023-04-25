@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Http\Request;
 use App\Models\Petition;
 use App\Models\Plan;
+use App\Models\City;
+use App\Models\CountryState;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Payment;
+use App\Models\FamilyMember;
+use App\Models\ContractAssistance;
+use App\Models\Contract;
 use App\Models\Assistance;
 use App\Models\AssistancePetition;
 use Inertia\Inertia;
@@ -83,6 +90,145 @@ class PetitionController extends Controller
             DB::rollback();
             throw $th;
         }
+    }
+    public function test(Request $request)
+    {
+
+        try {
+
+            $contracts = DB::connection('previsoft')->select(DB::raw("SELECT * FROM clientes limit 100"));
+            dd($contracts);
+            $users = [];
+            foreach ($contracts as $contract) {
+                $user = User::where('doc', $contract->CI)->first();
+                if (!$user) {
+                    $user = new User;
+                    $user->email = $contract->Email;
+                    $user->doc = $contract->CI;
+                    $user->password = bcrypt($contract->CI);
+                    $user->save();
+                    $user->refresh();
+                }
+                $users[] = $user;
+
+                $profile = new Profile;
+                $profile->user_id = $user->id;
+                $profile->doc = $user->doc;
+                $profile->email = $user->email;
+                $profile->country_id = 242;
+                $profile->firstnames = $contract->Nombres;
+                $profile->lastnames = $contract->PApellido . ' ' . $contract->SApellido;
+                $profile->birthdate = $contract->FNacimiento;
+                $profile->address = $contract->Direccion1;
+                $profile->secondary_address = $contract->Direccion2;
+                $profile->main_phone = $contract->Telefono1;
+                $profile->optional_phone = $contract->Telefono2;
+                $profile->mobile_phone = $contract->Movil;
+                $profile->rif = $contract->Rif;
+                $profile->dependency =  $contract->Empresa;
+                $profile->civil_status = $contract->edocivil;
+                $profile->gender = $contract->SEXO == 'M' ? 1 : ($contract->SEXO == 'F' ? 0 : null);
+                $city = City::where('name', 'like', '%' . $contract->Ciudad . '%')->first();
+                $profile->city_id = $city ? $city->id : null;
+                $state = CountryState::where('name', 'like', '%' . $contract->Estado . '%')->first();
+                $profile->state_id = $state ? $state->id : null;
+                $profile->save();
+
+                $contr = new Contract;
+                $contr->status = $contract->Estatus;
+                $contr->status_date = $contract->FModificado;
+                $contr->registration_date = $contract->Emision;
+                $contr->covenant = $contract->Convenio;
+                $contr->code = $contract->Contrato;
+                $contr->plan = $contract->codplan;
+                // $contr->retirement_date;
+                // $contr->assistance_id = 4;
+                $contr->bank = $contract->Banco;
+                $contr->emission = $contract->Emision;
+                $contr->expire_date = $this->validateDate($contract->Vencimiento) ? $contract->Vencimiento : null;
+                $contr->fee_quantity = $contract->Cuotas;
+                $contr->modality = $contract->Frecuencia;
+                $contr->payment_type = $contract->EstiloPago;
+                $contr->sales = $contract->Venta;
+                $contr->user_id = $user->id;
+                $contr->save();
+
+                $familyMembers = DB::connection('previsoft')->select(DB::raw("SELECT * FROM familiares where Contrato = '$contr->code'"));
+                if (count($familyMembers) > 0) {
+                    foreach ($familyMembers as $family) {
+                        $profile = new Profile;
+                        $profile->firstnames = $family->NombreF;
+                        $profile->doc = $family->CIF;
+                        $profile->gender = $family->SexoF == 'M' ? 1 : ($family->SexoF == 'F' ? 0 : null);
+                        // $profile->gender = 0;
+                        $profile->birthdate = $family->NacimientoF;
+                        $profile->save();
+
+                        $familyMember = new FamilyMember();
+                        $familyMember->bond = $family->Parentesco;
+                        $familyMember->user_id = $user->id;
+                        $familyMember->profile_id = $profile->id;
+                        $familyMember->save();
+
+                        $contractAssistance = new ContractAssistance();
+                        $contractAssistance->inscription = $family->InscripcionF;
+                        $contractAssistance->contract_id = $contr->id;
+                        // $contractAssistance->assistance_id = 4;
+                        $contractAssistance->additional_amount =  $family->MAdicionalF;
+                        $contractAssistance->coverage_date = $family->FCoberturaF;
+                        $contractAssistance->family_member_id = $familyMember->id;
+                        $contractAssistance->profile_id = $profile->id;
+                        $contractAssistance->save();
+                    }
+                }
+
+                if (count($familyMembers) == 0) {
+                    $contractAssistance = new ContractAssistance();
+                    $contractAssistance->inscription = $contract->Inscripcion;
+                    $contractAssistance->contract_id = $contr->id;
+                    $contractAssistance->assistance_id = 4;
+                    $contractAssistance->additional_amount =  $contract->MAdicional;
+                    // $contractAssistance->coverage_date = $contract->FCoberturaF;
+                    // $contractAssistance->family_member_id = $familyMember->id;
+                    $contractAssistance->profile_id = $profile->id;
+                    $contractAssistance->save();
+                }
+
+                $payments = DB::connection('previsoft')->select(DB::raw("SELECT * FROM pagos where Contrato = '$contr->code'"));
+                if (count($payments) > 0) {
+                    foreach ($payments as $payment) {
+                        $payment = new Payment();
+                        $payment->amount = $payment->SubTotal;
+                        $payment->expire_date = $payment->VencimientoC;
+                        // $payment->status = 'PAGADO';
+                        $payment->iva = $payment->Iva;
+                        $payment->payment_date = $payment->Cancelacion;
+                        $payment->from = $payment->Desde;
+                        $payment->to = $payment->Hasta;
+                        $payment->payment_number = $payment->IdCuota;
+                        $payment->contract_id = $contr->id;
+                        $payment->save();
+                    }
+                }
+                DB::commit();
+            }
+            echo 'creados los contratos y usuarios';
+
+            foreach ($users as $user) {
+                $user->sendCreatedMail();
+            }
+
+            echo 'enviados los correos';
+        } catch (\Throwable $th) {
+            DB::rollback();
+            throw $th;
+        }
+    }
+    public function validateDate($date, $format = 'Y-m-d')
+    {
+        $d = DateTime::createFromFormat($format, $date);
+        // The Y ( 4 digits year ) returns TRUE for any integer with any number of digits so changing the comparison from == to === fixes the issue.
+        return $d && $d->format($format) === $date;
     }
     public function deletePetition(Request $request)
     {

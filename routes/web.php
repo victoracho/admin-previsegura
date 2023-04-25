@@ -20,8 +20,9 @@ Route::get('/', function () {
     return to_route('login');
 });
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::post('/getAssistances', [PetitionController::class, 'getAssistances'])->name('petition.getAssistances');
+    Route::get('/test', [PetitionController::class, 'test'])->name('petition.test');
     Route::post('/sendAssistances', [PetitionController::class, 'sendAssistances'])->name('petition.sendAssistances');
     Route::prefix('vocem')->group(function () {
         Route::get('/upload/', [VocemController::class, 'uploadView'])->name('vocem.uploadView');
