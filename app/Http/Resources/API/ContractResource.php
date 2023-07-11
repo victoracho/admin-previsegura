@@ -20,6 +20,9 @@ class ContractResource extends JsonResource
     public function toArray($request)
     {
         $hashids = new Hashids('contract-helper', 20);
+        $familyMembers = $this->contractAssistances->filter(function ($item) {
+            return $item->family_member_id != null;
+        });
 
         return [
             'code' => $this->code,
@@ -42,7 +45,7 @@ class ContractResource extends JsonResource
                 'fee_quantity' => $this->fee_quantity,
             ),
 
-            'family_members' => FamilyMemberResource::collection($this->contractAssistances),
+            'family_members' => FamilyMemberResource::collection($familyMembers),
             'payments' => PaymentResource::collection($this->payments),
         ];
     }
