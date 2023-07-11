@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use App\Models\Profile;
+use App\Models\Role;
 
 class EmailSeeder extends Seeder
 {
@@ -20,6 +20,8 @@ class EmailSeeder extends Seeder
             $users = User::all();
             foreach ($users as $user) {
                 $user->password = bcrypt($user->doc);
+                $role = Role::where('slug', 'role-user')->first();
+                $user->roles()->attach($role);
                 $user->save();
             }
             $this->command->info('usuarios notificados');
