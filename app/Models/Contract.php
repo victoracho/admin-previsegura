@@ -27,10 +27,16 @@ class Contract extends Model
         'status_date',
         'retirement_date',
         'payment_type',
+        'initial_payment',
         'coverage_date',
         'expires',
         'covenant',
         'plan',
+        'amount',
+        'coffin',
+        'cemetery',
+        'funerary',
+        'pit',
         'payment_date',
         'modality',
         'fee_quantity',
@@ -77,9 +83,5 @@ class Contract extends Model
     public function account()
     {
         return $this->belongsTo(Plan::class, 'account_id');
-    }
-    public function bank()
-    {
-        return $this->belongsTo(Bank::class, 'bank_id');
     }
 }
