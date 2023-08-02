@@ -80,12 +80,12 @@ class User extends Authenticatable
         $userMessage = [
             'subject' => '¡Tu usuario ha sido creado!',
             'title' => '¡Bienvenido a Previsegura!',
-            'password' => $this->password,
+            'password' => $this->doc,
+            'doc' => $this->doc,
             'userData' => $profile
         ];
 
-        // Send email to user.
         // Mail::to($this->email)->send(new CreatedUser($userMessage));
-        Mail::to('victoracho.box@gmail.com')->send(new CreatedUser($userMessage));
+        Mail::to($this->email)->send(new CreatedUser($userMessage));
     }
 }

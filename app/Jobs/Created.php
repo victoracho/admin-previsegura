@@ -3,24 +3,25 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Bus\Batchable;
 
 class Created implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use Batchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
+    private $client;
     public function __construct()
     {
-        //
     }
 
     /**
@@ -30,6 +31,11 @@ class Created implements ShouldQueue
      */
     public function handle()
     {
-        //
+        try {
+            Log::info('pepepeeee');
+        } catch (Exception $e) {
+            DB::rollback();
+            Log::error($e);
+        }
     }
 }

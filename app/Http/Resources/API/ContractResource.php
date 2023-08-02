@@ -44,9 +44,20 @@ class ContractResource extends JsonResource
                 'modality' => $this->modality,
                 'fee_quantity' => $this->fee_quantity,
             ),
-
             'family_members' => FamilyMemberResource::collection($familyMembers),
             'payments' => PaymentResource::collection($this->payments),
+            'details' => array(
+                'yearly_amount' => $this->yearly_amount,
+                'global_coverage' => $this->global_coverage,
+                'funerary_coverage' => $this->funerary_coverage,
+                'cemetery_coverage' => $this->cemetery_coverage,
+                'funerary_reverse' => $this->funerary_reverse,
+                'product' => $this->product,
+                'cemetery' => $this->cemetery,
+                'cemetery_reverse' => $this->cemetery_reverse,
+                'vehicle_quantity' => $this->vehicle_quantity,
+                'transportation' => $this->transportation,
+            )
         ];
     }
 }

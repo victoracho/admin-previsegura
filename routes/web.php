@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PetitionController;
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\VocemController;
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,10 @@ use App\Http\Controllers\VocemController;
 |
 */
 
+
+
 Route::get('/', function () {
-    return to_route('login');
+       return to_route('login');
 });
 
 Route::middleware('auth')->group(function () {

@@ -8,9 +8,14 @@
 @endslot
 {{-- Content here --}}
 <p>Estimado <b>{{ $details['userData']->firstnames}} {{ $details['userData']->lastnames}}, </b> Tu usuario ha sido creado con exito.</p>
+<p> Tu usuario es: {{$details['doc']}}</p>
 <p> Tu clave de acceso es: {{$details['password']}}</p>
 <p> Puedes cambiarla desde este enlace: </p>
-
+<a href="https://admin.previsegura.com/forgot-password">
+    aqui
+</a>
+<p> De lo contrario puedes revisar tus contratos desde este enlace:</p>
+<a href="https://user.previsegura.com/"> aqui </a>
 {{-- Subcopy --}}
 @slot('subcopy')
 @component('mail::subcopy')

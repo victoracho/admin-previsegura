@@ -7,13 +7,14 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Profile;
-use App\Mail\ResetPassword;
+use App\Mail\ResetPasswordMail;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 
 class AuthController extends BaseController
 {
@@ -69,6 +70,15 @@ class AuthController extends BaseController
       throw $th;
     }
   }
+  public function resetPasswordView(Request $request)
+  {
+    $req = (object)[];
+    $req->token = $request->token;
+    $req->email = $request->email;
+    $user = User::where('email', $req->email)->first();
+    $req->userType = $user->firstRoleName();
+    return Inertia::render('Auth/ResetPassword', ['token' => $req->token, 'email' => $req->email, 'userType' => $req->userType]);
+  }
 
   public function resetPassword(Request $request)
   {
@@ -91,18 +101,36 @@ class AuthController extends BaseController
         'token.string' => 'El token tiene que ser valido!'
       ]
     );
-
-    if ($validator->fails()) {
-      return new JsonResponse(['success' => false, 'message' => $validator->errors()], 422);
+    if ($request->password != $request->password_confirmation) {
+      return Inertia::render(
+        'Auth/ResetPassword',
+        [
+          'success' => false,
+          'message' => 'Las claves no coinciden'
+        ]
+      );
     }
 
+    if ($validator->fails()) {
+      return Inertia::render(
+        'Auth/ResetPassword'
+      );
+    }
 
     $select = DB::table('password_resets')
       ->where('email', $request->email)
-      ->where('token', $request->token);
+      ->where('token', $request->token)
+      ->orderBy('id', 'desc')
+      ->first();
 
     if ($select->get()->isEmpty()) {
-      return new JsonResponse(['success' => false, 'message' => "Token invalido."], 400);
+      return Inertia::render(
+        'Auth/ResetPassword',
+        [
+          'success' => false,
+          'message' => 'Este enlace se encuentra vencido, porfavor, solicita otro.',
+        ]
+      );
     }
 
     $user = User::where('email', $request->email);
@@ -119,15 +147,27 @@ class AuthController extends BaseController
     }
 
     $token = $user->first()->createToken('myapptoken')->plainTextToken;
+    if ($request->userType == 'Rol super admin') {
+      $redirect = 'https://admin.previsegura.com';
+    }
+    if ($request->userType == 'Rol de usuario') {
+      $redirect = 'https://user.previsegura.com';
+    }
 
-    return new JsonResponse(
+    return Inertia::render(
+      'Auth/ResetPassword',
       [
-        'success' => true,
-        'message' => "Tu contrasena ha sido reestablecida.",
-        'token' => $token
-      ],
-      200
+        'success' => false,
+        'message' => 'Clave restablecida correctamente.',
+        'token' => $token,
+        'userType' => $request->userType,
+        'redirect' => $redirect,
+      ]
     );
+  }
+  public function forgotPasswordView()
+  {
+    return Inertia::render('Auth/ForgotPassword');
   }
 
   public function forgotPassword(Request $request)
@@ -143,55 +183,27 @@ class AuthController extends BaseController
     $verify = User::where('email', $request->all()['email'])->exists();
     $user = User::where('email', $request->all()['email'])->first();
     if ($verify) {
-      $verify2 =  DB::table('password_resets')->where([
-        ['email', $request->all()['email']]
-      ]);
-
-      if ($verify2->exists()) {
-        $verify2->delete();
-      }
+      DB::table('password_resets')->where([
+        ['email', $request->email]
+      ])->delete();
 
       $token = app('auth.password.broker')->createToken($user);
-      $password_reset = DB::table('password_resets')->insert([
-        'email' => $request->all()['email'],
-        'token' =>  $token,
-        'created_at' => Carbon::now()
-      ]);
 
-      $email = $request->all()['email'];
+
+      $email = $request->email;
 
       if (getenv('APP_ENV') == 'staging') {
         $var = "http://profile-dev.fttalent.work/reset-password/?token=$token&email=$email";
       }
 
       if (getenv('APP_ENV') == 'local') {
-        $var = "http://localhost:5000/reset-password/?token=$token&email=$email";
+        $var = "http://localhost:8000/reset-password/?token=$token&email=$email";
       }
 
       if (getenv('APP_ENV') == 'production') {
         $var = "https://profile.fttalent.work/reset-password/?token=$token&email=$email";
       }
-
-      if ($password_reset) {
-        Mail::to($request->all()['email'])->send(new ResetPassword($var));
-
-        return new JsonResponse(
-          [
-            'token' => $token,
-            'success' => true,
-            'message' => "Te hemos enviado un correo con un enlace de reestablecimiento de contrasena."
-          ],
-          200
-        );
-      }
-    } else {
-      return new JsonResponse(
-        [
-          'success' => false,
-          'message' => "This email does not exist"
-        ],
-        400
-      );
+      Mail::to($request->all()['email'])->send(new ResetPasswordMail($var));
     }
   }
 

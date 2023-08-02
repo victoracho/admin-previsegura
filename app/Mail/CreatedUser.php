@@ -13,6 +13,7 @@ class CreatedUser extends Mailable
 
     public $details;
 
+
     /**
      * Create a new message instance.
      *

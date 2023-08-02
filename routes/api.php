@@ -18,9 +18,8 @@ use App\Http\Controllers\API\ClientController;
 |
 */
 
+
 Route::post('login', [AuthController::class, 'signIn'])->name('auth.login');
-Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('auth.resetPassword');
-Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgotPassword');
 Route::post('register', [AuthController::class, 'signUp'])->name('auth.register');
 Route::post('logout', [AuthController::class, 'logOut'])->name('auth.logout')->middleware(['auth:sanctum']);
 

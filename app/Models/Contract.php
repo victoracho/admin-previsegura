@@ -46,6 +46,15 @@ class Contract extends Model
         'assistance_id',
         'emission',
         'sales',
+        'yearly_amount',
+        'global_coverage',
+        'funerary_coverage',
+        'cemetery_coverage',
+        'funerary_reverse',
+        'cemetery_reverse',
+        'product',
+        'vehicle_quantity',
+        'transportation',
     ];
 
     public function contractAssistances()
