@@ -34,7 +34,7 @@ class ProfileResource extends JsonResource
       'state' => $this->state_id ? $this->state->name : null,
       'country' => $this->country_id ? $this->country->name : null,
       'gender' => $this->gender == 1 ? 'M' : 'F',
-      'fecha_ingreso' => $this->created_at->format('Y-m-d'),
+      'fecha_ingreso' => isset($this->created_at) ? $this->created_at->format('Y-m-d') : null,
     ];
   }
 }
