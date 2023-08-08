@@ -12,33 +12,33 @@ use Illuminate\Support\Facades\Bus;
 
 class PreviSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        try {
-            $contractIds = DB::select(DB::raw("select code from contracts"));
-            $arr = '';
-            foreach ($contractIds as $ctr) {
-                $arr .= "'" . $ctr->code . "'" . ',';
-            }
-            $arr = substr_replace($arr, "", -1);
-            $contracts = DB::connection('previsoft')->select(DB::raw("select clientes.contrato, planesconvenio.cementerio, planesconvenio.Monto, planesconvenio.Coberturaglo, planesconvenio.Cobertura1, planesconvenio.Cobertura2, planesconvenio.ReintegroFun, planesconvenio.Producto, planesconvenio.Fosa, planesconvenio.ReintegroCem, planesconvenio.Vehiculos, planesconvenio.Traslado from clientes left join planesconvenio on planesconvenio.id = clientes.codplan where clientes.contrato in (
+  /**
+   * Seed the application's database.
+   *
+   * @return void
+   */
+  public function run()
+  {
+    try {
+      $contractIds = DB::select(DB::raw("select code from contracts"));
+      $arr = '';
+      foreach ($contractIds as $ctr) {
+        $arr .= "'" . $ctr->code . "'" . ',';
+      }
+      $arr = substr_replace($arr, "", -1);
+      $contracts = DB::connection('previsoft')->select(DB::raw("select  planesconvenio.Plan from clientes left join planesconvenio on planesconvenio.id = clientes.codplan where clientes.contrato in (
                 $arr
             )"));
 
-            $data = array_chunk($contracts, 1000);
-            $batch = Bus::batch([])->dispatch();
-            foreach ($data as $value) {
-                $batch->add(new Migration($value));
-            }
-            $this->command->info('Hecha la migracion');
-        } catch (\Throwable $th) {
-            DB::rollback();
-            throw $th;
-        }
+      $data = array_chunk($contracts, 1000);
+      $batch = Bus::batch([])->dispatch();
+      foreach ($data as $value) {
+        $batch->add(new Migration($value));
+      }
+      $this->command->info('Hecha la migracion');
+    } catch (\Throwable $th) {
+      DB::rollback();
+      throw $th;
     }
+  }
 }
